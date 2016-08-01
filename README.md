@@ -26,9 +26,7 @@ As of 2016, Monroe was no longer interested in maintaining cowsay, and posted a 
 
 ## Requirements
 
-Cowsay requires Perl 5.
-
-If you are using Perl 5.004, you may have problems with Text::Wrap. (Yeesh, this module changes more than it should...)  The cowsay distribution includes a diff for the Text::Wrap (version 97.011701) that is shipped with 5.004_04; the concept is simple enough that even older Perls can take advantage of this silly little patch; if there is a "sub fill" in the documentation for the module, copy it to a more useful section of that file.  If not, just take "sub fill" wholesale from the patch.  Oh, and consider upgrading to 5.005_03 or later.
+Cowsay requires Perl 5.005_03 or later.
 
 ## Enjoy
 
