@@ -1,8 +1,6 @@
 ##
 ## Makefile for managing simple NetHirc-related tasks
 ##
-## $Id$
-##
 
 FILES= Files.base
 PRODUCT= cowsay

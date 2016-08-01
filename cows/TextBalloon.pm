@@ -2,8 +2,6 @@ package Acme::Cow::TextBalloon;
 
 use strict;
 
-my $rcs_id = q$Id$;
-
 =pod
 
 =head1 NAME

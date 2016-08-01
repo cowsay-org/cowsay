@@ -5,10 +5,6 @@
 ##
 ## Installation script for cowsay.
 ##
-## $Id$
-##
-
-rcs_id='$Id$'
 
 filelist='cows'
 
