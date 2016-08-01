@@ -1,21 +1,35 @@
-# rank-amateur-cowsay
+# cowsay
 
-This is cowsay, imported directly from my ancient CVS repository,
-plus a few documentation tweaks to make it a bit more friendly to
-GitHub.  Functionality remains unchanged from all pre-GitHub commits.
+Cowsay is a configurable talking cow, written in Perl.  It operates
+much as the figlet program does, and it written in the same spirit
+of silliness.
 
-Cowsay was a project for learning how to use Perl 5, as well as
-general amusement.  If the code looks like it was written by an
-inexperienced programmer, that's because it was.
+## cowsay-apj
 
-If you are interested in the future of cowsay beyond what is here,
-then I encourage you to read CONTRIBUTING.md in this directory.
+This project you're looking at is [Andrew Janke](https://github.com/apjanke/)'s fork of cowsay. It is an exercise in applying open source development and deployment practices to a small project. My hope is that this becomes the canonical modern fork of cowsay.
 
-I am no longer interested in maintaining cowsay; there are other
-demands on my time that take precedence.
+This fork is called "cowsay-apj" where needed to distinguish it from the original cowsay project. Otherwise, the program and project itself are still called "cowsay".
 
-Enthusiasm for cowsay has gone far beyond what I expected, and if
-cowsay is to have a future, then the least I can do is not stand
-in the way of it.
+The bulk of cowsay's functionality is from Tony Monroe's original project. The cowsay-apj primarily provides maintenance, hosting, and deployment support.
+
+## License
+
+Cowsay is licensed under the GPLv3. See [LICENSE.txt](LICENSE.txt) for details.
+
+## History
+
+Cowsay is actually a pretty old program. It was originally written by Tony Monroe and was first released in 1999, but was in use by Monroe for quite a while before that.
+
+The first major version of cowsay had one cow and one message template: $foo is $verb $bar.  Not very flexible, but people managed to do pretty interesting things with it.  The second major version scrapped many of the limitations of the first, by allowing arbitrary messages, multiple cowfiles, and even support for cows talking in figlet.  The third version was a rewrite of the second into Perl 5, whereupon the code got a lot smaller and more manageable. :-)
+
+As of 2016, Monroe was no longer interested in maintaining cowsay, and posted a [final 3.04 version on GitHub](https://github.com/tnalpgge/rank-amateur-cowsay) to make it available to other developers. Andrew Janke, a cowsay fan, forked the project to provide ongoing maintenance and hosting for cowsay, and as an exercise in FLOSS development processes.
+
+## Requirements
+
+Cowsay requires Perl 5.
+
+If you are using Perl 5.004, you may have problems with Text::Wrap. (Yeesh, this module changes more than it should...)  The cowsay distribution includes a diff for the Text::Wrap (version 97.011701) that is shipped with 5.004_04; the concept is simple enough that even older Perls can take advantage of this silly little patch; if there is a "sub fill" in the documentation for the module, copy it to a more useful section of that file.  If not, just take "sub fill" wholesale from the patch.  Oh, and consider upgrading to 5.005_03 or later.
+
+## Enjoy
 
 Enjoy cowsay for what it was meant to be: simple and silly.
