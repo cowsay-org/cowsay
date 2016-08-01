@@ -7,8 +7,6 @@
 ##
 ## $Id$
 ##
-## This file is part of cowsay.  (c) 1999 Tony Monroe.
-##
 
 rcs_id='$Id$'
 
