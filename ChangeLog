@@ -1,5 +1,9 @@
 DEVELOPMENT HEAD	ongoing
+	- Changed to SemVer version numbering
+
+3.04.01
 	- Cowsay forked by Andrew Janke.
+	- Fixed version numbers in program and doco
 
 -- Tony Monroe's original cowsay from here on down --
 
