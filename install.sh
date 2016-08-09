@@ -60,6 +60,7 @@ PREFIX=${prefix:-/usr/local}
 
 echo Okay, time to install this puppy.
 
+cp cowsay.pl cowsay
 echo s,%BANGPERL%,!$usethisperl,\; > install.pl
 echo s,%PREFIX%,$PREFIX,\; >> install.pl
 set -x
@@ -72,7 +73,7 @@ $usethisperl -p install.pl cowsay.1 > $PREFIX/man/man1/cowsay.1
 chmod a+r $PREFIX/man/man1/cowsay.1
 ln -s cowsay.1 $PREFIX/man/man1/cowthink.1
 mkdir -p $PREFIX/share/cows || (mkdir $PREFIX; mkdir $PREFIX/share; mkdir $PREFIX/share/cows)
-tar -cf - $filelist | (cd $PREFIX/share && tar -xvf -)
+tar -cf - $filelist | (cd $PREFIX/share && tar -xf -)
 set +x
 
 echo Okay, let us see if the install actually worked.
@@ -83,4 +84,4 @@ if [ ! -f $PREFIX/share/cows/default.cow ]; then
     exit 1
 fi
 
-echo Installation complete!  Enjoy the cows!
+echo Installation complete! Enjoy the cows!
