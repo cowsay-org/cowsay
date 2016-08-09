@@ -4,7 +4,7 @@
 .ds Nm Cowsay
 .ds nm cowsay
 .ds Vn 3.05-dev
-.TH \*(nm 1 "August 1, 2016"
+.TH \*(nm 1 "August 9, 2016"
 .SH NAME
 \*(nm/cowthink \- configurable speaking/thinking cow (and a bit more)
 .SH SYNOPSIS
@@ -93,7 +93,8 @@ The
 option specifies a particular cow picture file (``cowfile'') to
 use.  If the cowfile spec contains '/' then it will be interpreted
 as a path relative to the current directory.  Otherwise, cowsay
-will search the path specified in the
+will search the COWPATH. Additional cowpath entries may be
+specified in the
 .B COWPATH
 environment variable.
 To list all cowfiles on the current
@@ -122,20 +123,28 @@ may be used.  The trail leading up to the cow's message balloon is
 composed of the character(s) in the
 .B $thoughts
 variable.  Any backslashes must be reduplicated to prevent
-interpolation.  The name of a cowfile should end with
-.BR .cow ,
-otherwise it is assumed not to be a cowfile.  Also, at-signs (``@'')
+interpretation.  Also, at-signs (``@'')
 must be backslashed because that is what Perl 5 expects.
+The name of a cowfile must end with
+.BR .cow ,
+otherwise it is not recognized as a cowfile.  
 .PP
 .SH ENVIRONMENT
-The COWPATH environment variable, if present, will be used to search
+The 
+.B COWPATH
+environment variable, if present, will be used to search
 for cowfiles.  It contains a colon-separated list of directories,
 much like
 .B PATH or
 .BR MANPATH .
-It should always contain the
-.B /usr/local/share/cows
-directory, or at least a directory with a file called
+.PP
+The default COWPATH is searched after entries in the user-specified COWPATH
+environment variable.  To suppress this behavior (e.g. for development work),
+set the 
+.B COWSAY_ONLY_COWPATH
+environment variable to 1. In this case,
+.B COWPATH
+should contain at least a directory with a file called
 .B default.cow
 in it.
 .SH FILES
@@ -143,6 +152,14 @@ in it.
 holds a sample set of cowfiles.  If your
 .B COWPATH
 is not explicitly set, it automatically contains this directory.
+.PP
+.B %PREFIX%/share/site-cows
+is provided for administrators to install custom cows. Cows in
+.B share/site-cows
+take precedence over cows with the same name in share/cows. The
+.B site-cows
+directory will never be modified by cowsay installations, so custom cows defined 
+there will persist across upgrades of cowsay.
 .SH BUGS
 If there are any, please report them on the cowsay GitHub page
 (https://github.com/apjanke/cowsay/issues) or notify the author at the address below.
