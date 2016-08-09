@@ -29,11 +29,11 @@ $Text::Wrap::subsequent_tab = 8;
 $Text::Wrap::tabstop = 8;
 
 %opts = (
-    'e'		=>	'oo',
-    'f'		=>	'default.cow',
-    'n'		=>	0,
-    'T'		=>	'  ',
-    'W'		=>	40,
+    'e'         =>      'oo',
+    'f'         =>      'default.cow',
+    'n'         =>      0,
+    'T'         =>      '  ',
+    'W'         =>      40,
 );
 
 getopts('bde:f:ghlLnNpstT:wW:y', \%opts);
@@ -56,7 +56,7 @@ $the_cow = "";
 &slurp_input;
 $Text::Wrap::columns = $opts{'W'};
 @message = ($opts{'n'} ? expand(@message) : 
-	    split("\n", fill("", "", @message)));
+            split("\n", fill("", "", @message)));
 &construct_balloon;
 &construct_face;
 &get_cow;
@@ -65,7 +65,7 @@ print $the_cow;
 
 sub detect_pathsep {
     ## One of these days, we'll get it ported to Windows.  Yeah, right.
-    if (($^O eq "MSWin32") or ($^O eq "Windows_NT")) {	## Many perls, eek!
+    if (($^O eq "MSWin32") or ($^O eq "Windows_NT")) {  ## Many perls, eek!
         return ';';
     } else {
         return ':';
@@ -91,27 +91,27 @@ sub list_cowfiles {
     my @dirfiles;
     chop($basedir = cwd);
     for my $d (split(/$pathsep/, $cowpath)) {
-	print "Cow files in $d:\n";
-	opendir(COWDIR, $d) || die "$0: Cannot open $d\n";
-	for my $file (readdir COWDIR) {
-	    if ($file =~ s/\.cow$//) {
-		push(@dirfiles, $file);
-	    }
-	}
-	closedir(COWDIR);
-	print wrap("", "", sort @dirfiles), "\n";
-	@dirfiles = ();
-	chdir($basedir);
+        print "Cow files in $d:\n";
+        opendir(COWDIR, $d) || die "$0: Cannot open $d\n";
+        for my $file (readdir COWDIR) {
+            if ($file =~ s/\.cow$//) {
+                push(@dirfiles, $file);
+            }
+        }
+        closedir(COWDIR);
+        print wrap("", "", sort @dirfiles), "\n";
+        @dirfiles = ();
+        chdir($basedir);
     }
     exit(0);
 }
 
 sub slurp_input {
     unless ($ARGV[0]) {
-	chomp(@message = <STDIN>);
+        chomp(@message = <STDIN>);
     } else {
-	&display_usage if $opts{'n'};
-	@message = join(' ', @ARGV);
+        &display_usage if $opts{'n'};
+        @message = join(' ', @ARGV);
     }
 }
 
@@ -119,39 +119,39 @@ sub maxlength {
     my ($l, $m);
     $m = -1;
     for my $i (@_) {
-	$l = length $i;
-	$m = $l if ($l > $m);
+        $l = length $i;
+        $m = $l if ($l > $m);
     }
     return $m;
 }
 
 sub construct_balloon {
     my $max = &maxlength(@message);
-    my $max2 = $max + 2;	## border space fudge.
+    my $max2 = $max + 2;        ## border space fudge.
     my $format = "%s %-${max}s %s\n";
-    my @border;	## up-left, up-right, down-left, down-right, left, right
+    my @border; ## up-left, up-right, down-left, down-right, left, right
     if ($0 =~ /think/i) {
-	$thoughts = 'o';
-	@border = qw[ ( ) ( ) ( ) ];
+        $thoughts = 'o';
+        @border = qw[ ( ) ( ) ( ) ];
     } elsif (@message < 2) {
-	$thoughts = '\\';
-	@border = qw[ < > ];
+        $thoughts = '\\';
+        @border = qw[ < > ];
     } else {
-	$thoughts = '\\';
-	if ($V and $V gt v5.6.0) {		# Thanks, perldelta.
-	    @border = qw[ / \\ \\ / | | ];
-	} else {
-	    @border = qw[ / \ \ / | | ];	
-	}
+        $thoughts = '\\';
+        if ($V and $V gt v5.6.0) {              # Thanks, perldelta.
+            @border = qw[ / \\ \\ / | | ];
+        } else {
+            @border = qw[ / \ \ / | | ];        
+        }
     }
     push(@balloon_lines, 
-	" " . ("_" x $max2) . " \n" ,
-	sprintf($format, $border[0], $message[0], $border[1]),
-	(@message < 2 ? "" : 
-	    map { sprintf($format, $border[4], $_, $border[5]) } 
-		@message[1 .. $#message - 1]),
-	(@message < 2 ? "" : 
-	    sprintf($format, $border[2], $message[$#message], $border[3])),
+        " " . ("_" x $max2) . " \n" ,
+        sprintf($format, $border[0], $message[0], $border[1]),
+        (@message < 2 ? "" : 
+            map { sprintf($format, $border[4], $_, $border[5]) } 
+                @message[1 .. $#message - 1]),
+        (@message < 2 ? "" : 
+            sprintf($format, $border[2], $message[$#message], $border[3])),
         " " . ("-" x $max2) . " \n"
     );
 }
@@ -175,27 +175,27 @@ sub get_cow {
     my $f = $opts{'f'};
     my $full = "";
     if ($opts{'f'} =~ m,/,) {
-	$full = $opts{'f'};
+        $full = $opts{'f'};
     } else {
-	for my $d (split(/:/, $cowpath)) {
-	    if (-f "$d/$f") {
-		$full = "$d/$f";
-		last;
-	    } elsif (-f "$d/$f.cow") {
-		$full = "$d/$f.cow";
-		last;
-	    }
-	}
-	if ($full eq "") {
-	    die "$progname: Could not find $f cowfile!\n";
-	}
+        for my $d (split(/:/, $cowpath)) {
+            if (-f "$d/$f") {
+                $full = "$d/$f";
+                last;
+            } elsif (-f "$d/$f.cow") {
+                $full = "$d/$f.cow";
+                last;
+            }
+        }
+        if ($full eq "") {
+            die "$progname: Could not find $f cowfile!\n";
+        }
     }
     do $full;
     die "$progname: $@\n" if $@;
 }
 
 sub display_usage {
-	die <<EOF;
+        die <<EOF;
 cow{say,think} version $version
 Usage: $progname [-bdgpstwy] [-h] [-e eyes] [-f cowfile] 
           [-l] [-n] [-T tongue] [-W wrapcolumn] [message]
