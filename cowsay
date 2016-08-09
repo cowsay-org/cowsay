@@ -14,7 +14,10 @@ $version = "3.05-dev";
 $progname = basename($0);
 $eyes = "oo";
 $tongue = "  ";
-$cowpath = $ENV{'COWPATH'} || '%PREFIX%/share/cows';
+$pathsep = detect_pathsep();
+$default_cowpath = '%PREFIX%/share/cows';
+$cowpath = pick_cowpath();
+@cowpath = split(/$pathsep/, $cowpath);
 @message = ();
 $thoughts = "";
 
@@ -24,14 +27,6 @@ $thoughts = "";
 $Text::Wrap::initial_tab = 8;
 $Text::Wrap::subsequent_tab = 8;
 $Text::Wrap::tabstop = 8;
-
-## One of these days, we'll get it ported to Windows.  Yeah, right.
-
-if (($^O eq "MSWin32") or ($^O eq "Windows_NT")) {	## Many perls, eek!
-    $pathsep = ';';
-} else {
-    $pathsep = ':';
-}
 
 %opts = (
     'e'		=>	'oo',
@@ -67,6 +62,29 @@ $Text::Wrap::columns = $opts{'W'};
 &get_cow;
 print @balloon_lines;
 print $the_cow;
+
+sub detect_pathsep {
+    ## One of these days, we'll get it ported to Windows.  Yeah, right.
+    if (($^O eq "MSWin32") or ($^O eq "Windows_NT")) {	## Many perls, eek!
+        return ';';
+    } else {
+        return ':';
+    }
+}
+
+sub pick_cowpath {
+    my $cowpath;
+    if ($ENV{'COWPATH'}) {
+        if ($ENV{'COWSAY_ONLY_COWPATH'} == 1) {
+            $cowpath = $ENV{'COWPATH'}
+        } else {
+            $cowpath = $ENV{'COWPATH'} + $pathsep + $default_cowpath
+        }
+    } else {
+        $cowpath = $default_cowpath;
+    }
+    return $cowpath;
+}
 
 sub list_cowfiles {
     my $basedir;
