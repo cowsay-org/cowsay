@@ -61,18 +61,20 @@ PREFIX=${prefix:-/usr/local}
 echo Okay, time to install this puppy.
 
 cp cowsay.pl cowsay
-echo s,%BANGPERL%,!$usethisperl,\; > install.pl
-echo s,%PREFIX%,$PREFIX,\; >> install.pl
+echo s,%BANGPERL%,!$usethisperl,g\; > install.pl
+echo s,%PREFIX%,$PREFIX,g\; >> install.pl
 set -x
 mkdir -p $PREFIX/bin || (mkdir $PREFIX; mkdir $PREFIX/bin)
 $usethisperl -p install.pl cowsay > $PREFIX/bin/cowsay
 chmod a+x $PREFIX/bin/cowsay
 ln -s cowsay $PREFIX/bin/cowthink
-mkdir -p $PREFIX/man/man1 || ($mkdir $PREFIX; mkdir $PREFIX/man; mkdir $PREFIX/man/man1)
+$mkdir $PREFIX; mkdir $PREFIX/man; mkdir $PREFIX/man/man1
 $usethisperl -p install.pl cowsay.1 > $PREFIX/man/man1/cowsay.1
 chmod a+r $PREFIX/man/man1/cowsay.1
 ln -s cowsay.1 $PREFIX/man/man1/cowthink.1
-mkdir -p $PREFIX/share/cows || (mkdir $PREFIX; mkdir $PREFIX/share; mkdir $PREFIX/share/cows)
+mkdir $PREFIX/share
+mkdir $PREFIX/share/cows
+mkdir $PREFIX/share/site-cows
 tar -cf - $filelist | (cd $PREFIX/share && tar -xf -)
 set +x
 
