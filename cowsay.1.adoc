@@ -31,21 +31,41 @@ The *-W* specifies roughly where the message should be wrapped. The default is e
 
 If any command-line arguments are left over after all switches have been processed, they become the cow's message. The program will not accept standard input for a message in this case.
 
-There are several provided modes which change the appearance of the cow depending on its particular emotional/physical state.
-The *-b* option initiates Borg mode;
-*-d* causes the cow to appear dead;
-*-g* invokes greedy mode;
-*-p* causes a state of paranoia to come over the cow;
-*-s* makes the cow appear thoroughly stoned;
-*-t* yields a tired cow;
-*-w* is somewhat the opposite of *-t*, and initiates wired mode;
-*-y* brings on the cow's youthful appearance.
-
-The user may specify the *-e* option to select the appearance of the cow's eyes, in which case the first two characters of the argument string 'eye_string' will be used.  The default eyes are *oo*.  The tongue is similarly configurable through *-T* and 'tongue_string'; it must be two characters and does not appear by default.  However, it does appear in the 'dead' and 'stoned' modes.  Any configuration done by *-e* and *-T* will be lost if one of the provided modes is used.
-
-The *-f* option specifies a particular cow picture file ('cowfile') to use.  If the cowfile spec contains '/' then it will be interpreted as a path relative to the current directory.  Otherwise, cowsay will search the COWPATH. Additional cowpath entries may be specified in the *COWPATH* environment variable. To list all cowfiles on the current*COWPATH*, invoke *cowsay* with the *-l* switch.
-
 If the program is invoked as *cowthink* then the cow will think its message instead of saying it.
+
+OPTIONS
+-------
+There are several provided modes which change the appearance of the cow depending on its particular emotional/physical state.
+
+*-b*::
+    Invokes Borg mode.
+
+*-d*::
+    Causes the cow to appear dead.
+
+*-g*::
+    Invokes greedy mode.
+
+*-p*::
+    Causes a state of paranoia to come over the cow.
+
+*-s*::
+    Makes the cow appear thoroughly stoned.
+
+*-t*::
+    Yields a tired cow.
+
+*-w*::
+    Is somewhat the opposite of *-t*, and initiates wired mode.
+
+*-y*::
+    Brings on the cow's youthful appearance.
+
+*-e*::
+    Selects the appearance of the cow's eyes, in which case the first two characters of the argument string 'eye_string' will be used.  The default eyes are *oo*.  The tongue is similarly configurable through *-T* and 'tongue_string'; it must be two characters and does not appear by default.  However, it does appear in the 'dead' and 'stoned' modes.  Any configuration done by *-e* and *-T* will be lost if one of the provided modes is used.
+
+*-f*::
+    Specifies a particular cow picture file ('cowfile') to use.  If the cowfile spec contains '/' then it will be interpreted as a path relative to the current directory.  Otherwise, cowsay will search the COWPATH. Additional cowpath entries may be specified in the *COWPATH* environment variable. To list all cowfiles on the current*COWPATH*, invoke *cowsay* with the *-l* switch.
 
 COWFILE FORMAT
 --------------
@@ -66,7 +86,6 @@ FILES
 BUGS
 ----
 If there are any, please report them on the cowsay GitHub page (https://github.com/apjanke/cowsay/issues) or notify the author at the address below.
-
 
 AUTHOR
 ------

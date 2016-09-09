@@ -42,13 +42,83 @@ The \fB\-W\fR specifies roughly where the message should be wrapped\&. The defau
 .sp
 If any command\-line arguments are left over after all switches have been processed, they become the cow\(cqs message\&. The program will not accept standard input for a message in this case\&.
 .sp
-There are several provided modes which change the appearance of the cow depending on its particular emotional/physical state\&. The \fB\-b\fR option initiates Borg mode; \fB\-d\fR causes the cow to appear dead; \fB\-g\fR invokes greedy mode; \fB\-p\fR causes a state of paranoia to come over the cow; \fB\-s\fR makes the cow appear thoroughly stoned; \fB\-t\fR yields a tired cow; \fB\-w\fR is somewhat the opposite of \fB\-t\fR, and initiates wired mode; \fB\-y\fR brings on the cow\(cqs youthful appearance\&.
-.sp
-The user may specify the \fB\-e\fR option to select the appearance of the cow\(cqs eyes, in which case the first two characters of the argument string \fIeye_string\fR will be used\&. The default eyes are \fBoo\fR\&. The tongue is similarly configurable through \fB\-T\fR and \fItongue_string\fR; it must be two characters and does not appear by default\&. However, it does appear in the \fIdead\fR and \fIstoned\fR modes\&. Any configuration done by \fB\-e\fR and \fB\-T\fR will be lost if one of the provided modes is used\&.
-.sp
-The \fB\-f\fR option specifies a particular cow picture file (\fIcowfile\fR) to use\&. If the cowfile spec contains \fI/\fR then it will be interpreted as a path relative to the current directory\&. Otherwise, cowsay will search the COWPATH\&. Additional cowpath entries may be specified in the \fBCOWPATH\fR environment variable\&. To list all cowfiles on the current*COWPATH*, invoke \fBcowsay\fR with the \fB\-l\fR switch\&.
-.sp
 If the program is invoked as \fBcowthink\fR then the cow will think its message instead of saying it\&.
+.SH "OPTIONS"
+.sp
+There are several provided modes which change the appearance of the cow depending on its particular emotional/physical state\&.
+.PP
+\fB\-b\fR
+.RS 4
+Invokes Borg mode\&.
+.RE
+.PP
+\fB\-d\fR
+.RS 4
+Causes the cow to appear dead\&.
+.RE
+.PP
+\fB\-g\fR
+.RS 4
+Invokes greedy mode\&.
+.RE
+.PP
+\fB\-p\fR
+.RS 4
+Causes a state of paranoia to come over the cow\&.
+.RE
+.PP
+\fB\-s\fR
+.RS 4
+Makes the cow appear thoroughly stoned\&.
+.RE
+.PP
+\fB\-t\fR
+.RS 4
+Yields a tired cow\&.
+.RE
+.PP
+\fB\-w\fR
+.RS 4
+Is somewhat the opposite of
+\fB\-t\fR, and initiates wired mode\&.
+.RE
+.PP
+\fB\-y\fR
+.RS 4
+Brings on the cow\(cqs youthful appearance\&.
+.RE
+.PP
+\fB\-e\fR
+.RS 4
+Selects the appearance of the cow\(cqs eyes, in which case the first two characters of the argument string
+\fIeye_string\fR
+will be used\&. The default eyes are
+\fBoo\fR\&. The tongue is similarly configurable through
+\fB\-T\fR
+and
+\fItongue_string\fR; it must be two characters and does not appear by default\&. However, it does appear in the
+\fIdead\fR
+and
+\fIstoned\fR
+modes\&. Any configuration done by
+\fB\-e\fR
+and
+\fB\-T\fR
+will be lost if one of the provided modes is used\&.
+.RE
+.PP
+\fB\-f\fR
+.RS 4
+Specifies a particular cow picture file (\fIcowfile\fR) to use\&. If the cowfile spec contains
+\fI/\fR
+then it will be interpreted as a path relative to the current directory\&. Otherwise, cowsay will search the COWPATH\&. Additional cowpath entries may be specified in the
+\fBCOWPATH\fR
+environment variable\&. To list all cowfiles on the current*COWPATH*, invoke
+\fBcowsay\fR
+with the
+\fB\-l\fR
+switch\&.
+.RE
 .SH "COWFILE FORMAT"
 .sp
 A cowfile is made up of a simple block of \fBperl(1)\fR code, which assigns a picture of a cow to the variable \fB$the_cow\fR\&. Should you wish to customize the eyes or the tongue of the cow, then the variables \fB$eyes\fR and \fB$tongue\fR may be used\&. The trail leading up to the cow\(cqs message balloon is composed of the character(s) in the \fB$thoughts\fR variable\&. Any backslashes must be reduplicated to prevent interpretation\&. Also, at\-signs ("@") must be backslashed because that is what Perl 5 expects\&. The name of a cowfile must end with \fB\&.cow\fR, otherwise it is not recognized as a cowfile\&.
