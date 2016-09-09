@@ -1,0 +1,83 @@
+COWSAY(1)
+=========
+:doctype: manpage
+:man source: Cowsay
+:man version: 3.6-dev
+:man manual: Cowsay Manual
+
+NAME
+----
+cowsay, cowthink - configurable speaking/thinking cow (and a bit more)
+
+SYNOPSIS
+--------
+*cowsay* 
+  [*-e* 'eye_string']
+  [*-f* 'cowfile']
+  [*-h*]
+  [*-l*]
+  [*-n*]
+  [*-T* 'tongue_string']
+  [*-W* 'column']
+  [*-bdgpstwy*]
+
+DESCRIPTION
+-----------
+_Cowsay_ generates an ASCII picture of a cow saying something provided by the user.  If run with no arguments, it accepts standard input, word-wraps the message given at about 40 columns, and prints the cow saying the given message on standard output.
+
+To aid in the use of arbitrary messages with arbitrary whitespace, use the *-n* option.  If it is specified, the given message will not be word-wrapped.  This is possibly useful if you want to make the cow think or speak in figlet(6).  If *-n* is specified, there must not be any command line arguments left after all the switches have been processed.
+
+The *-W* specifies roughly where the message should be wrapped. The default is equivalent to *-W 40* (i.e. wrap words at or before the 40th column).
+
+If any command-line arguments are left over after all switches have been processed, they become the cow's message. The program will not accept standard input for a message in this case.
+
+There are several provided modes which change the appearance of the cow depending on its particular emotional/physical state.
+The *-b* option initiates Borg mode;
+*-d* causes the cow to appear dead;
+*-g* invokes greedy mode;
+*-p* causes a state of paranoia to come over the cow;
+*-s* makes the cow appear thoroughly stoned;
+*-t* yields a tired cow;
+*-w* is somewhat the opposite of *-t*, and initiates wired mode;
+*-y* brings on the cow's youthful appearance.
+
+The user may specify the *-e* option to select the appearance of the cow's eyes, in which case the first two characters of the argument string 'eye_string' will be used.  The default eyes are *oo*.  The tongue is similarly configurable through *-T* and 'tongue_string'; it must be two characters and does not appear by default.  However, it does appear in the 'dead' and 'stoned' modes.  Any configuration done by *-e* and *-T* will be lost if one of the provided modes is used.
+
+The *-f* option specifies a particular cow picture file ('cowfile') to use.  If the cowfile spec contains '/' then it will be interpreted as a path relative to the current directory.  Otherwise, cowsay will search the COWPATH. Additional cowpath entries may be specified in the *COWPATH* environment variable. To list all cowfiles on the current*COWPATH*, invoke *cowsay* with the *-l* switch.
+
+If the program is invoked as *cowthink* then the cow will think its message instead of saying it.
+
+COWFILE FORMAT
+--------------
+A cowfile is made up of a simple block of *perl(1)* code, which assigns a picture of a cow to the variable *$the_cow*. Should you wish to customize the eyes or the tongue of the cow, then the variables *$eyes* and *$tongue* may be used.  The trail leading up to the cow's message balloon is composed of the character(s) in the *$thoughts* variable.  Any backslashes must be reduplicated to prevent interpretation.  Also, at-signs ("@") must be backslashed because that is what Perl 5 expects. The name of a cowfile must end with *.cow*, otherwise it is not recognized as a cowfile.  
+
+ENVIRONMENT
+-----------
+The *COWPATH* environment variable, if present, will be used to search for cowfiles.  It contains a colon-separated list of directories, much like *PATH* or *MANPATH*.
+
+The default *COWPATH* is searched after entries in the user-specified *COWPATH* environment variable.  To suppress this behavior (e.g. for development work), set the *COWSAY_ONLY_COWPATH* environment variable to *1*. In this case, *COWPATH* should contain at least a directory with a file called *default.cow* in it.
+
+FILES
+-----
+*%PREFIX%/share/cows* holds a sample set of cowfiles.  If your *COWPATH* is not explicitly set, it automatically contains this directory.
+
+*%PREFIX%/share/site-cows* is provided for administrators to install custom cows. Cows in *share/site-cows* take precedence over cows with the same name in *share/cows*. The *site-cows* directory will never be modified by cowsay installations, so custom cows defined there will persist across upgrades of cowsay.
+
+BUGS
+----
+If there are any, please report them on the cowsay GitHub page (https://github.com/apjanke/cowsay/issues) or notify the author at the address below.
+
+
+AUTHOR
+------
+Cowsay is maintained by Andrew Janke (floss@apjanke.net).
+
+Cowsay was originally written by Tony Monroe (tony@nog.net), with suggestions from Shannon Appel (appel@csua.berkeley.edu) and contributions from Anthony Polito (aspolito@csua.berkeley.edu).
+
+SEE ALSO
+--------
+*perl(1)*, *wall(1)*, *nwrite(1)*, *figlet(6)*
+
+
+
+

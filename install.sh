@@ -70,8 +70,7 @@ chmod a+x $PREFIX/bin/cowsay
 ln -s cowsay $PREFIX/bin/cowthink
 $mkdir $PREFIX; mkdir $PREFIX/man; mkdir $PREFIX/man/man1
 $usethisperl -p install.pl cowsay.1 > $PREFIX/man/man1/cowsay.1
-chmod a+r $PREFIX/man/man1/cowsay.1
-ln -s cowsay.1 $PREFIX/man/man1/cowthink.1
+$usethisperl -p install.pl cowthink.1 > $PREFIX/man/man1/cowthink.1
 mkdir $PREFIX/share
 mkdir $PREFIX/share/cows
 mkdir $PREFIX/share/site-cows
