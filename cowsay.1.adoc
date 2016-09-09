@@ -85,13 +85,19 @@ FILES
 
 BUGS
 ----
-If there are any, please report them on the cowsay GitHub page (https://github.com/apjanke/cowsay/issues) or notify the author at the address below.
+If there are any, please report them on the cowsay GitHub page (https://github.com/cowsay-org/cowsay/issues) or notify the author at the address below.
 
 AUTHOR
 ------
 Cowsay is maintained by Andrew Janke (floss@apjanke.net).
 
 Cowsay was originally written by Tony Monroe (tony@nog.net), with suggestions from Shannon Appel (appel@csua.berkeley.edu) and contributions from Anthony Polito (aspolito@csua.berkeley.edu).
+
+RESOURCES
+---------
+GitHub: <https://github.com/cowsay-org/cowsay>
+
+Main web site: <http://cowsay.diamonds>
 
 SEE ALSO
 --------
