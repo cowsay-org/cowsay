@@ -20,7 +20,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 .PHONY: clean man install uninstall
 
 clean:
-	rm -f cowsay install.pl
+	@echo Nothing to do.
 
 # The target creates cowsay.1.adoc, and is included for convenience
 #
