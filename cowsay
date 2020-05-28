@@ -211,7 +211,14 @@ sub get_cow {
 sub display_usage {
         die <<EOF;
 $progname version $version
-Usage: $progname [-bdgpstwy] [-h] [-e eyes] [-f cowfile] 
-          [-l] [-n] [-T tongue] [-W wrapcolumn] [message]
+
+Usage:
+
+    $progname [-bdgpstwy] [-e <eyes>] [-f <cowfile>] 
+        [-l] [-n] [-T <tongue>] [-W <wrapcolumn>]
+        [<message>]
+
+    $progname -h    # Displays this help screen
+
 EOF
 }
