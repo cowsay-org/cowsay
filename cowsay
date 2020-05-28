@@ -4,12 +4,12 @@
 ## Cowsay
 ##
 
-use Text::Tabs qw(expand);
-use Text::Wrap qw(wrap fill $columns);
+use Cwd 'abs_path';
 use File::Basename;
 use File::Find;
 use Getopt::Std;
-use Cwd 'abs_path';
+use Text::Tabs qw(expand);
+use Text::Wrap qw(wrap fill $columns);
 
 $Getopt::Std::STANDARD_HELP_VERSION = 1;
 
