@@ -28,7 +28,8 @@ clean:
 # so it is not part of the normal build sequence, and its outputs are
 # checked in to the source tree. This is partially to simplify the build 
 # process, and partially to preserve the internal "update" timestamp inside
-# the man pages.
+# the man pages. We do this at build time to avoid introducing a dependency on
+# Asciidoc for users.
 
 man: cowsay.1
 
