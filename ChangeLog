@@ -5,16 +5,16 @@ Cowsay Changelog
 
 3.6.0 (2020-05-28)
   - Support running from repo
-	- Simplify installation process
+  - Simplify installation process
 
 3.5.0 (2020-05-28)
   - Add llama cow
-	- Changed to SemVer version numbering
+  - Changed to SemVer version numbering
   - Remove leading zeros from version numbering
 
 3.04.01
-	- Cowsay forked by Andrew Janke.
-	- Fixed version numbers in program and doco
+  - Cowsay forked by Andrew Janke.
+  - Fixed version numbers in program and doco
 
 -- Tony Monroe's original cowsay from here on down --
 
