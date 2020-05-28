@@ -36,6 +36,7 @@ cowsay.1: cowsay.1.adoc
 	a2x --format manpage ./cowsay.1.adoc
 
 install: cowsay.1
+	$(INSTALL) -d $(DESTDIR)$(prefix)
 	$(INSTALL) -d $(DESTDIR)$(bindir)
 	$(INSTALL_PROGRAM) cowsay $(DESTDIR)$(bindir)/cowsay
 	$(INSTALL_PROGRAM) cowthink $(DESTDIR)$(bindir)/cowthink
