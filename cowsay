@@ -210,7 +210,7 @@ sub get_cow {
 
 sub display_usage {
         die <<EOF;
-cow{say,think} version $version
+$progname version $version
 Usage: $progname [-bdgpstwy] [-h] [-e eyes] [-f cowfile] 
           [-l] [-n] [-T tongue] [-W wrapcolumn] [message]
 EOF
