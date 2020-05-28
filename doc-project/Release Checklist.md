@@ -6,9 +6,10 @@ Steps to be done for release:
   a. cowsay file
   b. cowsay.1.adoc
 2. Rebuild man page with `make man`
-3. Git label the release
-4. Create an X.Y-fixes branch, if this is a major or minor (non-patch) release
-5. Create the release on GitHub
-6. Open development on next release
+3. Update the ChangeLog with the release date, and make sure it's up to date with changes
+4. Git tag the release
+5. Create an X.Y-fixes branch, if this is a major or minor (non-patch) release
+6. Create the release on GitHub
+7. Open development on next release
   a. Bump version in files listed above, and give it a "-SNAPSHOT" suffix
   b. Update the ChangeLog with a section for the new release
