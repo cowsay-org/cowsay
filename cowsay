@@ -106,24 +106,48 @@ sub pick_cowpath {
 }
 
 sub list_cowfiles {
+    if (-t STDOUT) {
+        list_cowfiles_pretty();
+    } else {
+        list_cowfiles_parseable();
+    }
+    exit(0);
+}
+
+sub list_cowfiles_parseable {
+    my $basedir;
+    my %cowfiles;
+    for my $d (split(/$pathsep/, $cowpath)) {
+        next unless -d $d;
+        opendir(COWDIR, $d) || die "$0: Cannot open $d\n";
+        for my $file (readdir COWDIR) {
+            if ($file =~ s/\.cow$// || $file =~ s/\.pm$//) {
+                $cowfiles{$file} = $file;
+            }
+        }
+        closedir(COWDIR);
+    }
+    my @cowfiles = sort keys %cowfiles;
+    print join "\n", @cowfiles;
+    print "\n";
+}
+
+sub list_cowfiles_pretty {
     my $basedir;
     my @dirfiles;
-    chop($basedir = cwd);
     for my $d (split(/$pathsep/, $cowpath)) {
         next unless -d $d;
         print "Cow files in $d:\n";
         opendir(COWDIR, $d) || die "$0: Cannot open $d\n";
         for my $file (readdir COWDIR) {
-            if ($file =~ s/\.cow$//) {
+            if ($file =~ s/\.cow$// || $file =~ s/\.pm$//) {
                 push(@dirfiles, $file);
             }
         }
         closedir(COWDIR);
         print wrap("", "", sort @dirfiles), "\n";
         @dirfiles = ();
-        chdir($basedir);
     }
-    exit(0);
 }
 
 sub slurp_input {
