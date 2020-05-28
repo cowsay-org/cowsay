@@ -10,7 +10,9 @@ use File::Basename;
 use Getopt::Std;
 use Cwd 'abs_path';
 
-$version = "3.6.0-SNAPSHOT";
+$Getopt::Std::STANDARD_HELP_VERSION = 1;
+
+$VERSION = "3.6.0-SNAPSHOT";
 $progname = basename($0);
 $eyes = "oo";
 $tongue = "  ";
@@ -37,7 +39,7 @@ $Text::Wrap::tabstop = 8;
 
 getopts('bde:f:ghlLnNpstT:wW:y', \%opts);
 
-&display_usage if $opts{'h'};
+&HELP_MESSAGE if $opts{'h'};
 &list_cowfiles if $opts{'l'};
 
 $borg = $opts{'b'};
@@ -208,9 +210,9 @@ sub get_cow {
     die "$progname: $@\n" if $@;
 }
 
-sub display_usage {
-        die <<EOF;
-$progname version $version
+sub HELP_MESSAGE {
+        print <<EOF;
+$progname version $VERSION
 
 Usage:
 
