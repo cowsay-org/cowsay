@@ -1,7 +1,7 @@
 # cowsay
 
 Cowsay is a configurable talking cow, written in Perl.  It operates
-much as the figlet program does, and it written in the same spirit
+much as the figlet program does, and is written in the same spirit
 of silliness.
 
 ## cowsay-apj
