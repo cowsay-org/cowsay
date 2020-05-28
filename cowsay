@@ -132,6 +132,11 @@ sub list_cows_in_cowdir {
 }
 
 sub list_cowfiles_parseable {
+    my $cows = defined_cows();
+    print join("\n", @$cows), "\n";
+}
+
+sub defined_cows {
     my $basedir;
     my %cowfiles;
     for my $d (split(/$pathsep/, $cowpath)) {
@@ -142,8 +147,7 @@ sub list_cowfiles_parseable {
         }
     }
     my @cowfiles = sort keys %cowfiles;
-    print join "\n", @cowfiles;
-    print "\n";
+    return \@cowfiles;
 }
 
 sub list_cowfiles_pretty {
