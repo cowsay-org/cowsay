@@ -17,7 +17,7 @@ INSTALL = install
 INSTALL_PROGRAM = $(INSTALL)
 INSTALL_DATA = ${INSTALL} -m 644
 
-.PHONY: clean man install
+.PHONY: clean man install uninstall
 
 clean:
 	rm -f cowsay install.pl
@@ -45,3 +45,8 @@ install: cowsay.1
 	$(INSTALL) -d $(DESTDIR)$(datadir)
 	cp -R share/cows $(DESTDIR)$(datadir)
 	$(INSTALL) -d $(DESTDIR)$(datadir)/site-cows
+
+uninstall:
+  rm -f $(DESTDIR)$(bindir)/cowsay $(DESTDIR)$(bindir)/cowthink
+	rm -f $(DESTDIR)$(mandir)/cowsay.1 $(DESTDIR)$(mandir)/cowthink.1
+	rm -rf $(DESTDIR)$(datadir)/cows
