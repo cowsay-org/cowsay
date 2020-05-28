@@ -31,7 +31,7 @@
 cowsay, cowthink \- configurable speaking/thinking cow (and a bit more)
 .SH "SYNOPSIS"
 .sp
-\fBcowsay\fR [\fB\-e\fR \fIeye_string\fR] [\fB\-f\fR \fIcowfile\fR] [\fB\-h\fR] [\fB\-l\fR] [\fB\-n\fR] [\fB\-T\fR \fItongue_string\fR] [\fB\-W\fR \fIcolumn\fR] [\fB\-bdgpstwy\fR]
+\fBcowsay\fR [\fB\-e\fR \fIeye_string\fR] [\fB\-f\fR \fIcowfile\fR] [\fB\-h\fR] [\fB\-l\fR] [\fB\-n\fR] [\fB\-T\fR \fItongue_string\fR] [\fB\-W\fR \fIcolumn\fR] [\fB\-bdgpstwy\fR] [<message>]
 .SH "DESCRIPTION"
 .sp
 \fICowsay\fR generates an ASCII picture of a cow saying something provided by the user\&. If run with no arguments, it accepts standard input, word\-wraps the message given at about 40 columns, and prints the cow saying the given message on standard output\&.
@@ -113,11 +113,23 @@ Specifies a particular cow picture file (\fIcowfile\fR) to use\&. If the cowfile
 \fI/\fR
 then it will be interpreted as a path relative to the current directory\&. Otherwise, cowsay will search the COWPATH\&. Additional cowpath entries may be specified in the
 \fBCOWPATH\fR
-environment variable\&. To list all cowfiles on the current*COWPATH*, invoke
+environment variable\&. To list all cowfiles on the current
+\fBCOWPATH\fR, invoke
 \fBcowsay\fR
 with the
 \fB\-l\fR
 switch\&.
+.RE
+.PP
+\fB\-l\fR
+.RS 4
+Lists the defined cows on the current
+\fBCOWPATH\fR\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Displays a help screen\&.
 .RE
 .SH "COWFILE FORMAT"
 .sp

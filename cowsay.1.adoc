@@ -20,6 +20,7 @@ SYNOPSIS
   [*-T* 'tongue_string']
   [*-W* 'column']
   [*-bdgpstwy*]
+  [<message>]
 
 DESCRIPTION
 -----------
@@ -65,7 +66,13 @@ There are several provided modes which change the appearance of the cow dependin
     Selects the appearance of the cow's eyes, in which case the first two characters of the argument string 'eye_string' will be used.  The default eyes are *oo*.  The tongue is similarly configurable through *-T* and 'tongue_string'; it must be two characters and does not appear by default.  However, it does appear in the 'dead' and 'stoned' modes.  Any configuration done by *-e* and *-T* will be lost if one of the provided modes is used.
 
 *-f*::
-    Specifies a particular cow picture file ('cowfile') to use.  If the cowfile spec contains '/' then it will be interpreted as a path relative to the current directory.  Otherwise, cowsay will search the COWPATH. Additional cowpath entries may be specified in the *COWPATH* environment variable. To list all cowfiles on the current*COWPATH*, invoke *cowsay* with the *-l* switch.
+    Specifies a particular cow picture file ('cowfile') to use.  If the cowfile spec contains '/' then it will be interpreted as a path relative to the current directory.  Otherwise, cowsay will search the COWPATH. Additional cowpath entries may be specified in the *COWPATH* environment variable. To list all cowfiles on the current *COWPATH*, invoke *cowsay* with the *-l* switch.
+
+*-l*::
+    Lists the defined cows on the current *COWPATH*.
+
+*-h*::
+    Displays a help screen.
 
 COWFILE FORMAT
 --------------

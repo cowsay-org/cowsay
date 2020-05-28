@@ -217,9 +217,9 @@ $progname version $VERSION
 Usage:
 
     $progname [-bdgpstwy] [-e <eyes>] [-f <cowfile>] 
-        [-l] [-n] [-T <tongue>] [-W <wrapcolumn>]
-        [<message>]
-
+        [-n] [-T <tongue>] [-W <wrapcolumn>]
+        <message>
+    $progname -l    # List defined cows
     $progname -h    # Displays this help screen
 
 EOF
