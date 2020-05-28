@@ -40,14 +40,14 @@ install: cowsay.1
 	$(INSTALL) -d $(DESTDIR)$(bindir)
 	$(INSTALL_PROGRAM) cowsay $(DESTDIR)$(bindir)/cowsay
 	$(INSTALL_PROGRAM) cowthink $(DESTDIR)$(bindir)/cowthink
-	$(INSTALL) -d $(DESTDIR)$(mandir)
-	$(INSTALL_DATA) cowsay.1 $(DESTDIR)$(mandir)
-	$(INSTALL_DATA) cowthink.1 $(DESTDIR)$(mandir)
+	$(INSTALL) -d $(DESTDIR)$(mandir)/man1
+	$(INSTALL_DATA) cowsay.1 $(DESTDIR)$(mandir)/man1
+	$(INSTALL_DATA) cowthink.1 $(DESTDIR)$(mandir)/man1
 	$(INSTALL) -d $(DESTDIR)$(datadir)
 	cp -R share/cows $(DESTDIR)$(datadir)
 	$(INSTALL) -d $(DESTDIR)$(datadir)/site-cows
 
 uninstall:
 	rm -f $(DESTDIR)$(bindir)/cowsay $(DESTDIR)$(bindir)/cowthink
-	rm -f $(DESTDIR)$(mandir)/cowsay.1 $(DESTDIR)$(mandir)/cowthink.1
+	rm -f $(DESTDIR)$(mandir)/man1/cowsay.1 $(DESTDIR)$(mandir)/man1/cowthink.1
 	rm -rf $(DESTDIR)$(datadir)/cows
