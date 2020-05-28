@@ -7,6 +7,7 @@
 use Text::Tabs qw(expand);
 use Text::Wrap qw(wrap fill $columns);
 use File::Basename;
+use File::Find;
 use Getopt::Std;
 use Cwd 'abs_path';
 
@@ -73,10 +74,6 @@ sub detect_pathsep {
     }
 }
 
-sub detect_execution_location {
-    
-}
-
 sub pick_cowpath {
     my $parent_dir = dirname(__FILE__);
     my $parent_dir_base = basename($parent_dir);
@@ -95,9 +92,9 @@ sub pick_cowpath {
     my $default_cowpath = join($pathsep, "$share_cowsay/site-cows", "$share_cowsay/cows");
     if ($ENV{'COWPATH'}) {
         if ($ENV{'COWSAY_ONLY_COWPATH'} == 1) {
-            $cowpath = $ENV{'COWPATH'}
+            $cowpath = $ENV{'COWPATH'};
         } else {
-            $cowpath = $ENV{'COWPATH'} + $pathsep + $default_cowpath
+            $cowpath = $ENV{'COWPATH'} . $pathsep . $default_cowpath;
         }
     } else {
         $cowpath = $default_cowpath;
@@ -114,18 +111,35 @@ sub list_cowfiles {
     exit(0);
 }
 
+my @found_cows;
+my $search_start_dir;
+
+sub find_cowfile_callback() {
+    if (-f && /\.(cow|pm)$/) {
+        my $rel_file = substr($File::Find::name, length($search_start_dir) + 1);
+        my $cow_name = $rel_file;
+        $cow_name =~ s/\.(cow|pm)$//;
+        push @found_cows, $cow_name;
+    }
+}
+
+sub list_cows_in_cowdir {
+    my ($cowdir) = @_;
+    @found_cows = ();
+    $search_start_dir = $cowdir;
+    find(\&find_cowfile_callback, $cowdir);
+    return \@found_cows;
+}
+
 sub list_cowfiles_parseable {
     my $basedir;
     my %cowfiles;
     for my $d (split(/$pathsep/, $cowpath)) {
         next unless -d $d;
-        opendir(COWDIR, $d) || die "$0: Cannot open $d\n";
-        for my $file (readdir COWDIR) {
-            if ($file =~ s/\.cow$// || $file =~ s/\.pm$//) {
-                $cowfiles{$file} = $file;
-            }
+        my $cows = list_cows_in_cowdir($d);
+        for my $cow (@$cows) {
+            $cowfiles{$cow} = $cow;
         }
-        closedir(COWDIR);
     }
     my @cowfiles = sort keys %cowfiles;
     print join "\n", @cowfiles;
@@ -135,18 +149,14 @@ sub list_cowfiles_parseable {
 sub list_cowfiles_pretty {
     my $basedir;
     my @dirfiles;
+    my $first = 1;
     for my $d (split(/$pathsep/, $cowpath)) {
         next unless -d $d;
+        print "\n" unless $first;
+        $first = 0;
         print "Cow files in $d:\n";
-        opendir(COWDIR, $d) || die "$0: Cannot open $d\n";
-        for my $file (readdir COWDIR) {
-            if ($file =~ s/\.cow$// || $file =~ s/\.pm$//) {
-                push(@dirfiles, $file);
-            }
-        }
-        closedir(COWDIR);
-        print wrap("", "", sort @dirfiles), "\n";
-        @dirfiles = ();
+        my $cows = list_cows_in_cowdir($d);
+        print wrap("", "", sort @$cows), "\n";
     }
 }
 
