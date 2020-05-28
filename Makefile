@@ -47,6 +47,6 @@ install: cowsay.1
 	$(INSTALL) -d $(DESTDIR)$(datadir)/site-cows
 
 uninstall:
-  rm -f $(DESTDIR)$(bindir)/cowsay $(DESTDIR)$(bindir)/cowthink
+	rm -f $(DESTDIR)$(bindir)/cowsay $(DESTDIR)$(bindir)/cowthink
 	rm -f $(DESTDIR)$(mandir)/cowsay.1 $(DESTDIR)$(mandir)/cowthink.1
 	rm -rf $(DESTDIR)$(datadir)/cows
