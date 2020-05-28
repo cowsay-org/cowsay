@@ -8,6 +8,8 @@ I have not selected a code of conduct yet, but please behave as though one were 
 
 Cowsay is a small project and is managed conservatively. Bug reports are welcome and will be acted on. Major unsolicited contributions are likely to be rejected.
 
+New cows are welcome!
+
 ### Bug reports
 
 Bug reports, no matter how small, are welcome. Please submit them as Issues on [cowsay's GitHub issue tracker](https://github.com/cowsay-org/cowsay/issues).
