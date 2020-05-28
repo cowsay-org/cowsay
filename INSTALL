@@ -2,12 +2,11 @@
 Installing cowsay
 =================
 
-If you really want to get things installed a nice and pretty way,
+To install cowsay, run:
 
-	sh install.sh
+  make install
 
-It will ask approximately one question.  If you can't answer it,
-you need serious help.
+Or:
 
-If the install goes well, you can start cowing immediately!  Just
-be sure to read the manual page first...
+  make install prefix=/path/to/my/prefix
+

@@ -1,4 +1,23 @@
-.PHONY: clean man
+# Makefile for Cowsay
+
+PACKAGE_TARNAME = cowsay
+
+prefix = /usr/local
+exec_prefix = ${prefix}
+bindir = ${exec_prefix}/bin
+datarootdir = ${prefix}/share
+datadir = ${datarootdir}
+docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
+sysconfdir = ${prefix}/etc
+mandir=${datarootdir}/man
+srcdir = .
+
+SHELL = /bin/sh
+INSTALL = install
+INSTALL_PROGRAM = $(INSTALL)
+INSTALL_DATA = ${INSTALL} -m 644
+
+.PHONY: clean man install
 
 clean:
 	rm -f cowsay install.pl
@@ -16,3 +35,13 @@ man: cowsay.1
 cowsay.1: cowsay.1.adoc
 	a2x --format manpage ./cowsay.1.adoc
 
+install: cowsay.1
+	$(INSTALL) -d $(DESTDIR)$(bindir)
+	$(INSTALL_PROGRAM) cowsay $(DESTDIR)$(bindir)/cowsay
+	$(INSTALL_PROGRAM) cowthink $(DESTDIR)$(bindir)/cowthink
+	$(INSTALL) -d $(DESTDIR)$(mandir)
+	$(INSTALL_DATA) cowsay.1 $(DESTDIR)$(mandir)
+	$(INSTALL_DATA) cowthink.1 $(DESTDIR)$(mandir)
+	$(INSTALL) -d $(DESTDIR)$(datadir)
+	cp -R share/cows $(DESTDIR)$(datadir)
+	$(INSTALL) -d $(DESTDIR)$(datadir)/site-cows

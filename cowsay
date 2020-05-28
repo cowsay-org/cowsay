@@ -1,4 +1,4 @@
-#%BANGPERL%
+#!/usr/bin/env perl
 
 ##
 ## Cowsay
@@ -8,14 +8,13 @@ use Text::Tabs qw(expand);
 use Text::Wrap qw(wrap fill $columns);
 use File::Basename;
 use Getopt::Std;
-use Cwd;
+use Cwd 'abs_path';
 
 $version = "3.6.0-SNAPSHOT";
 $progname = basename($0);
 $eyes = "oo";
 $tongue = "  ";
 $pathsep = detect_pathsep();
-$default_cowpath = join($pathsep, '%PREFIX%/share/site-cows', '%PREFIX%/share/cows');
 $cowpath = pick_cowpath();
 @cowpath = split(/$pathsep/, $cowpath);
 @message = ();
@@ -72,8 +71,23 @@ sub detect_pathsep {
     }
 }
 
+sub detect_execution_location {
+    
+}
+
 sub pick_cowpath {
+    my $parent_dir = dirname(__FILE__);
+    my $parent_dir_base = basename($parent_dir);
+    my $prefix_dir;
+    if ($parent_dir_base eq "bin") {
+        $prefix = dirname($parent_dir);
+    } else {
+        $prefix = $parent_dir;
+    }
+    $prefix = abs_path($prefix);
+
     my $cowpath;
+    my $default_cowpath = join($pathsep, "$prefix/share/site-cows", "$prefix/share/cows");
     if ($ENV{'COWPATH'}) {
         if ($ENV{'COWSAY_ONLY_COWPATH'} == 1) {
             $cowpath = $ENV{'COWPATH'}
