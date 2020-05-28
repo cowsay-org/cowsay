@@ -1,7 +1,7 @@
 #%BANGPERL%
 
 ##
-## Cowsay 3.05
+## Cowsay 3.5
 ##
 
 use Text::Tabs qw(expand);
@@ -10,7 +10,7 @@ use File::Basename;
 use Getopt::Std;
 use Cwd;
 
-$version = "3.05-dev";
+$version = "3.5.0";
 $progname = basename($0);
 $eyes = "oo";
 $tongue = "  ";
