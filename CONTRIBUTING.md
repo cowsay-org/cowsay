@@ -10,7 +10,7 @@ Cowsay is a small project and is managed conservatively. Bug reports are welcome
 
 ### Bug reports
 
-Bug reports, no matter how small, are welcome. Please submit them as Issues on [cowsay's GitHub issue tracker](https://github.com/apjanke/cowsay/issues).
+Bug reports, no matter how small, are welcome. Please submit them as Issues on [cowsay's GitHub issue tracker](https://github.com/cowsay-org/cowsay/issues).
 
 Documentation and usability issues count as bugs.
 
@@ -18,7 +18,7 @@ Documentation and usability issues count as bugs.
 
 Please don't submit Pull Requests for features or nontrivial bug fixes without posting a request as an Issue first. Major new features that aren't on the project roadmap already probably won't be accepted. This project is an exercise in process and deployment, not functionality, so new features are not a priority.
 
-If you would like to see a new feature in cowsay, whether you wish to work on it or not, please submit the feature request as an [issue](https://github.com/apjanke/cowsay/issues) first. This will save wasted work on PRs that won't be accepted.
+If you would like to see a new feature in cowsay, whether you wish to work on it or not, please submit the feature request as an [issue](https://github.com/cowsay-org/cowsay/issues) first. This will save wasted work on PRs that won't be accepted.
 
 Pull requests for minor fixes (to code or documentation) are welcome.
 
