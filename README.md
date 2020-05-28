@@ -12,6 +12,28 @@ This fork is called "cowsay-apj" where needed to distinguish it from the origina
 
 The bulk of cowsay's functionality is from Tony Monroe's original project. The cowsay-apj primarily provides maintenance, hosting, and deployment support.
 
+## Installation
+
+Cowsay uses the standard `make`-based Unix program installation:
+
+```bash
+make install
+```
+
+or:
+
+```bash
+make install prefix=/path/to/installation/prefix
+```
+
+### Installation using Homebrew
+
+On Mac, you can also install cowsay-apj using Homebrew:
+
+```bash
+brew install cowsay-org/cowsay/cowsay-apj
+```
+
 ## License
 
 Cowsay is licensed under the GPLv3. See [LICENSE.txt](LICENSE.txt) for details.
