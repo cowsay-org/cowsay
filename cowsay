@@ -81,15 +81,18 @@ sub pick_cowpath {
     my $parent_dir = dirname(__FILE__);
     my $parent_dir_base = basename($parent_dir);
     my $prefix_dir;
+    my $share_cowsay;
     if ($parent_dir_base eq "bin") {
         $prefix = dirname($parent_dir);
+        $share_cowsay = "$prefix/share/cowsay";
     } else {
         $prefix = $parent_dir;
+        $share_cowsay = "$prefix/share";
     }
     $prefix = abs_path($prefix);
 
     my $cowpath;
-    my $default_cowpath = join($pathsep, "$prefix/share/site-cows", "$prefix/share/cows");
+    my $default_cowpath = join($pathsep, "$share_cowsay/site-cows", "$share_cowsay/cows");
     if ($ENV{'COWPATH'}) {
         if ($ENV{'COWSAY_ONLY_COWPATH'} == 1) {
             $cowpath = $ENV{'COWPATH'}
@@ -107,6 +110,7 @@ sub list_cowfiles {
     my @dirfiles;
     chop($basedir = cwd);
     for my $d (split(/$pathsep/, $cowpath)) {
+        next unless -d $d;
         print "Cow files in $d:\n";
         opendir(COWDIR, $d) || die "$0: Cannot open $d\n";
         for my $file (readdir COWDIR) {

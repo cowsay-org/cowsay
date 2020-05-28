@@ -2,6 +2,7 @@ Cowsay Changelog
 ================
 
 3.7.0 (in progress)
+  - Move cows/ and site-cows/ from $prefix/share/ to $prefix/share/cowsay/
 
 3.6.1 (2020-05-28)
   - Fix version number
