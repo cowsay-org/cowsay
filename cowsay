@@ -260,8 +260,9 @@ sub resolve_cow {
         } elsif (-f "$d/$name.cow") {
             $full = "$d/$name.cow";
             last;
+        } elsif (-f "$d/$name.pm") {
+            $full = "$d/$name.pm";
         }
-        # TODO: Should we be checking for .pm files here?
     }
     if ($full eq "") {
         die "$progname: Could not find cowfile for '$name'!\n";
@@ -293,7 +294,11 @@ sub pick_cow {
 }
 
 sub read_cow {
-    do $cow_file_path;
+    if ($cow_file_path =~ /\.pm$/) {
+        die "$progname: Cannot load cow from $cow_file_path: .pm format cows are not implemented yet. Sorry.\n";
+    } else {
+        do $cow_file_path;
+    }
     die "$progname: Error reading cow definition from $cow_file_path: $@\n" if $@;
 }
 
