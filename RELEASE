@@ -1,9 +1,0 @@
-Steps to be done for release:
-
-0) Change version number in:
-  a) cowsay file
-  b) cowsay.1.adoc
-1) Rebuild man page with `make man`
-2) Git label the release
-3) Create an X.Y-fixes branch, if this is a non-patch release
-4) Create the release to GitHub
