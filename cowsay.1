@@ -31,7 +31,7 @@
 cowsay, cowthink \- configurable speaking/thinking cow (and a bit more)
 .SH "SYNOPSIS"
 .sp
-\fBcowsay\fR [\fB\-e\fR \fIeye_string\fR] [\fB\-f\fR \fIcowfile\fR] [\fB\-h\fR] [\fB\-l\fR] [\fB\-n\fR] [\fB\-T\fR \fItongue_string\fR] [\fB\-W\fR \fIcolumn\fR] [\fB\-bdgpstwy\fR] [<message>]
+\fBcowsay\fR [\fB\-e\fR \fIeye_string\fR] [\fB\-f\fR \fIcowfile\fR | \fB\-r\fR [\fB\-C\fR] ] [\fB\-h\fR] [\fB\-l\fR] [\fB\-n\fR] [\fB\-T\fR \fItongue_string\fR] [\fB\-W\fR \fIcolumn\fR] [\fB\-bdgpstwy\fR] [<message>]
 .SH "DESCRIPTION"
 .sp
 \fICowsay\fR generates an ASCII picture of a cow saying something provided by the user\&. If run with no arguments, it accepts standard input, word\-wraps the message given at about 40 columns, and prints the cow saying the given message on standard output\&.
@@ -109,9 +109,7 @@ will be lost if one of the provided modes is used\&.
 .PP
 \fB\-f\fR
 .RS 4
-Specifies a particular cow picture file (\fIcowfile\fR) to use\&. If the cowfile spec contains
-\fI/\fR
-then it will be interpreted as a path relative to the current directory\&. Otherwise, cowsay will search the COWPATH\&. Additional cowpath entries may be specified in the
+Specifies a particular cow picture file (\fIcowfile\fR) to use\&. If the cowfile spec resolves to an existing file, then it will be interpreted as a path to the cowfile\&. Otherwise, cowsay will search the COWPATH for a cowfile with that name\&. Additional cowpath entries may be specified in the
 \fBCOWPATH\fR
 environment variable\&. To list all cowfiles on the current
 \fBCOWPATH\fR, invoke
@@ -121,10 +119,22 @@ with the
 switch\&.
 .RE
 .PP
+\fB\-r\fR
+.RS 4
+Chooses a random cow from the cows on the
+\fBCOWPATH\fR\&.
+.RE
+.PP
+\fB\-C\fR
+.RS 4
+Enables true\-color (24\-bit) cows\&. Currently only has an effect when used in conjunction with
+\fB\-r\fR\&.
+.RE
+.PP
 \fB\-l\fR
 .RS 4
 Lists the defined cows on the current
-\fBCOWPATH\fR\&.
+\fBCOWPATH\fR\&. Displays it in a human\-readable pretty\-printed format when displaying to a terminal device\&. When sent to a non\-terminal device, outputs the list in a parsing\-friendly format with one cow name per line and no headers or blank lines\&.
 .RE
 .PP
 \fB\-h\fR
@@ -141,9 +151,9 @@ The \fBCOWPATH\fR environment variable, if present, will be used to search for c
 The default \fBCOWPATH\fR is searched after entries in the user\-specified \fBCOWPATH\fR environment variable\&. To suppress this behavior (e\&.g\&. for development work), set the \fBCOWSAY_ONLY_COWPATH\fR environment variable to \fB1\fR\&. In this case, \fBCOWPATH\fR should contain at least a directory with a file called \fBdefault\&.cow\fR in it\&.
 .SH "FILES"
 .sp
-\fB%PREFIX%/share/cows\fR holds a sample set of cowfiles\&. If your \fBCOWPATH\fR is not explicitly set, it automatically contains this directory\&.
+\fB%PREFIX%/share/cowsay/cows\fR holds a sample set of cowfiles\&. If your \fBCOWPATH\fR is not explicitly set, it automatically contains this directory\&.
 .sp
-\fB%PREFIX%/share/site\-cows\fR is provided for administrators to install custom cows\&. Cows in \fBshare/site\-cows\fR take precedence over cows with the same name in \fBshare/cows\fR\&. The \fBsite\-cows\fR directory will never be modified by cowsay installations, so custom cows defined there will persist across upgrades of cowsay\&.
+\fB%PREFIX%/share/cowsay/site\-cows\fR is provided for administrators to install custom cows\&. Cows in \fBshare/cowsay/site\-cows\fR take precedence over cows with the same name in \fBshare/cowsay/cows\fR\&. The \fBsite\-cows\fR directory will never be modified by cowsay installations, so custom cows defined there will persist across upgrades of cowsay\&.
 .SH "BUGS"
 .sp
 If there are any, please report them on the cowsay GitHub page (https://github\&.com/cowsay\-org/cowsay/issues) or notify the author at the address below\&.

@@ -13,7 +13,7 @@ SYNOPSIS
 --------
 *cowsay* 
   [*-e* 'eye_string']
-  [*-f* 'cowfile']
+  [*-f* 'cowfile' | *-r* [*-C*] ]
   [*-h*]
   [*-l*]
   [*-n*]
@@ -66,10 +66,16 @@ There are several provided modes which change the appearance of the cow dependin
     Selects the appearance of the cow's eyes, in which case the first two characters of the argument string 'eye_string' will be used.  The default eyes are *oo*.  The tongue is similarly configurable through *-T* and 'tongue_string'; it must be two characters and does not appear by default.  However, it does appear in the 'dead' and 'stoned' modes.  Any configuration done by *-e* and *-T* will be lost if one of the provided modes is used.
 
 *-f*::
-    Specifies a particular cow picture file ('cowfile') to use.  If the cowfile spec contains '/' then it will be interpreted as a path relative to the current directory.  Otherwise, cowsay will search the COWPATH. Additional cowpath entries may be specified in the *COWPATH* environment variable. To list all cowfiles on the current *COWPATH*, invoke *cowsay* with the *-l* switch.
+    Specifies a particular cow picture file ('cowfile') to use.  If the cowfile spec resolves to an existing file, then it will be interpreted as a path to the cowfile.  Otherwise, cowsay will search the COWPATH for a cowfile with that name. Additional cowpath entries may be specified in the *COWPATH* environment variable. To list all cowfiles on the current *COWPATH*, invoke *cowsay* with the *-l* switch.
+
+*-r*::
+    Chooses a random cow from the cows on the *COWPATH*.
+
+*-C*::
+    Enables true-color (24-bit) cows. Currently only has an effect when used in conjunction with *-r*.
 
 *-l*::
-    Lists the defined cows on the current *COWPATH*.
+    Lists the defined cows on the current *COWPATH*. Displays it in a human-readable pretty-printed format when displaying to a terminal device. When sent to a non-terminal device, outputs the list in a parsing-friendly format with one cow name per line and no headers or blank lines.
 
 *-h*::
     Displays a help screen.
@@ -86,9 +92,9 @@ The default *COWPATH* is searched after entries in the user-specified *COWPATH* 
 
 FILES
 -----
-*%PREFIX%/share/cows* holds a sample set of cowfiles.  If your *COWPATH* is not explicitly set, it automatically contains this directory.
+*%PREFIX%/share/cowsay/cows* holds a sample set of cowfiles.  If your *COWPATH* is not explicitly set, it automatically contains this directory.
 
-*%PREFIX%/share/site-cows* is provided for administrators to install custom cows. Cows in *share/site-cows* take precedence over cows with the same name in *share/cows*. The *site-cows* directory will never be modified by cowsay installations, so custom cows defined there will persist across upgrades of cowsay.
+*%PREFIX%/share/cowsay/site-cows* is provided for administrators to install custom cows. Cows in *share/cowsay/site-cows* take precedence over cows with the same name in *share/cowsay/cows*. The *site-cows* directory will never be modified by cowsay installations, so custom cows defined there will persist across upgrades of cowsay.
 
 BUGS
 ----

@@ -38,11 +38,13 @@ $Text::Wrap::tabstop = 8;
     'W'         =>      40,
 );
 
-getopts('bde:f:ghlLnNpstT:wW:y', \%opts);
+getopts('bCde:f:ghlLnNprstT:wW:y', \%opts);
 
 &HELP_MESSAGE if $opts{'h'};
 &list_cowfiles if $opts{'l'};
 
+$random = $opts{'r'};
+$enable_full_color = $opts{'C'};
 $borg = $opts{'b'};
 $dead = $opts{'d'};
 $greedy = $opts{'g'};
@@ -53,6 +55,8 @@ $wired = $opts{'w'};
 $young = $opts{'y'};
 $eyes = substr($opts{'e'}, 0, 2);
 $tongue = substr($opts{'T'}, 0, 2);
+$specified_cow = $opts{'f'};
+$cow_file_path = "";
 $the_cow = "";
 
 &slurp_input;
@@ -61,7 +65,8 @@ $Text::Wrap::columns = $opts{'W'};
             split("\n", fill("", "", @message)));
 &construct_balloon;
 &construct_face;
-&get_cow;
+&pick_cow;
+&read_cow;
 print @balloon_lines;
 print $the_cow;
 
@@ -150,11 +155,31 @@ sub defined_cows {
     return \@cowfiles;
 }
 
+sub defined_cows_structured {
+    my $cows = defined_cows();
+    my %cows;
+    my @truecolor = ();
+    my @basic = ();
+    for (@$cows) {
+        if (m|^truecolor/|) {
+            push @truecolor, $_;
+        } else {
+            push @basic, $_;
+        }
+    }
+    my @all = (@basic, @truecolor);
+    return {
+        basic => \@basic,
+        truecolor => \@truecolor,
+        all => \@all
+    };
+}
+
 sub list_cowfiles_pretty {
     my $basedir;
     my @dirfiles;
     my $first = 1;
-    for my $d (split(/$pathsep/, $cowpath)) {
+    for my $d (@cowpath) {
         next unless -d $d;
         print "\n" unless $first;
         $first = 0;
@@ -225,31 +250,51 @@ sub construct_face {
     if ($young) { $eyes = ".."; }
 }
 
-sub get_cow {
-##
-## Get a cow from the specified cowfile; otherwise use the default cow
-## which was defined above in $the_cow.
-##
-    my $f = $opts{'f'};
+sub resolve_cow {
+    my ($name) = @_;
     my $full = "";
-    if ($opts{'f'} =~ m,/,) {
-        $full = $opts{'f'};
-    } else {
-        for my $d (split(/:/, $cowpath)) {
-            if (-f "$d/$f") {
-                $full = "$d/$f";
-                last;
-            } elsif (-f "$d/$f.cow") {
-                $full = "$d/$f.cow";
-                last;
-            }
+    for my $d (@cowpath) {
+        if (-f "$d/$name") {
+            $full = "$d/$name";
+            last;
+        } elsif (-f "$d/$name.cow") {
+            $full = "$d/$name.cow";
+            last;
         }
-        if ($full eq "") {
-            die "$progname: Could not find $f cowfile!\n";
-        }
+        # TODO: Should we be checking for .pm files here?
     }
-    do $full;
-    die "$progname: $@\n" if $@;
+    if ($full eq "") {
+        die "$progname: Could not find cowfile for '$name'!\n";
+    }
+    return $full;
+}
+
+sub pick_cow {
+    my $found_path = "";
+    if ($random) {
+        my $defined_cows = defined_cows_structured();
+        my @usable_cows;
+        if ($enable_full_color) {
+            @usable_cows = @{$$defined_cows{all}};
+        } else {
+            @usable_cows = @{$$defined_cows{basic}};
+        }
+        my $n_cows = scalar @usable_cows;
+        my $index = int(rand($n_cows));
+        my $selected_cow = $usable_cows[$index];
+        print "Picked random cow: $selected_cow\n";
+        $found_path = resolve_cow($selected_cow);
+    } elsif (-f $specified_cow) {
+        $found_path = $specified_cow;
+    } else {
+        $found_path = resolve_cow($specified_cow);
+    }
+    $cow_file_path = $found_path;
+}
+
+sub read_cow {
+    do $cow_file_path;
+    die "$progname: Error reading cow definition from $cow_file_path: $@\n" if $@;
 }
 
 sub HELP_MESSAGE {
@@ -258,7 +303,7 @@ $progname version $VERSION
 
 Usage:
 
-    $progname [-bdgpstwy] [-e <eyes>] [-f <cowfile>] 
+    $progname [-bdgpstwy] [-e <eyes>] [-f <cowfile> | -r [-C] ] 
         [-n] [-T <tongue>] [-W <wrapcolumn>]
         <message>
     $progname -l    # List defined cows
