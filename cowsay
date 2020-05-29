@@ -325,7 +325,6 @@ sub pick_cow {
         my $n_cows = scalar @usable_cows;
         my $index = int(rand($n_cows));
         my $selected_cow = $usable_cows[$index];
-        print "Picked random cow: $selected_cow\n";
         $found_path = resolve_cow($selected_cow);
     } elsif (-f $specified_cow) {
         $found_path = $specified_cow;
