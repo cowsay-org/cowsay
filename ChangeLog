@@ -1,8 +1,8 @@
 Cowsay Changelog
 ================
 
-3.7.0 (in progress)
-  - `cowsay -r` for random cow
+3.7.0 (2020-05-28)
+  - `cowsay -r [-C]` for random cow
   - Pluggable cow collections using etc/cowsay/cowpath.d
   - Move cows/ and site-cows/ from $prefix/share/ to $prefix/share/cowsay/
 	- Parseable format for `cowsay -l` when sent to non-terminal destination
