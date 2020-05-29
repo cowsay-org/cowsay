@@ -1,6 +1,8 @@
 Cowsay Changelog
 ================
 
+3.8.0 (in progress)
+
 3.7.0 (2020-05-28)
   - `cowsay -r [-C]` for random cow
   - Pluggable cow collections using etc/cowsay/cowpath.d
