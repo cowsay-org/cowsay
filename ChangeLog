@@ -5,9 +5,9 @@ Cowsay Changelog
   - `cowsay -r [-C]` for random cow
   - Pluggable cow collections using etc/cowsay/cowpath.d
   - Move cows/ and site-cows/ from $prefix/share/ to $prefix/share/cowsay/
-	- Parseable format for `cowsay -l` when sent to non-terminal destination
-	- Fix `cowsay -l` ignoring `*.pm` files
-	- Have `cowsay -l` recursively discover cowfiles in subdirectories
+  - Parseable format for `cowsay -l` when sent to non-terminal destination
+  - Fix `cowsay -l` ignoring `*.pm` files
+  - Have `cowsay -l` recursively discover cowfiles in subdirectories
 
 3.6.1 (2020-05-28)
   - Fix version number
