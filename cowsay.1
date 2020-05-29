@@ -151,9 +151,11 @@ The \fBCOWPATH\fR environment variable, if present, will be used to search for c
 The default \fBCOWPATH\fR is searched after entries in the user\-specified \fBCOWPATH\fR environment variable\&. To suppress this behavior (e\&.g\&. for development work), set the \fBCOWSAY_ONLY_COWPATH\fR environment variable to \fB1\fR\&. In this case, \fBCOWPATH\fR should contain at least a directory with a file called \fBdefault\&.cow\fR in it\&.
 .SH "FILES"
 .sp
-\fB%PREFIX%/share/cowsay/cows\fR holds a sample set of cowfiles\&. If your \fBCOWPATH\fR is not explicitly set, it automatically contains this directory\&.
+\fB%PREFIX%/share/cowsay/cows\fR holds a sample set of cowfiles\&. Your \fBCOWPATH\fR automatically contains this directory, unless \fBCOWSAY_ONLY_COWPATH\fR is set to \fB1\fR\&.
 .sp
-\fB%PREFIX%/share/cowsay/site\-cows\fR is provided for administrators to install custom cows\&. Cows in \fBshare/cowsay/site\-cows\fR take precedence over cows with the same name in \fBshare/cowsay/cows\fR\&. The \fBsite\-cows\fR directory will never be modified by cowsay installations, so custom cows defined there will persist across upgrades of cowsay\&.
+\fB%PREFIX%/share/cowsay/site\-cows\fR is provided for administrators to install custom cows\&. Cows in \fBshare/cowsay/site\-cows\fR take precedence over cows with the same name in \fBshare/cowsay/cows\fR\&. The \fBsite\-cows\fR directory will never be modified by cowsay installations, so custom cows defined there will persist across upgrades of cowsay\&. \fBsite\-cows\fR is also on the default \fBCOWPATH\fR\&.
+.sp
+\fB%PREFIX%/etc/cowsay/cowpath\&.d/\fR (or \fB/etc/cowsay/cowpath\&.d/\fR when %PREFIX% is \fB/usr\fR) is a directory that contains files which list entries to be added to the default \fBCOWPATH\fR\&. This mechanism allows third\-party cow collections to register themselves with cowsay in a way that does not require per\-user configuration\&.
 .SH "BUGS"
 .sp
 If there are any, please report them on the cowsay GitHub page (https://github\&.com/cowsay\-org/cowsay/issues) or notify the author at the address below\&.
@@ -169,4 +171,4 @@ GitHub: https://github\&.com/cowsay\-org/cowsay
 Main web site: http://cowsay\&.diamonds
 .SH "SEE ALSO"
 .sp
-\fBperl(1)\fR, \fBwall(1)\fR, \fBnwrite(1)\fR, \fBfiglet(6)\fR
+\fBfortune(1)\fR, \fBperl(1)\fR, \fBwall(1)\fR, \fBnwrite(1)\fR, \fBfiglet(6)\fR

@@ -92,9 +92,11 @@ The default *COWPATH* is searched after entries in the user-specified *COWPATH* 
 
 FILES
 -----
-*%PREFIX%/share/cowsay/cows* holds a sample set of cowfiles.  If your *COWPATH* is not explicitly set, it automatically contains this directory.
+*%PREFIX%/share/cowsay/cows* holds a sample set of cowfiles.  Your *COWPATH* automatically contains this directory, unless *COWSAY_ONLY_COWPATH* is set to *1*.
 
-*%PREFIX%/share/cowsay/site-cows* is provided for administrators to install custom cows. Cows in *share/cowsay/site-cows* take precedence over cows with the same name in *share/cowsay/cows*. The *site-cows* directory will never be modified by cowsay installations, so custom cows defined there will persist across upgrades of cowsay.
+*%PREFIX%/share/cowsay/site-cows* is provided for administrators to install custom cows. Cows in *share/cowsay/site-cows* take precedence over cows with the same name in *share/cowsay/cows*. The *site-cows* directory will never be modified by cowsay installations, so custom cows defined there will persist across upgrades of cowsay. *site-cows* is also on the default *COWPATH*.
+
+*%PREFIX%/etc/cowsay/cowpath.d/* (or */etc/cowsay/cowpath.d/* when %PREFIX% is */usr*) is a directory that contains files which list entries to be added to the default *COWPATH*. This mechanism allows third-party cow collections to register themselves with cowsay in a way that does not require per-user configuration.
 
 BUGS
 ----
@@ -114,7 +116,7 @@ Main web site: <http://cowsay.diamonds>
 
 SEE ALSO
 --------
-*perl(1)*, *wall(1)*, *nwrite(1)*, *figlet(6)*
+*fortune(1)*, *perl(1)*, *wall(1)*, *nwrite(1)*, *figlet(6)*
 
 
 

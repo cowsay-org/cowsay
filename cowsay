@@ -18,8 +18,7 @@ $progname = basename($0);
 $eyes = "oo";
 $tongue = "  ";
 $pathsep = detect_pathsep();
-$cowpath = pick_cowpath();
-@cowpath = split(/$pathsep/, $cowpath);
+@cowpath = pick_cowpath();
 @message = ();
 $thoughts = "";
 
@@ -82,33 +81,76 @@ sub detect_pathsep {
 sub pick_cowpath {
     my $parent_dir = dirname(__FILE__);
     my $parent_dir_base = basename($parent_dir);
-    my $prefix_dir;
-    my $share_cowsay;
+    my ($prefix_dir, $share_cowsay, $real_prefix_dir, $etc_dir);
     if ($parent_dir_base eq "bin") {
-        $prefix = dirname($parent_dir);
-        $share_cowsay = "$prefix/share/cowsay";
+        # We're running from an installation prefix
+        $prefix_dir = dirname($parent_dir);
+        $share_cowsay = "$prefix_dir/share/cowsay";
+        $real_prefix_dir = $prefix_dir;
     } else {
-        $prefix = $parent_dir;
-        $share_cowsay = "$prefix/share";
+        # We're running from the source repo
+        $prefix_dir = $parent_dir;
+        $share_cowsay = "$prefix_dir/share";
+        # Default to default installation location, so in-repo cowsay can still see the
+        # system cowpath.d directory.
+        $real_prefix_dir = "/usr/local";
     }
-    $prefix = abs_path($prefix);
+    $prefix_dir = abs_path($prefix_dir);
+    $real_prefix_dir = abs_path($real_prefix_dir);
+    if ($real_prefix_dir eq "/usr") {
+        $etc_dir = "/etc";
+    } else {
+        $etc_dir = "$real_prefix_dir/etc";
+    }
 
-    my $cowpath;
-    my $default_cowpath = join($pathsep, "$share_cowsay/site-cows", "$share_cowsay/cows");
+    my @cowpath;
+    my @default_cowpath = ("$share_cowsay/site-cows", "$share_cowsay/cows");
+
+    my $cowpath_d_dir = "$etc_dir/cowsay/cowpath.d";
+    if (-d $cowpath_d_dir) {
+        my $dh;
+        opendir($dh, $cowpath_d_dir);
+        my @files = readdir($dh);
+        closedir($dh);
+        foreach (@files) {
+            my $file = "$cowpath_d_dir/$_";
+            if (-f $file && $file =~ /\.path$/) {
+                open my $fh, '<', $file
+                    or die "Could not read file $file: $!\n";
+                while (my $entry = <$fh>) {
+                    chomp $entry;
+                    push @default_cowpath, $entry;
+                }
+                close($fh);
+            }
+        }
+    }
+
     if ($ENV{'COWPATH'}) {
+        my @user_cowpath = split(/$pathsep/, $ENV{'COWPATH'});
         if ($ENV{'COWSAY_ONLY_COWPATH'} == 1) {
-            $cowpath = $ENV{'COWPATH'};
+            @cowpath = @user_cowpath;
         } else {
-            $cowpath = $ENV{'COWPATH'} . $pathsep . $default_cowpath;
+            @cowpath = (@default_cowpath, @user_cowpath);
         }
     } else {
-        $cowpath = $default_cowpath;
+        @cowpath = @default_cowpath;
     }
-    return $cowpath;
+
+    @cowpath = uniquify_list(@cowpath);
+
+    return @cowpath;
+}
+
+sub uniquify_list {
+    my %seen;
+    my @unique = grep { !$seen{$_}++ } @_;
+    return @unique;
 }
 
 sub list_cowfiles {
     if (-t STDOUT) {
+        print "Listing cowfiles in pretty format\n";
         list_cowfiles_pretty();
     } else {
         list_cowfiles_parseable();
@@ -144,7 +186,7 @@ sub list_cowfiles_parseable {
 sub defined_cows {
     my $basedir;
     my %cowfiles;
-    for my $d (split(/$pathsep/, $cowpath)) {
+    for my $d (@cowpath) {
         next unless -d $d;
         my $cows = list_cows_in_cowdir($d);
         for my $cow (@$cows) {
