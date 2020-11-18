@@ -242,7 +242,7 @@ sub slurp_input {
 
 sub maxlength {
     my ($l, $m);
-    $m = -1;
+    $m = 0;
     for my $i (@_) {
         $l = length $i;
         $m = $l if ($l > $m);
