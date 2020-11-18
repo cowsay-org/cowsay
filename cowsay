@@ -270,14 +270,14 @@ sub construct_balloon {
         }
     }
     push(@balloon_lines, 
-        " " . ("_" x $max2) . " \n" ,
+        " " . ("_" x $max2) . "\n" ,
         sprintf($format, $border[0], $message[0], $border[1]),
         (@message < 2 ? "" : 
             map { sprintf($format, $border[4], $_, $border[5]) } 
                 @message[1 .. $#message - 1]),
         (@message < 2 ? "" : 
             sprintf($format, $border[2], $message[$#message], $border[3])),
-        " " . ("-" x $max2) . " \n"
+        " " . ("-" x $max2) . "\n"
     );
 }
 
