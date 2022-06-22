@@ -16,6 +16,7 @@ SHELL = /bin/sh
 INSTALL = install
 INSTALL_PROGRAM = $(INSTALL)
 INSTALL_DATA = ${INSTALL} -m 644
+LN = ln
 
 .PHONY: clean man install uninstall
 
@@ -40,7 +41,7 @@ install: cowsay.1
 	$(INSTALL) -d $(DESTDIR)$(prefix)
 	$(INSTALL) -d $(DESTDIR)$(bindir)
 	$(INSTALL_PROGRAM) cowsay $(DESTDIR)$(bindir)/cowsay
-	$(INSTALL_PROGRAM) cowthink $(DESTDIR)$(bindir)/cowthink
+	$(LN) -s cowsay $(DESTDIR)$(bindir)/cowthink
 	$(INSTALL) -d $(DESTDIR)$(mandir)/man1
 	$(INSTALL_DATA) cowsay.1 $(DESTDIR)$(mandir)/man1
 	$(INSTALL_DATA) cowthink.1 $(DESTDIR)$(mandir)/man1
