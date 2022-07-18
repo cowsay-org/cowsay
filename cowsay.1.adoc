@@ -38,6 +38,8 @@ OPTIONS
 -------
 There are several provided modes which change the appearance of the cow depending on its particular emotional/physical state.
 
+Cow modification
+~~~~~~~~~~~~~~~~
 *-b*::
     Invokes Borg mode.
 
@@ -65,6 +67,8 @@ There are several provided modes which change the appearance of the cow dependin
 *-e*::
     Selects the appearance of the cow's eyes, in which case the first two characters of the argument string 'eye_string' will be used.  The default eyes are *oo*.  The tongue is similarly configurable through *-T* and 'tongue_string'; it must be two characters and does not appear by default.  However, it does appear in the 'dead' and 'stoned' modes.  Any configuration done by *-e* and *-T* will be lost if one of the provided modes is used.
 
+Cow selection
+~~~~~~~~~~~~~
 *-f*::
     Specifies a particular cow picture file ('cowfile') to use.  If the cowfile spec resolves to an existing file, then it will be interpreted as a path to the cowfile.  Otherwise, cowsay will search the COWPATH for a cowfile with that name. Additional cowpath entries may be specified in the *COWPATH* environment variable. To list all cowfiles on the current *COWPATH*, invoke *cowsay* with the *-l* switch.
 
@@ -74,6 +78,8 @@ There are several provided modes which change the appearance of the cow dependin
 *-C*::
     Enables true-color (24-bit) cows. Currently only has an effect when used in conjunction with *-r*.
 
+Non-cow operations
+~~~~~~~~~~~~~~~~~~
 *-l*::
     Lists the defined cows on the current *COWPATH*. Displays it in a human-readable pretty-printed format when displaying to a terminal device. When sent to a non-terminal device, outputs the list in a parsing-friendly format with one cow name per line and no headers or blank lines.
 
