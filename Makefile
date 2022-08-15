@@ -10,13 +10,33 @@ datadir = ${datarootdir}
 docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 sysconfdir = ${prefix}/etc
 mandir=${datarootdir}/man
+
+pkgdatadir = ${datadir}/${PACKAGE_TARNAME}
+cowsdir = ${pkgdatadir}/cows
+sitecowsdir = ${pkgdatadir}/site-cows
+
+pkgsysconfdir = ${sysconfdir}/${PACKAGE_TARNAME}
+cowpathdir = ${pkgsysconfdir}/cowpath.d
+
 srcdir = .
 
+A2X = a2x
 SHELL = /bin/sh
-INSTALL = install
+INSTALL = install -c
 INSTALL_PROGRAM = $(INSTALL)
 INSTALL_DATA = ${INSTALL} -m 644
+INSTALL_DIRS = $(INSTALL) -d
 LN = ln
+LN_S = $(LN) -s
+
+# If you implement support for *.pm cows, add share/cows/*.pm here.
+#
+# Note that this is a list of shell globs to be evaluated by the
+# shell, not a list of files to be evaluated by make.
+COW_FILES = share/cows/*.cow
+
+.PHONY: all
+all: man
 
 .PHONY: clean man install uninstall
 
@@ -35,21 +55,35 @@ clean:
 man: cowsay.1
 
 cowsay.1: cowsay.1.adoc
-	a2x --format manpage ./cowsay.1.adoc
+	set -ex; \
+	mantmpdir="mantmp-$$$$"; \
+	mkdir -p "$$mantmpdir"; \
+	if $(A2X) --format manpage --destination-dir "$$mantmpdir" ./cowsay.1.adoc; then \
+	  mv -f "$${mantmpdir}/cowsay.1" cowsay.1; \
+	  rm -f "$${mantmpdir}/cowthink.1"; \
+	  rmdir "$$mantmpdir"; \
+	else \
+	  rm -f "$${mantmpdir}/cowsay.1" "$${mantmpdir}/cowthink.1"; \
+	  rmdir "$$mantmpdir"; \
+	  exit 1; \
+	fi
 
-install: cowsay.1
-	$(INSTALL) -d $(DESTDIR)$(prefix)
-	$(INSTALL) -d $(DESTDIR)$(bindir)
+install: man
+	$(INSTALL_DIRS) $(DESTDIR)$(cowpathdir)
+	$(INSTALL_DIRS) $(DESTDIR)$(bindir)
 	$(INSTALL_PROGRAM) cowsay $(DESTDIR)$(bindir)/cowsay
-	$(LN) -s cowsay $(DESTDIR)$(bindir)/cowthink
-	$(INSTALL) -d $(DESTDIR)$(mandir)/man1
+	rm -f $(DESTDIR)$(bindir)/cowthink
+	$(LN_S) cowsay $(DESTDIR)$(bindir)/cowthink
+	$(INSTALL_DIRS) $(DESTDIR)$(mandir)/man1
 	$(INSTALL_DATA) cowsay.1 $(DESTDIR)$(mandir)/man1
-	$(INSTALL_DATA) cowthink.1 $(DESTDIR)$(mandir)/man1
-	$(INSTALL) -d $(DESTDIR)$(datadir)/cowsay
-	cp -R share/cows $(DESTDIR)$(datadir)/cowsay
-	$(INSTALL) -d $(DESTDIR)$(datadir)/cowsay/site-cows
+	rm -f $(DESTDIR)$(mandir)/man1/cowthink.1
+	$(LN_S) cowsay.1 $(DESTDIR)$(mandir)/man1/cowthink.1
+	$(INSTALL_DIRS) $(DESTDIR)$(cowsdir)
+	$(INSTALL_DATA) $(COW_FILES) $(DESTDIR)$(cowsdir)
+	$(INSTALL_DIRS) $(DESTDIR)$(sitecowsdir)
 
 uninstall:
 	rm -f $(DESTDIR)$(bindir)/cowsay $(DESTDIR)$(bindir)/cowthink
 	rm -f $(DESTDIR)$(mandir)/man1/cowsay.1 $(DESTDIR)$(mandir)/man1/cowthink.1
-	rm -rf $(DESTDIR)$(datadir)/cows
+	@set -e; for cow in $(COW_FILES); do dcow="$(DESTDIR)$(cowsdir)/$$(basename "$$cow")"; if test -f "$$dcow"; then echo "rm -f $$dcow"; rm -f "$$dcow"; fi; done
+	@set -e; for dir in $(cowsdir) $(sitecowsdir) $(pkgdatadir) $(cowpathdir) $(pkgsysconfdir); do if test -d "$(DESTDIR)$${dir}"; then echo rmdir "$(DESTDIR)$${dir}"; rmdir "$(DESTDIR)$${dir}" ||:; fi; done
