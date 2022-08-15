@@ -10,3 +10,6 @@ Or:
 
   make install prefix=/path/to/my/prefix
 
+Or:
+
+  make install DESTDIR=/path/to/buildroot
