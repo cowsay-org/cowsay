@@ -55,7 +55,18 @@ clean:
 man: cowsay.1
 
 cowsay.1: cowsay.1.adoc
-	$(A2X) --format manpage ./cowsay.1.adoc
+	set -ex; \
+	mantmpdir="mantmp-$$$$"; \
+	mkdir "$$mantmpdir"; \
+	if $(A2X) --format manpage --destination-dir "$$mantmpdir" ./cowsay.1.adoc; then \
+	  mv -f "$${mantmpdir}/cowsay.1" cowsay.1; \
+	  rm -f "$${mantmpdir}/cowthink.1"; \
+	  rmdir "$$mantmpdir"; \
+	else \
+	  rm -f "$${mantmpdir}/cowsay.1" "$${mantmpdir}/cowthink.1"; \
+	  rmdir "$$mantmpdir"; \
+	  exit 1; \
+	fi
 
 install: man
 	$(INSTALL_DIR) $(DESTDIR)$(cowpathdir)
