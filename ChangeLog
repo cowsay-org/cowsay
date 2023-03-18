@@ -3,6 +3,12 @@ Cowsay Changelog
 
 3.8.0 (in progress)
 
+ - Add "cupcake", "alpaca", and "fox" cows
+ - Fix "mech-and-cow" cow for file extension issue
+ - Better installation stuff, involving symlinks and stuff
+ - Make cowthink a symlink
+ - Improve man page organization
+
 3.7.0 (2020-05-28)
   - `cowsay -r [-C]` for random cow
   - Pluggable cow collections using etc/cowsay/cowpath.d
