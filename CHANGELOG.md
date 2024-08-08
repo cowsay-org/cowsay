@@ -1,13 +1,13 @@
 Cowsay Changelog
 ================
 
-## 3.8.0 (in progress)
+## 3.8.0 (2024-08-08)
 
-- Migrate from AsciiDoc to Asciidoctor
 - Add "cupcake", "alpaca", and "fox" cows
 - Fix "mech-and-cow" cow for file extension issue
 - Fix "empbrace" typo in kiss.cow
 - Better installation process, involving symlinks and stuff
+- Migrate from AsciiDoc to Asciidoctor
 - Make cowthink a symlink to cowsay
 - Improve man page organization
 
