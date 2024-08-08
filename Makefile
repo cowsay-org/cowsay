@@ -38,6 +38,11 @@ PRINTF = printf
 SORT = sort
 WC = wc
 
+doc_DATA =
+doc_DATA += CHANGELOG.md
+doc_DATA += LICENSE.txt
+doc_DATA += README.md
+
 # If you implement support for *.pm cows, add share/cows/*.pm here.
 #
 # Note that this is a list of shell globs to be evaluated by the shell, not a list of
@@ -99,6 +104,8 @@ man/man1/cowsay.1: man-src/man1/cowsay.1.adoc man-src/normalize-manpage.sed
 
 .PHONY: install
 install:
+	$(INSTALL_DIR) $(DESTDIR)$(docdir)
+	$(INSTALL_DATA) $(doc_DATA) $(DESTDIR)$(docdir)
 	$(INSTALL_DIR) $(DESTDIR)$(cowpathdir)
 	$(INSTALL_DATA) etc/cowsay/cowpath.d/README.md $(DESTDIR)$(cowpathdir)
 	$(INSTALL_DIR) $(DESTDIR)$(bindir)
@@ -133,6 +140,14 @@ uninstall:
 	  fi; \
 	done
 	@set -e; \
+	for f in $(doc_DATA); do \
+	  df="$(DESTDIR)$(docdir)/$$(basename "$$f")"; \
+	  if test -f "$$df"; then \
+	    echo "rm -f $$df"; \
+	    rm -f "$$df"; \
+	  fi; \
+	done
+	@set -e; \
 	for cow in $(COW_FILES); do \
 	  dcow="$(DESTDIR)$(cowsdir)/$$(basename "$$cow")"; \
 	  if test -f "$$dcow"; then \
@@ -141,7 +156,7 @@ uninstall:
 	  fi; \
 	done
 	@set -e; \
-	for dir in $(cowsdir) $(sitecowsdir) $(pkgdatadir) $(cowpathdir) $(pkgsysconfdir); do \
+	for dir in $(docdir) $(cowsdir) $(sitecowsdir) $(pkgdatadir) $(cowpathdir) $(pkgsysconfdir); do \
 	  $(PRINTF) "%s\n" "$$dir"; \
 	done \
 	| $(AWK) '{ print length, $$0 }' | $(SORT) -n -r | $(CUT) -d" " -f2- \
