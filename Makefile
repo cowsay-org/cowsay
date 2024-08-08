@@ -21,23 +21,24 @@ LN = ln
 .PHONY: clean man install uninstall
 
 clean:
-	@echo Nothing to do.
+	@echo "Nothing to do - 'make clean' is a no-op."
 
-# The target creates cowsay.1.adoc, and is included for convenience
+# The 'man' target creates cowsay.1, cowthink.1, and other man pages.
 #
-# The 'make man' target is intended for use at write time, not build time,
-# so it is not part of the normal build sequence, and its outputs are
-# checked in to the source tree. This is partially to simplify the build 
-# process, and partially to preserve the internal "update" timestamp inside
-# the man pages. We do this at build time to avoid introducing a dependency on
-# Asciidoc for users.
+# The 'man' target is intended for use at authoring time, not build time, so it is not
+# part of the normal build sequence, and its outputs are checked in to the source tree.
+# This is partially to simplify the build process, and partially to preserve the internal
+# "update" timestamp inside the man pages. We do this at authoring/build time instead of
+# install time to avoid introducing a dependency on Asciidoctor for users.
 
 man: cowsay.1
 
 cowsay.1: cowsay.1.adoc
-	a2x --format manpage ./cowsay.1.adoc
+	asciidoctor -b manpage cowsay.1.adoc
 
-install: cowsay.1
+# This dependency specification is woefully incomplete, and assumes you'll just do a fresh
+# install each time. This is probably fine.
+install: cowsay cowsay.1 cowthink.1
 	$(INSTALL) -d $(DESTDIR)$(prefix)
 	$(INSTALL) -d $(DESTDIR)$(bindir)
 	$(INSTALL_PROGRAM) cowsay $(DESTDIR)$(bindir)/cowsay
