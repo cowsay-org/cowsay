@@ -39,7 +39,10 @@ $Text::Wrap::tabstop = 8;
 
 getopts('bCde:f:ghlLnNprstT:wW:y', \%opts);
 
-&HELP_MESSAGE if $opts{'h'};
+if ($opts{'h'}) {
+    &HELP_MESSAGE;
+    exit(0);
+}
 &list_cowfiles if $opts{'l'};
 
 $random = $opts{'r'};

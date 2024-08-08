@@ -3,7 +3,7 @@ Cowsay Changelog
 
 ## 3.9.0 (unreleased)
 
-(Nothing here yet.)
+- Fix `cowsay -h` behavior, which would still wait for stdin input instead of exiting
 
 ## 3.8.0 (2024-08-08)
 
