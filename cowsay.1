@@ -1,177 +1,171 @@
 '\" t
 .\"     Title: cowsay
-.\"    Author: [see the "AUTHOR" section]
-.\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
-.\"      Date: 07/18/2022
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.23
+.\"      Date: 2024-08-08
 .\"    Manual: Cowsay Manual
-.\"    Source: Cowsay 3.8.0-SNAPSHOT
+.\"    Source: Cowsay
 .\"  Language: English
 .\"
-.TH "COWSAY" "1" "07/18/2022" "Cowsay 3\&.8\&.0\-SNAPSHOT" "Cowsay Manual"
-.\" -----------------------------------------------------------------
-.\" * Define some portability stuff
-.\" -----------------------------------------------------------------
-.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.\" http://bugs.debian.org/507673
-.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
-.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.TH "COWSAY" "1" "2024-08-08" "Cowsay" "Cowsay Manual"
 .ie \n(.g .ds Aq \(aq
 .el       .ds Aq '
-.\" -----------------------------------------------------------------
-.\" * set default formatting
-.\" -----------------------------------------------------------------
-.\" disable hyphenation
+.ss \n[.ss] 0
 .nh
-.\" disable justification (adjust text to left margin only)
 .ad l
-.\" -----------------------------------------------------------------
-.\" * MAIN CONTENT STARTS HERE *
-.\" -----------------------------------------------------------------
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
 .SH "NAME"
 cowsay, cowthink \- configurable speaking/thinking cow (and a bit more)
 .SH "SYNOPSIS"
 .sp
-\fBcowsay\fR [\fB\-e\fR \fIeye_string\fR] [\fB\-f\fR \fIcowfile\fR | \fB\-r\fR [\fB\-C\fR] ] [\fB\-h\fR] [\fB\-l\fR] [\fB\-n\fR] [\fB\-T\fR \fItongue_string\fR] [\fB\-W\fR \fIcolumn\fR] [\fB\-bdgpstwy\fR] [<message>]
+\fBcowsay\fP
+[\fB\-e\fP \fIeye_string\fP]
+[\fB\-f\fP \fIcowfile\fP | \fB\-r\fP [\fB\-C\fP] ]
+[\fB\-h\fP]
+[\fB\-l\fP]
+[\fB\-n\fP]
+[\fB\-T\fP \fItongue_string\fP]
+[\fB\-W\fP \fIcolumn\fP]
+[\fB\-bdgpstwy\fP]
+[<message>]
 .SH "DESCRIPTION"
 .sp
-\fICowsay\fR generates an ASCII picture of a cow saying something provided by the user\&. If run with no arguments, it accepts standard input, word\-wraps the message given at about 40 columns, and prints the cow saying the given message on standard output\&.
+\fICowsay\fP generates an ASCII picture of a cow saying something provided by the user.  If run with no arguments, it accepts standard input, word\-wraps the message given at about 40 columns, and prints the cow saying the given message on standard output.
 .sp
-To aid in the use of arbitrary messages with arbitrary whitespace, use the \fB\-n\fR option\&. If it is specified, the given message will not be word\-wrapped\&. This is possibly useful if you want to make the cow think or speak in figlet(6)\&. If \fB\-n\fR is specified, there must not be any command line arguments left after all the switches have been processed\&.
+To aid in the use of arbitrary messages with arbitrary whitespace, use the \fB\-n\fP option.  If it is specified, the given message will not be word\-wrapped.  This is possibly useful if you want to make the cow think or speak in figlet(6).  If \fB\-n\fP is specified, there must not be any command line arguments left after all the switches have been processed.
 .sp
-The \fB\-W\fR specifies roughly where the message should be wrapped\&. The default is equivalent to \fB\-W 40\fR (i\&.e\&. wrap words at or before the 40th column)\&.
+The \fB\-W\fP specifies roughly where the message should be wrapped. The default is equivalent to \fB\-W 40\fP (i.e. wrap words at or before the 40th column).
 .sp
-If any command\-line arguments are left over after all switches have been processed, they become the cow\(cqs message\&. The program will not accept standard input for a message in this case\&.
+If any command\-line arguments are left over after all switches have been processed, they become the cow\(cqs message. The program will not accept standard input for a message in this case.
 .sp
-If the program is invoked as \fBcowthink\fR then the cow will think its message instead of saying it\&.
+If the program is invoked as \fBcowthink\fP then the cow will think its message instead of saying it.
 .SH "OPTIONS"
 .sp
-There are several provided modes which change the appearance of the cow depending on its particular emotional/physical state\&.
+There are several provided modes which change the appearance of the cow depending on its particular emotional/physical state.
 .SS "Cow modification"
-.PP
-\fB\-b\fR
+.sp
+\fB\-b\fP
 .RS 4
-Invokes Borg mode\&.
+Invokes Borg mode.
 .RE
-.PP
-\fB\-d\fR
+.sp
+\fB\-d\fP
 .RS 4
-Causes the cow to appear dead\&.
+Causes the cow to appear dead.
 .RE
-.PP
-\fB\-g\fR
+.sp
+\fB\-g\fP
 .RS 4
-Invokes greedy mode\&.
+Invokes greedy mode.
 .RE
-.PP
-\fB\-p\fR
+.sp
+\fB\-p\fP
 .RS 4
-Causes a state of paranoia to come over the cow\&.
+Causes a state of paranoia to come over the cow.
 .RE
-.PP
-\fB\-s\fR
+.sp
+\fB\-s\fP
 .RS 4
-Makes the cow appear thoroughly stoned\&.
+Makes the cow appear thoroughly stoned.
 .RE
-.PP
-\fB\-t\fR
+.sp
+\fB\-t\fP
 .RS 4
-Yields a tired cow\&.
+Yields a tired cow.
 .RE
-.PP
-\fB\-w\fR
+.sp
+\fB\-w\fP
 .RS 4
-Is somewhat the opposite of
-\fB\-t\fR, and initiates wired mode\&.
+Is somewhat the opposite of \fB\-t\fP, and initiates wired mode.
 .RE
-.PP
-\fB\-y\fR
+.sp
+\fB\-y\fP
 .RS 4
-Brings on the cow\(cqs youthful appearance\&.
+Brings on the cow\(cqs youthful appearance.
 .RE
-.PP
-\fB\-e\fR
+.sp
+\fB\-e\fP
 .RS 4
-Selects the appearance of the cow\(cqs eyes, in which case the first two characters of the argument string
-\fIeye_string\fR
-will be used\&. The default eyes are
-\fBoo\fR\&. The tongue is similarly configurable through
-\fB\-T\fR
-and
-\fItongue_string\fR; it must be two characters and does not appear by default\&. However, it does appear in the
-\fIdead\fR
-and
-\fIstoned\fR
-modes\&. Any configuration done by
-\fB\-e\fR
-and
-\fB\-T\fR
-will be lost if one of the provided modes is used\&.
+Selects the appearance of the cow\(cqs eyes, in which case the first two characters of the argument string \fIeye_string\fP will be used.  The default eyes are \fBoo\fP.  The tongue is similarly configurable through \fB\-T\fP and \fItongue_string\fP; it must be two characters and does not appear by default.  However, it does appear in the \fIdead\fP and \fIstoned\fP modes.  Any configuration done by \fB\-e\fP and \fB\-T\fP will be lost if one of the provided modes is used.
 .RE
 .SS "Cow selection"
-.PP
-\fB\-f\fR
+.sp
+\fB\-f\fP
 .RS 4
-Specifies a particular cow picture file (\fIcowfile\fR) to use\&. If the cowfile spec resolves to an existing file, then it will be interpreted as a path to the cowfile\&. Otherwise, cowsay will search the COWPATH for a cowfile with that name\&. Additional cowpath entries may be specified in the
-\fBCOWPATH\fR
-environment variable\&. To list all cowfiles on the current
-\fBCOWPATH\fR, invoke
-\fBcowsay\fR
-with the
-\fB\-l\fR
-switch\&.
+Specifies a particular cow picture file (\fIcowfile\fP) to use.  If the cowfile spec resolves to an existing file, then it will be interpreted as a path to the cowfile.  Otherwise, cowsay will search the COWPATH for a cowfile with that name. Additional cowpath entries may be specified in the \fBCOWPATH\fP environment variable. To list all cowfiles on the current \fBCOWPATH\fP, invoke \fBcowsay\fP with the \fB\-l\fP switch.
 .RE
-.PP
-\fB\-r\fR
+.sp
+\fB\-r\fP
 .RS 4
-Chooses a random cow from the cows on the
-\fBCOWPATH\fR\&.
+Chooses a random cow from the cows on the \fBCOWPATH\fP.
 .RE
-.PP
-\fB\-C\fR
+.sp
+\fB\-C\fP
 .RS 4
-Enables true\-color (24\-bit) cows\&. Currently only has an effect when used in conjunction with
-\fB\-r\fR\&.
+Enables true\-color (24\-bit) cows. Currently only has an effect when used in conjunction with \fB\-r\fP.
 .RE
 .SS "Non\-cow operations"
-.PP
-\fB\-l\fR
+.sp
+\fB\-l\fP
 .RS 4
-Lists the defined cows on the current
-\fBCOWPATH\fR\&. Displays it in a human\-readable pretty\-printed format when displaying to a terminal device\&. When sent to a non\-terminal device, outputs the list in a parsing\-friendly format with one cow name per line and no headers or blank lines\&.
+Lists the defined cows on the current \fBCOWPATH\fP. Displays it in a human\-readable pretty\-printed format when displaying to a terminal device. When sent to a non\-terminal device, outputs the list in a parsing\-friendly format with one cow name per line and no headers or blank lines.
 .RE
-.PP
-\fB\-h\fR
+.sp
+\fB\-h\fP
 .RS 4
-Displays a help screen\&.
+Displays a help screen.
 .RE
 .SH "COWFILE FORMAT"
 .sp
-A cowfile is made up of a simple block of \fBperl(1)\fR code, which assigns a picture of a cow to the variable \fB$the_cow\fR\&. Should you wish to customize the eyes or the tongue of the cow, then the variables \fB$eyes\fR and \fB$tongue\fR may be used\&. The trail leading up to the cow\(cqs message balloon is composed of the character(s) in the \fB$thoughts\fR variable\&. Any backslashes must be reduplicated to prevent interpretation\&. Also, at\-signs ("@") must be backslashed because that is what Perl 5 expects\&. The name of a cowfile must end with \fB\&.cow\fR, otherwise it is not recognized as a cowfile\&.
+A cowfile is made up of a simple block of \fBperl(1)\fP code, which assigns a picture of a cow to the variable \fB$the_cow\fP. Should you wish to customize the eyes or the tongue of the cow, then the variables \fB$eyes\fP and \fB$tongue\fP may be used.  The trail leading up to the cow\(cqs message balloon is composed of the character(s) in the \fB$thoughts\fP variable.  Any backslashes must be reduplicated to prevent interpretation.  Also, at\-signs ("@") must be backslashed because that is what Perl 5 expects. The name of a cowfile must end with \fB.cow\fP, otherwise it is not recognized as a cowfile.
 .SH "ENVIRONMENT"
 .sp
-The \fBCOWPATH\fR environment variable, if present, will be used to search for cowfiles\&. It contains a colon\-separated list of directories, much like \fBPATH\fR or \fBMANPATH\fR\&.
+The \fBCOWPATH\fP environment variable, if present, will be used to search for cowfiles.  It contains a colon\-separated list of directories, much like \fBPATH\fP or \fBMANPATH\fP.
 .sp
-The default \fBCOWPATH\fR is searched after entries in the user\-specified \fBCOWPATH\fR environment variable\&. To suppress this behavior (e\&.g\&. for development work), set the \fBCOWSAY_ONLY_COWPATH\fR environment variable to \fB1\fR\&. In this case, \fBCOWPATH\fR should contain at least a directory with a file called \fBdefault\&.cow\fR in it\&.
+The default \fBCOWPATH\fP is searched after entries in the user\-specified \fBCOWPATH\fP environment variable.  To suppress this behavior (e.g. for development work), set the \fBCOWSAY_ONLY_COWPATH\fP environment variable to \fB1\fP. In this case, \fBCOWPATH\fP should contain at least a directory with a file called \fBdefault.cow\fP in it.
 .SH "FILES"
 .sp
-\fB%PREFIX%/share/cowsay/cows\fR holds a sample set of cowfiles\&. Your \fBCOWPATH\fR automatically contains this directory, unless \fBCOWSAY_ONLY_COWPATH\fR is set to \fB1\fR\&.
+\fB%PREFIX%/share/cowsay/cows\fP holds a sample set of cowfiles.  Your \fBCOWPATH\fP automatically contains this directory, unless \fBCOWSAY_ONLY_COWPATH\fP is set to \fB1\fP.
 .sp
-\fB%PREFIX%/share/cowsay/site\-cows\fR is provided for administrators to install custom cows\&. Cows in \fBshare/cowsay/site\-cows\fR take precedence over cows with the same name in \fBshare/cowsay/cows\fR\&. The \fBsite\-cows\fR directory will never be modified by cowsay installations, so custom cows defined there will persist across upgrades of cowsay\&. \fBsite\-cows\fR is also on the default \fBCOWPATH\fR\&.
+\fB%PREFIX%/share/cowsay/site\-cows\fP is provided for administrators to install custom cows. Cows in \fBshare/cowsay/site\-cows\fP take precedence over cows with the same name in \fBshare/cowsay/cows\fP. The \fBsite\-cows\fP directory will never be modified by cowsay installations, so custom cows defined there will persist across upgrades of cowsay. \fBsite\-cows\fP is also on the default \fBCOWPATH\fP.
 .sp
-\fB%PREFIX%/etc/cowsay/cowpath\&.d/\fR (or \fB/etc/cowsay/cowpath\&.d/\fR when %PREFIX% is \fB/usr\fR) is a directory that contains files which list entries to be added to the default \fBCOWPATH\fR\&. This mechanism allows third\-party cow collections to register themselves with cowsay in a way that does not require per\-user configuration\&.
+\fB%PREFIX%/etc/cowsay/cowpath.d/\fP (or \fB/etc/cowsay/cowpath.d/\fP when %PREFIX% is \fB/usr\fP) is a directory that contains files which list entries to be added to the default \fBCOWPATH\fP. This mechanism allows third\-party cow collections to register themselves with cowsay in a way that does not require per\-user configuration.
 .SH "BUGS"
 .sp
-If there are any, please report them on the cowsay GitHub page (https://github\&.com/cowsay\-org/cowsay/issues) or notify the author at the address below\&.
+If there are any, please report them on the cowsay GitHub page (\c
+.URL "https://github.com/cowsay\-org/cowsay/issues" "" ")"
+or notify the author at the address below.
 .SH "AUTHOR"
 .sp
-Cowsay is maintained by Andrew Janke (floss@apjanke\&.net)\&.
+Cowsay is maintained by Andrew Janke (\c
+.MTO "floss\(atapjanke.net" "" ")."
 .sp
-Cowsay was originally written by Tony Monroe (tony@nog\&.net), with suggestions from Shannon Appel (appel@csua\&.berkeley\&.edu) and contributions from Anthony Polito (aspolito@csua\&.berkeley\&.edu)\&.
+Cowsay was originally written by Tony Monroe (\c
+.MTO "tony\(atnog.net" "" "),"
+with suggestions from Shannon Appel (
+.MTO "appel\(atcsua.berkeley.edu" "" ")"
+and contributions from Anthony Polito (
+.MTO "aspolito\(atcsua.berkeley.edu" "" ")."
 .SH "RESOURCES"
 .sp
-GitHub: https://github\&.com/cowsay\-org/cowsay
+GitHub: \c
+.URL "https://github.com/cowsay\-org/cowsay" "" ""
 .sp
-Main web site: http://cowsay\&.diamonds
+Main web site: \c
+.URL "http://cowsay.diamonds" "" ""
 .SH "SEE ALSO"
 .sp
-\fBfortune(1)\fR, \fBperl(1)\fR, \fBwall(1)\fR, \fBnwrite(1)\fR, \fBfiglet(6)\fR
+\fBfortune(1)\fP, \fBperl(1)\fP, \fBwall(1)\fP, \fBnwrite(1)\fP, \fBfiglet(6)\fP
