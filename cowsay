@@ -235,11 +235,15 @@ sub list_cowfiles_pretty {
 }
 
 sub slurp_input {
-    unless ($ARGV[0]) {
-        chomp(@message = <STDIN>);
-    } else {
-        &display_usage if $opts{'n'};
+    if ($ARGV[0]) {
+        if ($opts{'n'}) {
+            # -n only works with stdin input
+            &HELP_MESSAGE;
+            exit(1);
+        }
         @message = join(' ', @ARGV);
+    } else {
+        chomp(@message = <STDIN>);
     }
 }
 
