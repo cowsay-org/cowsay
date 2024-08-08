@@ -13,7 +13,7 @@ use Text::Wrap qw(wrap fill $columns);
 
 $Getopt::Std::STANDARD_HELP_VERSION = 1;
 
-$VERSION = "3.8.0";
+$VERSION = "3.9.0-SNAPSHOT";
 $progname = basename($0);
 $eyes = "oo";
 $tongue = "  ";

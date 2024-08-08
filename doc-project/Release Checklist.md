@@ -7,7 +7,7 @@ Steps to be done for a release:
 1. Change version number in:
   a. `cowsay`
   a. `cowsay.1.adoc`
-2. Rebuild the man page with `make man`.
+2. Rebuild the man pages with `make man`.
 3. Update `CHANGELOG.md` with the release date, and make sure it's up to date with changes.
 4. Commit those changes, with a commit message like "v X.Y.Z".
 5. Tag the release in git, in format "vX.Y.Z".
@@ -16,8 +16,10 @@ Steps to be done for a release:
 8. Create the release in [GitHub Releases](https://github.com/cowsay-org/cowsay/releases).
   a. Use the CHANGELOG contents as the release comments.
 9. Open development on next release.
-  a. Bump the version in files listed above, and give it a "-SNAPSHOT" suffix.
+  a. Bump the version in files listed above (`cowsay`, `cowsay.1.adoc`), and give it a "-SNAPSHOT" suffix.
   b. Update the CHANGELOG with a section for the new release.
+  c. Rebuild the man pages with `make man`.
+  d. Commit with a message like "Open development for X.Y.Z", and push.
 
 ## Build environment
 

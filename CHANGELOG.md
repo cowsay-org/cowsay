@@ -1,6 +1,10 @@
 Cowsay Changelog
 ================
 
+## 3.9.0 (unreleased)
+
+(Nothing here yet.)
+
 ## 3.8.0 (2024-08-08)
 
 - Add "cupcake", "alpaca", and "fox" cows
