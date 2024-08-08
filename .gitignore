@@ -1,1 +1,44 @@
+# .gitignore for cowsay
+
+# cowsay-specific stuff to exclude
+
 cowsay.1.xml
+
+# Local artifacts and output files and the like 
+
+*.log
+
+# Editors and temp files
+
+.vscode/
+.idea/
+*.bak
+*.tmp
+
+# OS-specific filesystem droppings
+
+# macOS file droppings
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows file droppings
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Linux style file droppings
+
+*~
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+# KDE directory preferences
+.directory
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
