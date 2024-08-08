@@ -1,9 +1,10 @@
 Cowsay Changelog
 ================
 
-## 3.9.0 (unreleased)
+## 3.8.1 (unreleased)
 
 - Fix `cowsay -h` behavior, which would still wait for stdin input instead of exiting
+- Fix `cowsay -n <args>` giving obtuse "undefined subroutine" error
 
 ## 3.8.0 (2024-08-08)
 
