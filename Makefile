@@ -100,6 +100,7 @@ man/man1/cowsay.1: man-src/man1/cowsay.1.adoc man-src/normalize-manpage.sed
 .PHONY: install
 install:
 	$(INSTALL_DIR) $(DESTDIR)$(cowpathdir)
+	$(INSTALL_DATA) etc/cowsay/cowpath.d/README.md $(DESTDIR)$(cowpathdir)
 	$(INSTALL_DIR) $(DESTDIR)$(bindir)
 	$(INSTALL_PROGRAM) bin/cowsay $(DESTDIR)$(bindir)/cowsay
 	rm -f $(DESTDIR)$(bindir)/cowthink
@@ -109,8 +110,10 @@ install:
 	rm -f $(DESTDIR)$(mandir)/man1/cowthink.1
 	$(LN_S) cowsay.1 $(DESTDIR)$(mandir)/man1/cowthink.1
 	$(INSTALL_DIR) $(DESTDIR)$(cowsdir)
+	$(INSTALL_DATA) share/cowsay/cows/README.md $(DESTDIR)$(cowsdir)
 	$(INSTALL_DATA) $(COW_FILES) $(DESTDIR)$(cowsdir)
 	$(INSTALL_DIR) $(DESTDIR)$(sitecowsdir)
+	$(INSTALL_DATA) share/cowsay/site-cows/README.md $(DESTDIR)$(sitecowsdir)
 
 .PHONY: uninstall
 uninstall:
@@ -120,6 +123,9 @@ uninstall:
 	  $(DESTDIR)$(bindir)/cowthink \
 	  $(DESTDIR)$(mandir)/man1/cowsay.1 \
 	  $(DESTDIR)$(mandir)/man1/cowthink.1 \
+	  $(DESTDIR)$(cowpathdir)/README.md \
+	  $(DESTDIR)$(cowsdir)/README.md \
+	  $(DESTDIR)$(sitecowsdir)/README.md \
         ; do \
 	  if test -f "$$f" || test -L "$$f"; then \
 	    echo "rm -f $$f"; \
