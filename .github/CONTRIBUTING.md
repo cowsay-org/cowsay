@@ -2,7 +2,7 @@
 
 ## Code of conduct
 
-I have not selected a code of conduct yet, but please behave as though one were in place. Consider the [Contributor Covenant](http://contributor-covenant.org) and [Mac Homebrew's Code of Conduct](https://github.com/Homebrew/brew/blob/master/CODEOFCONDUCT.md#code-of-conduct) to be examples.
+I have not selected a code of conduct yet, but please behave as though one were in place. Consider the [Contributor Covenant](http://contributor-covenant.org) and [Mac Homebrew's Code of Conduct](https://github.com/Homebrew/.github/blob/HEAD/CODE_OF_CONDUCT.md) to be examples.
 
 ## Contributions
 
