@@ -44,7 +44,7 @@ Cowsay is actually a pretty old program. It was originally written by Tony Monro
 
 The first major version of Cowsay had one cow and one message template: `$foo is $verb $bar`.  Not very flexible, but people managed to do pretty interesting things with it.  The second major version scrapped many of the limitations of the first, by allowing arbitrary messages, multiple cowfiles, and even support for cows talking in figlet.  The third version was a rewrite of the second into Perl 5, whereupon the code got a lot smaller and more manageable. :-)
 
-As of 2016, Monroe was no longer interested in maintaining Cowsay, and posted a [final 3.04 version on GitHub](https://github.com/tnalpgge/rank-amateur-cowsay) to make it available to other developers. Andrew Janke, a Cowsay fan, forked the project to provide ongoing maintenance and hosting for Cowsay, and as an exercise in FLOSS development processes. The cowsay-org GitHub organization is what Andrew created to host his fork's development.
+As of 2016, Monroe was no longer interested in maintaining Cowsay, and posted a [final 3.04 version on GitHub](https://github.com/tnalpgge/rank-amateur-cowsay) to make it available to other developers. [Andrew Janke](https://apjanke.net), a Cowsay fan, forked the project to provide ongoing maintenance and hosting for Cowsay, and as an exercise in FLOSS development processes. The cowsay-org GitHub organization is what Andrew created to host his fork's development.
 
 ## Requirements
 
@@ -58,6 +58,12 @@ You can find collections of cowfiles for use with Cowsay in various third-party 
 * [bkendzior/cowfiles](https://github.com/bkendzior/cowfiles)
 
 See the documentation in each for instructions on how to install them. You can also use Cowsay's `etc/cowsay/cowpath.d` mechanism to make Cowsay aware of them at a system-wide level, so users don't have to configure their `$COWPATH` variables themselves.
+
+There's also cowsay-org's own [cows-offensive](https://github.com/cowsay-org/cows-offensive) collection, which holds cows that were historically in cowsay, but have been removed to keep the main cowsay distribution suitable for work and family use.
+
+## Author
+
+This cowsay-org fork of Cowsay is maintained by [Andrew Janke](https://github.com/apjanke), and hosted on GitHub at the [cowsay-org/cowsay repo](https://github.com/cowsay-org/cowsay).
 
 ## Enjoy
 
