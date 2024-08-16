@@ -9,7 +9,7 @@ Steps to be done for a release:
   a. `cowsay.1.adoc`
 2. Rebuild the man pages with `make man`.
 3. Update `CHANGELOG.md` with the release date, and make sure it's up to date with changes.
-4. Commit those changes, with a commit message like "v X.Y.Z".
+4. Commit those changes, with a commit message like "v. X.Y.Z".
 5. Tag the release in git, in format "vX.Y.Z".
 6. Create an X.Y-fixes branch, if this is a major or minor release. (But not for patch releases.)
 7. Push the tag and new fixes branch to GitHub.
