@@ -15,7 +15,9 @@ Steps to be done for a release:
 7. Push the tag and new fixes branch to GitHub.
 8. Create the release in [GitHub Releases](https://github.com/cowsay-org/cowsay/releases).
   a. Use the CHANGELOG contents as the release comments.
-9. Open development on next release.
+9. Update the cowsay-org formula over in the [homebrew-cowsay Tap repo](https://github.com/cowsay-org/homebrew-cowsay) to use the new release.
+10. Post a comment on the ["Moos & Announcements"](https://github.com/cowsay-org/cowsay/issues/48) issue.
+12. Open development on next release.
   a. Bump the version in files listed above (`cowsay`, `cowsay.1.adoc`), and give it a "-SNAPSHOT" suffix.
   b. Update the CHANGELOG with a section for the new release.
   c. Rebuild the man pages with `make man`.
