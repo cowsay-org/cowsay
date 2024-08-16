@@ -3,7 +3,7 @@ Cowsay Changelog
 
 ## 3.9.0 (unreleased)
 
-(Nothing here yet.)
+- Remove offensive cows "telebears" and "satanic", sending to cows-offensive.
 
 ## 3.8.2 (2024-08-16)
 
