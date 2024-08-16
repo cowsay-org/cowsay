@@ -1,6 +1,10 @@
 Cowsay Changelog
 ================
 
+## 3.9.0 (unreleased)
+
+(Nothing here yet.)
+
 ## 3.8.2 (2024-08-16)
 
 - Remove an offensive cow ([#46](https://github.com/cowsay-org/cowsay/issues/46))
