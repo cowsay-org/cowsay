@@ -1,9 +1,10 @@
 Cowsay Changelog
 ================
 
-## 3.9.0 (unreleased)
+## 3.8.3 (unreleased)
 
-- Remove offensive cows "telebears" and "satanic", sending to cows-offensive.
+- Remove offensive cows "telebears" and "satanic", sending to cows-offensive. ([#46](https://github.com/cowsay-org/cowsay/issues/46))
+- Improve Makefile, bringing more in line with GNU conventions, improve configurability, fix some `make uninstall` problems, etc. ([#26](https://github.com/cowsay-org/cowsay/pull/26)) (Thanks, Hans Niedermann!)
 
 ## 3.8.2 (2024-08-16)
 
