@@ -36,9 +36,9 @@ cowsay, cowthink \- configurable speaking/thinking cow (and a bit more)
 [\fB\-r\fP [\fB\-C\fP] ]
 [\fB\-e\fP \fIeye_string\fP]
 [\fB\-T\fP \fItongue_string\fP]
+[\fB\-bdgpstwy\fP]
 [\fB\-n\fP]
 [\fB\-W\fP \fIcolumn\fP]
-[\fB\-bdgpstwy\fP]
 [<message>]
 .sp
 \fBcowsay\fP \fB\-l\fP
@@ -46,15 +46,17 @@ cowsay, cowthink \- configurable speaking/thinking cow (and a bit more)
 \fBcowsay\fP [\fB\-h\fP | \fB\-\-help\fP]
 .SH "DESCRIPTION"
 .sp
-\fICowsay\fP generates an ASCII picture of a cow saying something provided by the user.  If run with no arguments, it accepts standard input, word\-wraps the message given at about 40 columns, and prints the cow saying the given message on standard output.
+\fIcowsay\fP generates an ASCII\-art picture of a cow saying something provided by the user.  If run with no non\-option arguments, it reads from standard input, word\-wraps the given message at about 40 columns, and prints the cow saying the given message on standard output.
 .sp
 To aid in the use of arbitrary messages with arbitrary whitespace, use the \fB\-n\fP option.  If it is specified, the given message will not be word\-wrapped.  This is possibly useful if you want to make the cow think or speak in figlet(6).  If \fB\-n\fP is specified, there must not be any command line arguments left after all the switches have been processed.
 .sp
-The \fB\-W\fP specifies roughly where the message should be wrapped. The default is equivalent to \fB\-W 40\fP (i.e. wrap words at or before the 40th column).
+The \fB\-W\fP specifies roughly where the message should be wrapped.  The default is equivalent to \fB\-W 40\fP (i.e. wrap words at or before the 40th column).
 .sp
-If any command\-line arguments are left over after all switches have been processed, they become the cow\(cqs message. The program will not accept standard input for a message in this case.
+If any command\-line arguments are left over after all switches have been processed, they become the cow\(cqs message, instead of using standard input.  Standard input is ignored in this case.
 .sp
-If the program is invoked as \fBcowthink\fP then the cow will think its message instead of saying it.
+If the program is invoked as \fBcowthink\fP, then the cow will think its message instead of saying it.  (This is indicated by a "thought bubble" appearance in the displayed cow image.  Cowsay does not take a philosophical position on whether actual cognition is occurring.)
+.sp
+(The resulting picture is technically not necessarily ASCII.  It may be in other encodings, and contain non\-ASCII characters, or even terminal\-control character sequences, depending on your environment and the particular cow definition files used.)
 .SH "OPTIONS"
 .sp
 There are several provided modes which change the appearance of the cow depending on its particular emotional/physical state.
@@ -107,13 +109,13 @@ Selects the appearance of the cow\(cqs eyes, in which case the first two charact
 .sp
 \fB\-T\fP
 .RS 4
-Selects the appearance of the cow\(cqs tongue. The \fItongue_string\fP argument must be two characters. By default, no tongue appears, except in the \fIdead\fP and \fIstoned\fP modes.
+Selects the appearance of the cow\(cqs tongue.  The \fItongue_string\fP argument must be two characters.  By default, no tongue appears, except in the \fIdead\fP and \fIstoned\fP modes.
 .RE
 .SS "Cow selection"
 .sp
 \fB\-f\fP
 .RS 4
-Specifies a particular cow picture file (\fIcowfile\fP) to use.  If the cowfile spec resolves to an existing file, then it will be interpreted as a path to the cowfile.  Otherwise, cowsay will search the COWPATH for a cowfile with that name. Additional cowpath entries may be specified in the \fBCOWPATH\fP environment variable. To list all cowfiles on the current \fBCOWPATH\fP, invoke \fBcowsay\fP with the \fB\-l\fP switch.
+Specifies a particular cow picture file (\fIcowfile\fP) to use.  If the cowfile spec resolves to an existing file, then it will be interpreted as a path to the cowfile.  Otherwise, cowsay will search the COWPATH for a cowfile with that name (and a \fI.cow\fP extension).  Additional cowpath entries may be specified in the \fBCOWPATH\fP environment variable.  To list all cowfiles on the current \fBCOWPATH\fP, call \fBcowsay \-l\fP.
 .RE
 .sp
 \fB\-r\fP
@@ -123,13 +125,13 @@ Chooses a random cow from the cows on the \fBCOWPATH\fP.
 .sp
 \fB\-C\fP
 .RS 4
-Enables true\-color (24\-bit) cows. Currently only has an effect when used in conjunction with \fB\-r\fP.
+Enables true\-color (24\-bit) cows.  Currently only has an effect when used in conjunction with \fB\-r\fP. If not given, then \fB\-r\fP only selects from ammong non\-true\-color cows.
 .RE
 .SS "Non\-cow operations"
 .sp
 \fB\-l\fP
 .RS 4
-Lists the defined cows on the current \fBCOWPATH\fP. Displays it in a human\-readable pretty\-printed format when displaying to a terminal device. When sent to a non\-terminal device, outputs the list in a parsing\-friendly format with one cow name per line and no headers or blank lines.
+Lists the defined cows on the current \fBCOWPATH\fP.  Displays it in a human\-readable pretty\-printed format when displaying to a terminal device.  When sent to a non\-terminal device, outputs the list in a parsing\-friendly format with one cow name per line and no headers or blank lines.
 .RE
 .sp
 \fB\-h\fP
@@ -138,23 +140,29 @@ Displays a help screen.
 .RE
 .SH "COWFILE FORMAT"
 .sp
-A cowfile is made up of a simple block of \fBperl(1)\fP code, which assigns a picture of a cow to the variable \fB$the_cow\fP. Should you wish to customize the eyes or the tongue of the cow, then the variables \fB$eyes\fP and \fB$tongue\fP may be used.  The trail leading up to the cow\(cqs message balloon is composed of the character(s) in the \fB$thoughts\fP variable.  Any backslashes must be reduplicated to prevent interpretation.  Also, at\-signs ("@") must be backslashed because that is what Perl 5 expects. The name of a cowfile must end with \fB.cow\fP, otherwise it is not recognized as a cowfile.
+A cowfile is made up of a simple block of \fBperl(1)\fP code, which assigns a picture of a cow to the variable \fB$the_cow\fP.  Should you wish to customize the eyes or the tongue of the cow, then the variables \fB$eyes\fP and \fB$tongue\fP may be used.  The trail leading up to the cow\(cqs message balloon is composed of the character(s) in the \fB$thoughts\fP variable.  Other variables should not be set.
+.sp
+Any backslashes in the cowfile text (inside string literals or heredocs) must be doubled to prevent interpretation.  Also, any "@", "$", and maybe "&" characters must be escaped with backslashes, because that is what Perl expects.
+.sp
+The name of a cowfile must end with \fB.cow\fP, otherwise it is not recognized as a cowfile.
 .SH "ENVIRONMENT"
 .sp
 The \fBCOWPATH\fP environment variable, if present, will be used to search for cowfiles.  It contains a colon\-separated list of directories, much like \fBPATH\fP or \fBMANPATH\fP.
 .sp
-The default \fBCOWPATH\fP is searched after entries in the user\-specified \fBCOWPATH\fP environment variable.  To suppress this behavior (e.g. for development work), set the \fBCOWSAY_ONLY_COWPATH\fP environment variable to \fB1\fP. In this case, \fBCOWPATH\fP should contain at least a directory with a file called \fBdefault.cow\fP in it.
+The default \fBCOWPATH\fP is searched after entries in the user\-specified \fBCOWPATH\fP environment variable.  To suppress this behavior (e.g. for development work), set the \fBCOWSAY_ONLY_COWPATH\fP environment variable to \fB1\fP.  In this case, \fBCOWPATH\fP should contain at least a directory with a file called \fBdefault.cow\fP in it.
 .SH "FILES"
 .sp
-\fB%PREFIX%/share/cowsay/cows\fP holds a sample set of cowfiles.  Your \fBCOWPATH\fP automatically contains this directory, unless \fBCOWSAY_ONLY_COWPATH\fP is set to \fB1\fP.
+\fB%PREFIX%/share/cowsay/cows\fP holds a sample herd of cowfiles.  Your \fBCOWPATH\fP automatically contains this directory, unless the \fBCOWSAY_ONLY_COWPATH\fP environment variable is set to \fB1\fP.
 .sp
-\fB%PREFIX%/share/cowsay/site\-cows\fP is provided for administrators to install custom cows. Cows in \fBshare/cowsay/site\-cows\fP take precedence over cows with the same name in \fBshare/cowsay/cows\fP. The \fBsite\-cows\fP directory will never be modified by cowsay installations, so custom cows defined there will persist across upgrades of cowsay. \fBsite\-cows\fP is also on the default \fBCOWPATH\fP.
+\fB%PREFIX%/share/cowsay/site\-cows\fP is provided for administrators to install custom cows.  Cows in \fBshare/cowsay/site\-cows\fP take precedence over cows with the same name in \fBshare/cowsay/cows\fP.  The \fBsite\-cows\fP directory will never be modified by cowsay installations, so custom cows defined there will persist across upgrades of cowsay.  \fBsite\-cows\fP is also on the default \fBCOWPATH\fP.
 .sp
-\fB%PREFIX%/etc/cowsay/cowpath.d/\fP (or \fB/etc/cowsay/cowpath.d/\fP when %PREFIX% is \fB/usr\fP) is a directory that contains files which list entries to be added to the default \fBCOWPATH\fP. This mechanism allows third\-party cow collections to register themselves with cowsay in a way that does not require per\-user configuration.
+\fB%PREFIX%/etc/cowsay/cowpath.d/\fP (or \fB/etc/cowsay/cowpath.d/\fP when %PREFIX% is \fB/usr\fP) is a directory that contains files which list entries to be added to the default \fBCOWPATH\fP.  This mechanism allows third\-party cow collections to register themselves with cowsay in a way that does not require per\-user configuration.  The path files under \fBcowpath.d\fP must have the file extension \fB.path\fP (or they will be ignored), and must contain a list of directory paths, one per line.
+.sp
+In the special case when \fBcowsay\fP is installed to the prefix \fB/usr\fP, then \fB/etc\fP instead of \fB%PREFIX%/etc\fP is used for the configuration files, including \fBcowpath.d\fP.
 .SH "BUGS"
 .sp
-If there are any, please report them on the cowsay GitHub page (\c
-.URL "https://github.com/cowsay\-org/cowsay/issues" "" ")"
+If you find any, please report them on the cowsay GitHub page (\c
+.URL "https://github.com/cowsay\-org/cowsay/issues" "" "),"
 or notify the author at the email address below.
 .SH "AUTHOR"
 .sp

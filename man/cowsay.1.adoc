@@ -30,15 +30,17 @@ SYNOPSIS
 DESCRIPTION
 -----------
 
-_Cowsay_ generates an ASCII picture of a cow saying something provided by the user.  If run with no arguments, it accepts standard input, word-wraps the message given at about 40 columns, and prints the cow saying the given message on standard output.
+_cowsay_ generates an ASCII-art picture of a cow saying something provided by the user.  If run with no non-option arguments, it reads from standard input, word-wraps the given message at about 40 columns, and prints the cow saying the given message on standard output.
 
 To aid in the use of arbitrary messages with arbitrary whitespace, use the *-n* option.  If it is specified, the given message will not be word-wrapped.  This is possibly useful if you want to make the cow think or speak in figlet(6).  If *-n* is specified, there must not be any command line arguments left after all the switches have been processed.
 
-The *-W* specifies roughly where the message should be wrapped. The default is equivalent to *-W 40* (i.e. wrap words at or before the 40th column).
+The *-W* specifies roughly where the message should be wrapped.  The default is equivalent to *-W 40* (i.e. wrap words at or before the 40th column).
 
-If any command-line arguments are left over after all switches have been processed, they become the cow's message. The program will not accept standard input for a message in this case.
+If any command-line arguments are left over after all switches have been processed, they become the cow's message, instead of using standard input.  Standard input is ignored in this case.
 
-If the program is invoked as *cowthink* then the cow will think its message instead of saying it.
+If the program is invoked as *cowthink*, then the cow will think its message instead of saying it.  (This is indicated by a "thought bubble" appearance in the displayed cow image.  Cowsay does not take a philosophical position on whether actual cognition is occurring.)
+
+(The resulting picture is technically not necessarily ASCII.  It may be in other encodings, and contain non-ASCII characters, or even terminal-control character sequences, depending on your environment and the particular cow definition files used.)
 
 OPTIONS
 -------
@@ -76,25 +78,25 @@ Cow modification
     Selects the appearance of the cow's eyes, in which case the first two characters of the argument string 'eye_string' will be used.  The default eyes are *oo*.  Any configuration done by *-e* and *-T* will be lost if one of the provided modes is used.
 
 *-T*::
-    Selects the appearance of the cow's tongue. The 'tongue_string' argument must be two characters. By default, no tongue appears, except in the 'dead' and 'stoned' modes.
+    Selects the appearance of the cow's tongue.  The 'tongue_string' argument must be two characters.  By default, no tongue appears, except in the 'dead' and 'stoned' modes.
 
 Cow selection
 ~~~~~~~~~~~~~
 
 *-f*::
-    Specifies a particular cow picture file ('cowfile') to use.  If the cowfile spec resolves to an existing file, then it will be interpreted as a path to the cowfile.  Otherwise, cowsay will search the COWPATH for a cowfile with that name. Additional cowpath entries may be specified in the *COWPATH* environment variable. To list all cowfiles on the current *COWPATH*, invoke *cowsay* with the *-l* switch.
+    Specifies a particular cow picture file ('cowfile') to use.  If the cowfile spec resolves to an existing file, then it will be interpreted as a path to the cowfile.  Otherwise, cowsay will search the COWPATH for a cowfile with that name (and a '.cow' extension).  Additional cowpath entries may be specified in the *COWPATH* environment variable.  To list all cowfiles on the current *COWPATH*, call *cowsay -l*.
 
 *-r*::
     Chooses a random cow from the cows on the *COWPATH*.
 
 *-C*::
-    Enables true-color (24-bit) cows. Currently only has an effect when used in conjunction with *-r*.
+    Enables true-color (24-bit) cows.  Currently only has an effect when used in conjunction with *-r*. If not given, then *-r* only selects from ammong non-true-color cows.
 
 Non-cow operations
 ~~~~~~~~~~~~~~~~~~
 
 *-l*::
-    Lists the defined cows on the current *COWPATH*. Displays it in a human-readable pretty-printed format when displaying to a terminal device. When sent to a non-terminal device, outputs the list in a parsing-friendly format with one cow name per line and no headers or blank lines.
+    Lists the defined cows on the current *COWPATH*.  Displays it in a human-readable pretty-printed format when displaying to a terminal device.  When sent to a non-terminal device, outputs the list in a parsing-friendly format with one cow name per line and no headers or blank lines.
 
 *-h*::
     Displays a help screen.
@@ -102,33 +104,39 @@ Non-cow operations
 COWFILE FORMAT
 --------------
 
-A cowfile is made up of a simple block of *perl(1)* code, which assigns a picture of a cow to the variable *$the_cow*. Should you wish to customize the eyes or the tongue of the cow, then the variables *$eyes* and *$tongue* may be used.  The trail leading up to the cow's message balloon is composed of the character(s) in the *$thoughts* variable.  Any backslashes must be reduplicated to prevent interpretation.  Also, at-signs ("@") must be backslashed because that is what Perl 5 expects. The name of a cowfile must end with *.cow*, otherwise it is not recognized as a cowfile.  
+A cowfile is made up of a simple block of *perl(1)* code, which assigns a picture of a cow to the variable *$the_cow*.  Should you wish to customize the eyes or the tongue of the cow, then the variables *$eyes* and *$tongue* may be used.  The trail leading up to the cow's message balloon is composed of the character(s) in the *$thoughts* variable.  Other variables should not be set.
+
+Any backslashes in the cowfile text (inside string literals or heredocs) must be doubled to prevent interpretation.  Also, any "@", "$", and maybe "&" characters must be escaped with backslashes, because that is what Perl expects.
+
+The name of a cowfile must end with *.cow*, otherwise it is not recognized as a cowfile.  
 
 ENVIRONMENT
 -----------
 
 The *COWPATH* environment variable, if present, will be used to search for cowfiles.  It contains a colon-separated list of directories, much like *PATH* or *MANPATH*.
 
-The default *COWPATH* is searched after entries in the user-specified *COWPATH* environment variable.  To suppress this behavior (e.g. for development work), set the *COWSAY_ONLY_COWPATH* environment variable to *1*. In this case, *COWPATH* should contain at least a directory with a file called *default.cow* in it.
+The default *COWPATH* is searched after entries in the user-specified *COWPATH* environment variable.  To suppress this behavior (e.g. for development work), set the *COWSAY_ONLY_COWPATH* environment variable to *1*.  In this case, *COWPATH* should contain at least a directory with a file called *default.cow* in it.
 
 FILES
 -----
 
 *%PREFIX%/share/cowsay/cows* holds a sample herd of cowfiles.  Your *COWPATH* automatically contains this directory, unless the *COWSAY_ONLY_COWPATH* environment variable is set to *1*.
 
-*%PREFIX%/share/cowsay/site-cows* is provided for administrators to install custom cows. Cows in *share/cowsay/site-cows* take precedence over cows with the same name in *share/cowsay/cows*. The *site-cows* directory will never be modified by cowsay installations, so custom cows defined there will persist across upgrades of cowsay. *site-cows* is also on the default *COWPATH*.
+*%PREFIX%/share/cowsay/site-cows* is provided for administrators to install custom cows.  Cows in *share/cowsay/site-cows* take precedence over cows with the same name in *share/cowsay/cows*.  The *site-cows* directory will never be modified by cowsay installations, so custom cows defined there will persist across upgrades of cowsay.  *site-cows* is also on the default *COWPATH*.
 
-*%PREFIX%/etc/cowsay/cowpath.d/* (or */etc/cowsay/cowpath.d/* when %PREFIX% is */usr*) is a directory that contains files which list entries to be added to the default *COWPATH*. This mechanism allows third-party cow collections to register themselves with cowsay in a way that does not require per-user configuration.
+*%PREFIX%/etc/cowsay/cowpath.d/* (or */etc/cowsay/cowpath.d/* when %PREFIX% is */usr*) is a directory that contains files which list entries to be added to the default *COWPATH*.  This mechanism allows third-party cow collections to register themselves with cowsay in a way that does not require per-user configuration.  The path files under *cowpath.d* must have the file extension *.path* (or they will be ignored), and must contain a list of directory paths, one per line.
+
+In the special case when *cowsay* is installed to the prefix */usr*, then */etc* instead of *%PREFIX%/etc* is used for the configuration files, including *cowpath.d*.
 
 BUGS
 ----
 
-If there are any, please report them on the cowsay GitHub page (https://github.com/cowsay-org/cowsay/issues) or notify the author at the email address below.
+If you find any, please report them on the cowsay GitHub page (https://github.com/cowsay-org/cowsay/issues), or notify the author at the email address below.
 
 AUTHOR
 ------
 
-Cowsay is maintained by Andrew Janke (floss@apjanke.net).
+Cowsay is maintained by Andrew Janke (<floss@apjanke.net>).
 
 Cowsay was originally written by Tony Monroe (tony@nog.net), with suggestions from Shannon Appel (appel@csua.berkeley.edu) and contributions from Anthony Polito (aspolito@csua.berkeley.edu).
 
@@ -143,7 +151,3 @@ SEE ALSO
 --------
 
 *fortune(1)*, *perl(1)*, *wall(1)*, *nwrite(1)*, *figlet(6)*
-
-
-
-
