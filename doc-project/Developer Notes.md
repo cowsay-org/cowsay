@@ -11,12 +11,13 @@ Cowsay Developer Notes
       * `site-cows/`   - doesn't exist, but you can create it for testing purposes
   * `man/`             - man pages (and source to build them)
   * `doc-project/`     - developer-facing documentation about this project
-  * `cows-off/`        - broken cow files kept for reference
+  * `archive/`         - currently-unused stuff kept for reference
+    * `cows-off/`      - broken cow files, including unsupported .pm format cows
   * `CHANGELOG.md`     - user- and packager-facing change history documentation
 
 The repo is organized this way so it matches the directory layout of the installation location for things like `bin/` and `share/`, reducing the need for special case code paths when running directly from the repo for development.
 
-The `cows-off/` dir holds broken or unsupported cows that we might fix up and get mooing some day, including the never-finished .pm Perl module format cows. These are not part of the distribution and are not installed during installation.
+The `archive/cows-off/` dir holds broken or unsupported cows that we might fix up and get mooing some day, including the never-finished .pm Perl module format cows. These are not part of the distribution and are not installed during installation. The `archive/` dir collects all unused stuff under a top-level directory, which is alphabetized out of the midst of the rest of the top dirs.
 
 ## Building cowsay
 
