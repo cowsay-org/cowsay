@@ -153,7 +153,6 @@ sub uniquify_list {
 
 sub list_cowfiles {
     if (-t STDOUT) {
-        print "Listing cowfiles in pretty format\n";
         list_cowfiles_pretty();
     } else {
         list_cowfiles_parseable();
