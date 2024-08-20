@@ -2,7 +2,10 @@
 
 # cowsay-specific stuff to exclude
 
+# I think these *.xml are AsciiDoc-specific, and can be removed since
+# we migrated to Asciidoctor
 cowsay.1.xml
+man/cowsay.1.xml
 
 # Local artifacts and output files and the like 
 

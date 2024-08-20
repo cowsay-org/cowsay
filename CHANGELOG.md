@@ -7,6 +7,8 @@ Cowsay Changelog
 - Improve Makefile, bringing more in line with GNU conventions, improve configurability, fix some `make uninstall` problems, etc. ([#26](https://github.com/cowsay-org/cowsay/pull/26)) (Thanks, Hans Niedermann!)
 - Remove leftover "Listing cowfiles in pretty format" debugging output ([#50](https://github.com/cowsay-org/cowsay/issues/50))
 - Fix "uninitialized value $tail" error in `cowsay -l` output for empty (zero-cowfile) cow dirs ([#50](https://github.com/cowsay-org/cowsay/issues/50))
+- Fix installation location ("prefix") detection for cases like user-defined symlinks, and align repo layout with installation prefix dir layout ([#49](https://github.com/cowsay-org/cowsay/issues/49), [#55](https://github.com/cowsay-org/cowsay/issues/55))
+
 
 ## 3.8.2 (2024-08-16)
 

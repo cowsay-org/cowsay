@@ -42,14 +42,13 @@ WC = wc
 #
 # Note that this is a list of shell globs to be evaluated by the shell, not a list of
 # files to be evaluated by make.
-COW_FILES = share/cows/*.cow
+COW_FILES = share/cowsay/cows/*.cow
 
 .PHONY: all
 all:
 	@echo "Nothing to do - 'make all' is a no-op."
 
-.PHONY: clean man install uninstall
-
+.PHONY: clean
 clean:
 	@echo "Nothing to do - 'make clean' is a no-op."
 
@@ -62,25 +61,31 @@ clean:
 # "update" timestamp inside the man pages. We also do this at authoring time instead of
 # install time to avoid introducing a dependency on Asciidoctor for users.
 
-man: cowsay.1
+.PHONY: man
+man: man/cowsay.1 man/cowthink.1
 
-cowsay.1: cowsay.1.adoc
-	$(ASCIIDOCTOR) -b manpage cowsay.1.adoc
+man/cowsay.1: man/cowsay.1.adoc
+	$(ASCIIDOCTOR) -b manpage man/cowsay.1.adoc
 
+man/cowthink.1: man/cowsay.1.adoc
+	$(ASCIIDOCTOR) -b manpage man/cowsay.1.adoc
+
+.PHONY: install
 install:
 	$(INSTALL_DIR) $(DESTDIR)$(cowpathdir)
 	$(INSTALL_DIR) $(DESTDIR)$(bindir)
-	$(INSTALL_PROGRAM) cowsay $(DESTDIR)$(bindir)/cowsay
+	$(INSTALL_PROGRAM) bin/cowsay $(DESTDIR)$(bindir)/cowsay
 	rm -f $(DESTDIR)$(bindir)/cowthink
 	$(LN_S) cowsay $(DESTDIR)$(bindir)/cowthink
 	$(INSTALL_DIR) $(DESTDIR)$(mandir)/man1
-	$(INSTALL_DATA) cowsay.1 $(DESTDIR)$(mandir)/man1/cowsay.1
+	$(INSTALL_DATA) man/cowsay.1 $(DESTDIR)$(mandir)/man1/cowsay.1
 	rm -f $(DESTDIR)$(mandir)/man1/cowthink.1
 	$(LN_S) cowsay.1 $(DESTDIR)$(mandir)/man1/cowthink.1
 	$(INSTALL_DIR) $(DESTDIR)$(cowsdir)
 	$(INSTALL_DATA) $(COW_FILES) $(DESTDIR)$(cowsdir)
 	$(INSTALL_DIR) $(DESTDIR)$(sitecowsdir)
 
+.PHONY: uninstall
 uninstall:
 	@set -e; \
 	for f in \

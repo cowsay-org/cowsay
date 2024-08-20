@@ -82,24 +82,14 @@ sub detect_pathsep {
 }
 
 sub pick_cowpath {
-    my $parent_dir = dirname(__FILE__);
+    my $exe_file = abs_path(__FILE__);
+    my $parent_dir = dirname($exe_file);
     my $parent_dir_base = basename($parent_dir);
     my ($prefix_dir, $share_cowsay, $real_prefix_dir, $etc_dir);
-    if ($parent_dir_base eq "bin") {
-        # We're running from an installation prefix
-        $prefix_dir = dirname($parent_dir);
-        $share_cowsay = "$prefix_dir/share/cowsay";
-        $real_prefix_dir = $prefix_dir;
-    } else {
-        # We're running from the source repo
-        $prefix_dir = $parent_dir;
-        $share_cowsay = "$prefix_dir/share";
-        # Default to default installation location, so in-repo cowsay can still see the
-        # system cowpath.d directory.
-        $real_prefix_dir = "/usr/local";
-    }
-    $prefix_dir = abs_path($prefix_dir);
-    $real_prefix_dir = abs_path($real_prefix_dir);
+    # prefix is the parent dir of bin/, in which cowsay must live
+    $prefix_dir = dirname($parent_dir);
+    $share_cowsay = "$prefix_dir/share/cowsay";
+    $real_prefix_dir = abs_path($prefix_dir);
     if ($real_prefix_dir eq "/usr") {
         $etc_dir = "/etc";
     } else {
