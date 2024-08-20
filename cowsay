@@ -119,7 +119,7 @@ sub pick_cowpath {
             my $file = "$cowpath_d_dir/$_";
             if (-f $file && $file =~ /\.path$/) {
                 open my $fh, '<', $file
-                    or die "Could not read file $file: $!\n";
+                    or die "Could not read cowpath file $file: $!\n";
                 while (my $entry = <$fh>) {
                     chomp $entry;
                     push @default_cowpath, $entry;
@@ -225,10 +225,11 @@ sub list_cowfiles_pretty {
     my $first = 1;
     for my $d (@cowpath) {
         next unless -d $d;
+        my $cows = list_cows_in_cowdir($d);
+        next unless @$cows;
         print "\n" unless $first;
         $first = 0;
         print "Cow files in $d:\n";
-        my $cows = list_cows_in_cowdir($d);
         print wrap("", "", sort @$cows), "\n";
     }
 }
