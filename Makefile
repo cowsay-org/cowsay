@@ -75,7 +75,6 @@ install:
 	$(INSTALL_DIR) $(DESTDIR)$(cowpathdir)
 	$(INSTALL_DIR) $(DESTDIR)$(bindir)
 	$(INSTALL_PROGRAM) bin/cowsay $(DESTDIR)$(bindir)/cowsay
-	rm -f $(DESTDIR)$(bindir)/cowthink
 	$(LN_S) cowsay $(DESTDIR)$(bindir)/cowthink
 	$(INSTALL_DIR) $(DESTDIR)$(mandir)/man1
 	$(INSTALL_DATA) man/cowsay.1 $(DESTDIR)$(mandir)/man1/cowsay.1
