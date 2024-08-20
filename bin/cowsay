@@ -279,14 +279,14 @@ sub construct_balloon {
 }
 
 sub construct_face {
-    if ($borg) { $eyes = "=="; }
-    if ($dead) { $eyes = "xx"; $tongue = "U "; }
-    if ($greedy) { $eyes = "\$\$"; }
-    if ($paranoid) { $eyes = "@@"; }
-    if ($stoned) { $eyes = "**"; $tongue = "U "; }
-    if ($tired) { $eyes = "--"; } 
-    if ($wired) { $eyes = "OO"; } 
-    if ($young) { $eyes = ".."; }
+    if ($borg)      { $eyes = "=="; }
+    if ($dead)      { $eyes = "xx"; $tongue = "U "; }
+    if ($greedy)    { $eyes = "\$\$"; }
+    if ($paranoid)  { $eyes = "@@"; }
+    if ($stoned)    { $eyes = "**"; $tongue = "U "; }
+    if ($tired)     { $eyes = "--"; } 
+    if ($wired)     { $eyes = "OO"; } 
+    if ($young)     { $eyes = ".."; }
 }
 
 sub resolve_cow {
