@@ -22,8 +22,8 @@ $pathsep = detect_pathsep();
 @message = ();
 $thoughts = "";
 
-## Yeah, this is rude, I know.  But hopefully it gets around a nasty
-## little version dependency.
+# Yeah, this is rude, I know. But hopefully it gets around a nasty little version
+# dependency.
 
 $Text::Wrap::initial_tab = 8;
 $Text::Wrap::subsequent_tab = 8;
@@ -73,8 +73,8 @@ print @balloon_lines;
 print $the_cow;
 
 sub detect_pathsep {
-    ## One of these days, we'll get it ported to Windows.  Yeah, right.
-    if (($^O eq "MSWin32") or ($^O eq "Windows_NT")) {  ## Many perls, eek!
+    # One of these days, we'll get it ported to Windows. Yeah, right.
+    if (($^O eq "MSWin32") or ($^O eq "Windows_NT")) {  # Many perls, eek!
         return ';';
     } else {
         return ':';
@@ -259,9 +259,9 @@ sub maxlength {
 
 sub construct_balloon {
     my $max = &maxlength(@message);
-    my $max2 = $max + 2;        ## border space fudge.
+    my $max2 = $max + 2;        # border space fudge.
     my $format = "%s %-${max}s %s\n";
-    my @border; ## up-left, up-right, down-left, down-right, left, right
+    my @border; # up-left, up-right, down-left, down-right, left, right
     if ($0 =~ /think/i) {
         $thoughts = 'o';
         @border = qw[ ( ) ( ) ( ) ];

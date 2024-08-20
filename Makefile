@@ -22,7 +22,7 @@ srcdir = .
 
 SHELL = /bin/sh
 
-# Make standard tools overridable, e.g. for testing with busybox
+# Make standard tools overridable, e.g. for testing with busybox.
 ASCIIDOCTOR = asciidoctor
 AWK = awk
 CUT = cut
@@ -40,8 +40,8 @@ WC = wc
 
 # If you implement support for *.pm cows, add share/cows/*.pm here.
 #
-# Note that this is a list of shell globs to be evaluated by the
-# shell, not a list of files to be evaluated by make.
+# Note that this is a list of shell globs to be evaluated by the shell, not a list of
+# files to be evaluated by make.
 COW_FILES = share/cows/*.cow
 
 .PHONY: all
@@ -55,14 +55,12 @@ clean:
 
 # The 'man' target creates cowsay.1, cowthink.1, and other man pages.
 #
-# The 'man' target is intended for use at authoring time, not at build
-# time, so it is not part of the normal build sequence, and its
-# outputs are checked into the source repo.
+# The 'man' target is intended for use at authoring time, not at build time, so it is not
+# part of the normal build sequence, and its outputs are checked into the source repo.
 #
-# This is partially to simplify the build process, and partially to
-# preserve the internal "update" timestamp inside the man pages. We
-# also do this at authoring time instead of install time to avoid
-# introducing a dependency on Asciidoctor for users.
+# This is partially to simplify the build process, and partially to preserve the internal
+# "update" timestamp inside the man pages. We also do this at authoring time instead of
+# install time to avoid introducing a dependency on Asciidoctor for users.
 
 man: cowsay.1
 
