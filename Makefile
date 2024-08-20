@@ -82,9 +82,11 @@ install:
 	$(INSTALL_DIR) $(DESTDIR)$(cowpathdir)
 	$(INSTALL_DIR) $(DESTDIR)$(bindir)
 	$(INSTALL_PROGRAM) bin/cowsay $(DESTDIR)$(bindir)/cowsay
+	rm -f $(DESTDIR)$(bindir)/cowthink
 	$(LN_S) cowsay $(DESTDIR)$(bindir)/cowthink
 	$(INSTALL_DIR) $(DESTDIR)$(mandir)/man1
 	$(INSTALL_DATA) man/man1/cowsay.1 $(DESTDIR)$(mandir)/man1/cowsay.1
+	rm -f $(DESTDIR)$(mandir)/man1/cowthink.1
 	$(LN_S) cowsay.1 $(DESTDIR)$(mandir)/man1/cowthink.1
 	$(INSTALL_DIR) $(DESTDIR)$(cowsdir)
 	$(INSTALL_DATA) $(COW_FILES) $(DESTDIR)$(cowsdir)
