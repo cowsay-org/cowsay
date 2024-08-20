@@ -343,11 +343,35 @@ $progname version $VERSION
 
 Usage:
 
-    $progname [-bdgpstwy] [-e <eyes>] [-f <cowfile> | -r [-C] ] 
-        [-n] [-T <tongue>] [-W <wrapcolumn>]
+    $progname [-bdgpstwy] [-f <cowfile>] [-r [-C]] [-e <eyes>] [-T <tongue>]
+        [-W <wrapcolumn>] [-n]
         <message>
-    $progname -l    # List defined cows
-    $progname -h    # Displays this help screen
+
+    $progname -l              # List defined cows
+    $progname [-h | --help]   # Display this help screen
+
+Options:
+
+    -b, -d, -g, -s, -t, -w, and -y activate Borg, dead, greedy, sleepy, tired, wired, and
+        young appearance modes, respectively.
+
+    -f <cowfile> selects an alternate cow picture. <cowfile> may be either the name of a
+        cow defined in a cowdir on the cowpath (without the '.cow' file extension), or the
+        path to a cowfile (with the '.cow' file extension). `$progname -l` will list the
+        names of available cows.
+
+    -r selects a random cowfile from those present on the cowpath. If -C is also given,
+        then full-color cows will be included.
+
+    -e \<eyes\> defines a custom eye appearance. <eyes> should be a two-character string.
+        It is up to you whether they actually look like eyes.
+
+    -T <tongue> defines a custom tongue appearance.
+
+    -n activates word wrapping, to support messages with arbitrary whitespace. Must be the
+        last option given before \<message\> starts.
+
+    -W <wrapcolumn> controls where line wrapping occurs. Default is 40 columns.
 
 EOF
 }

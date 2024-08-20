@@ -2,12 +2,12 @@
 .\"     Title: cowsay
 .\"    Author: [see the "AUTHOR(S)" section]
 .\" Generator: Asciidoctor 2.0.23
-.\"      Date: 2024-08-19
+.\"      Date: 2024-08-20
 .\"    Manual: Cowsay Manual
 .\"    Source: Cowsay
 .\"  Language: English
 .\"
-.TH "COWSAY" "1" "2024-08-19" "Cowsay" "Cowsay Manual"
+.TH "COWSAY" "1" "2024-08-20" "Cowsay" "Cowsay Manual"
 .ie \n(.g .ds Aq \(aq
 .el       .ds Aq '
 .ss \n[.ss] 0
@@ -32,15 +32,18 @@ cowsay, cowthink \- configurable speaking/thinking cow (and a bit more)
 .SH "SYNOPSIS"
 .sp
 \fBcowsay\fP
+[\fB\-f\fP \fIcowfile\fP]
+[\fB\-r\fP [\fB\-C\fP] ]
 [\fB\-e\fP \fIeye_string\fP]
-[\fB\-f\fP \fIcowfile\fP | \fB\-r\fP [\fB\-C\fP] ]
-[\fB\-h\fP]
-[\fB\-l\fP]
-[\fB\-n\fP]
 [\fB\-T\fP \fItongue_string\fP]
+[\fB\-n\fP]
 [\fB\-W\fP \fIcolumn\fP]
 [\fB\-bdgpstwy\fP]
 [<message>]
+.sp
+\fBcowsay\fP \fB\-l\fP
+.sp
+\fBcowsay\fP [\fB\-h\fP | \fB\-\-help\fP]
 .SH "DESCRIPTION"
 .sp
 \fICowsay\fP generates an ASCII picture of a cow saying something provided by the user.  If run with no arguments, it accepts standard input, word\-wraps the message given at about 40 columns, and prints the cow saying the given message on standard output.
@@ -99,7 +102,12 @@ Brings on the cow\(cqs youthful appearance.
 .sp
 \fB\-e\fP
 .RS 4
-Selects the appearance of the cow\(cqs eyes, in which case the first two characters of the argument string \fIeye_string\fP will be used.  The default eyes are \fBoo\fP.  The tongue is similarly configurable through \fB\-T\fP and \fItongue_string\fP; it must be two characters and does not appear by default.  However, it does appear in the \fIdead\fP and \fIstoned\fP modes.  Any configuration done by \fB\-e\fP and \fB\-T\fP will be lost if one of the provided modes is used.
+Selects the appearance of the cow\(cqs eyes, in which case the first two characters of the argument string \fIeye_string\fP will be used.  The default eyes are \fBoo\fP.  Any configuration done by \fB\-e\fP and \fB\-T\fP will be lost if one of the provided modes is used.
+.RE
+.sp
+\fB\-T\fP
+.RS 4
+Selects the appearance of the cow\(cqs tongue. The \fItongue_string\fP argument must be two characters. By default, no tongue appears, except in the \fIdead\fP and \fIstoned\fP modes.
 .RE
 .SS "Cow selection"
 .sp
@@ -147,7 +155,7 @@ The default \fBCOWPATH\fP is searched after entries in the user\-specified \fBCO
 .sp
 If there are any, please report them on the cowsay GitHub page (\c
 .URL "https://github.com/cowsay\-org/cowsay/issues" "" ")"
-or notify the author at the address below.
+or notify the author at the email address below.
 .SH "AUTHOR"
 .sp
 Cowsay is maintained by Andrew Janke (\c
