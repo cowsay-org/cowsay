@@ -154,10 +154,10 @@ my @found_cows;
 my $search_start_dir;
 
 sub find_cowfile_callback() {
-    if (-f && /\.(cow|pm)$/) {
+    if (-f && /\.(cow)$/) {
         my $rel_file = substr($File::Find::name, length($search_start_dir) + 1);
         my $cow_name = $rel_file;
-        $cow_name =~ s/\.(cow|pm)$//;
+        $cow_name =~ s/\.(cow)$//;
         push @found_cows, $cow_name;
     }
 }
@@ -299,8 +299,6 @@ sub resolve_cow {
         } elsif (-f "$d/$name.cow") {
             $full = "$d/$name.cow";
             last;
-        } elsif (-f "$d/$name.pm") {
-            $full = "$d/$name.pm";
         }
     }
     if ($full eq "") {
@@ -333,10 +331,9 @@ sub pick_cow {
 
 sub read_cow {
     if ($cow_file_path =~ /\.pm$/) {
-        die "$progname: Cannot load cow from $cow_file_path: .pm format cows are not implemented yet. Sorry.\n";
-    } else {
-        do $cow_file_path;
+        die "$progname: Cannot load cow from $cow_file_path: .pm (Perl module) format cows are not implemented yet. Sorry.\n";
     }
+    do $cow_file_path;
     die "$progname: Error reading cow definition from $cow_file_path: $@\n" if $@;
 }
 
