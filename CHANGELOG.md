@@ -3,6 +3,8 @@ Cowsay Changelog
 
 ## 3.8.3 (unreleased)
 
+### Changes
+
 - Remove offensive cows "telebears" and "satanic", sending to cows-offensive. ([#46](https://github.com/cowsay-org/cowsay/issues/46))
 - Improve Makefile, bringing more in line with GNU conventions, improve configurability, fix some `make uninstall` problems, etc. ([#26](https://github.com/cowsay-org/cowsay/pull/26)) (Thanks, Hans Niedermann!)
 - Remove leftover "Listing cowfiles in pretty format" debugging output ([#50](https://github.com/cowsay-org/cowsay/issues/50))
@@ -10,6 +12,11 @@ Cowsay Changelog
 - Fix installation location ("prefix") detection for cases like user-defined symlinks, and align repo layout with installation prefix dir layout ([#49](https://github.com/cowsay-org/cowsay/issues/49), [#55](https://github.com/cowsay-org/cowsay/issues/55))
 - Remove broken .pm cows ([#54](https://github.com/cowsay-org/cowsay/issues/54))
   - Support for the .pm cowfile format never got implemented. This keeps non-working cows from appearing in the `cowsay -l` list and the like.
+
+### Internal changes
+
+- Reorganize the repo to better match installation layout, and support running in-repo using `$PATH`.
+- Remove some special-casing code for the in-repo execution mode.
 
 ## 3.8.2 (2024-08-16)
 
