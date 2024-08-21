@@ -1,7 +1,7 @@
 Cowsay Changelog
 ================
 
-## 3.8.3 (unreleased)
+## 3.8.3 (2024-08-21)
 
 ### Changes
 
