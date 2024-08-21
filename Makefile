@@ -62,13 +62,13 @@ clean:
 # install time to avoid introducing a dependency on Asciidoctor for users.
 
 .PHONY: man
-man: man/cowsay.1 man/cowthink.1
+man: man/man1/cowsay.1 man/man1/cowthink.1
 
-man/cowsay.1: man/cowsay.1.adoc
-	$(ASCIIDOCTOR) -b manpage man/cowsay.1.adoc
+man/cowsay.1: man/man1/cowsay.1.adoc
+	$(ASCIIDOCTOR) -b manpage man/man1/cowsay.1.adoc
 
-man/cowthink.1: man/cowsay.1.adoc
-	$(ASCIIDOCTOR) -b manpage man/cowsay.1.adoc
+man/cowthink.1: man/man1/cowsay.1.adoc
+	$(ASCIIDOCTOR) -b manpage man/man1/cowsay.1.adoc
 
 .PHONY: install
 install:
@@ -77,8 +77,8 @@ install:
 	$(INSTALL_PROGRAM) bin/cowsay $(DESTDIR)$(bindir)/cowsay
 	$(LN_S) cowsay $(DESTDIR)$(bindir)/cowthink
 	$(INSTALL_DIR) $(DESTDIR)$(mandir)/man1
-	$(INSTALL_DATA) man/cowsay.1 $(DESTDIR)$(mandir)/man1/cowsay.1
-	$(INSTALL_DATA) man/cowsay.1 $(DESTDIR)$(mandir)/man1/cowthink.1
+	$(INSTALL_DATA) man/man1/cowsay.1 $(DESTDIR)$(mandir)/man1/cowsay.1
+	$(INSTALL_DATA) man/man1/cowthink.1 $(DESTDIR)$(mandir)/man1/cowthink.1
 	$(INSTALL_DIR) $(DESTDIR)$(cowsdir)
 	$(INSTALL_DATA) $(COW_FILES) $(DESTDIR)$(cowsdir)
 	$(INSTALL_DIR) $(DESTDIR)$(sitecowsdir)
