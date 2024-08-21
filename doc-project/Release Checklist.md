@@ -28,12 +28,12 @@ Steps to be done for a release:
   a. Use the CHANGELOG contents as the release comments.
 9. Update the cowsay-org formula over in the [homebrew-cowsay Tap repo](https://github.com/cowsay-org/homebrew-cowsay) to use the new release.
 10. Post a comment on the ["Moos & Announcements"](https://github.com/cowsay-org/cowsay/issues/48) issue.
-12. Open development on next release, if this is a major or minor release.
+11. Open development on next release, if this is a major or minor release.
   a. Bump the version in files listed above (`cowsay`, `cowsay.1.adoc`), and give it a "-SNAPSHOT" suffix.
   b. Update the CHANGELOG with a section for the new release.
   c. Rebuild the man pages with `make man`.
   d. Commit with a message like "Open development for X.Y", and push.
-13. Don't bother doing the "open development on next" steps if this is a patch release; just remember to do that if and when you start a patch release for that minor series.
+12. Don't bother doing the "open development on next" steps if this is a patch release; just remember to do that if and when you start a patch release for that minor series.
 
 ## Build environment
 
