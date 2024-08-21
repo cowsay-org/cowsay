@@ -2,7 +2,7 @@ COWSAY(1)
 =========
 :doctype: manpage
 :man source: Cowsay
-:man version: 3.8.3
+:man version: 3.9.0-SNAPSHOT
 :man manual: Cowsay Manual
 
 NAME
