@@ -25,6 +25,10 @@ As of 2024, cowsay uses Asciidoctor, not AsciiDoc, to build its man page and stu
 
 The man pages are built at code authoring time and checked in to the repo, instead of at `make install` time, so users do not need to have Asciidoctor installed in order to install cowsay.
 
+## Dev setup and testing cowsay
+
+The repo layout is organized to mimic the directory structure of the installed cowsay, so you can set up your `$PATH` to run cowsay from it, instead of the system installation location, with unqualified `cowsay` and `man cowsay` commands, instead of having to say e.g. `./bin/cowsay`. To do so, cd to the repo and run `PATH="$PWD/bin:$PATH`. (The man pages get picked up on the manpath automatically as a result of that; probably no need to set `$MANPATH` separately.) That's how I do testing as of 2024-08, and I'm thinking that future test or automation scripts will be written to work that way, instead of adding code paths to call the local `cowsay` using a full path to it. I think this approach is a good way to mimic how cowsay will work once installed.
+
 ## Releasing cowsay
 
 See `doc-project/Release Checklist.md` for the steps needed to do a cowsay release.

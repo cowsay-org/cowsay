@@ -62,14 +62,18 @@ clean:
 # install time to avoid introducing a dependency on Asciidoctor for users.
 
 .PHONY: man
-man: man/man1/cowsay.1.adoc man/man1/cowsay.1
+man: man-src/man1/cowsay.1.adoc man/man1/cowsay.1
 
 # asciidoctor generates both cowsay.1 and cowthink.1, but the cowthink.1 uses an '.so'
 # include macro that doesn't work on some systems, but symlinks do.
 # cowthink.1 is generated as a side effect of cowsay.1, but I'm not sure how
 # to declare that without a redundant target definition.
-man/man1/cowsay.1: man/man1/cowsay.1.adoc
-	$(ASCIIDOCTOR) -b manpage man/man1/cowsay.1.adoc
+# Must delete any existing cowthink.1 symlink *first*, or it may clobber the cowsay.1 file
+# with the wrong contents.
+man/man1/cowsay.1: man-src/man1/cowsay.1.adoc
+	mkdir -p man/man1
+	rm -f man/man1/cowthink.1
+	$(ASCIIDOCTOR) -b manpage -D man/man1 man-src/man1/cowsay.1.adoc
 	rm -f man/man1/cowthink.1
 	$(LN_S) cowsay.1 man/man1/cowthink.1
 
