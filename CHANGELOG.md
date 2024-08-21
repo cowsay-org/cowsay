@@ -12,6 +12,7 @@ Cowsay Changelog
 - Fix installation location ("prefix") detection for cases like user-defined symlinks, and align repo layout with installation prefix dir layout ([#49](https://github.com/cowsay-org/cowsay/issues/49), [#55](https://github.com/cowsay-org/cowsay/issues/55))
 - Remove broken .pm cows ([#54](https://github.com/cowsay-org/cowsay/issues/54))
   - Support for the .pm cowfile format never got implemented. This keeps non-working cows from appearing in the `cowsay -l` list and the like.
+- Expand `cowsay --help` screen, and the man page a bit
 
 ### Internal changes
 
