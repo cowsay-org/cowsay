@@ -12,5 +12,6 @@ Andrew Janke (<floss@apjanke.net>, <https://apjanke.net>) maintains this [cowsay
 * Hans Ulrich Niedermann (<hun@n-dimensional.de>, <https://n-dimensional.de/>)
 * Anthony Polito (<aspolito@csua.berkeley.edu>)
 * [0d9e.tech](https://0d9e.tech) members
+* hasecilu (<hasecilu@tuta.io>)
 
 This contributors list is incomplete. It doesn't include all the contributors of cows from either the original cowsay project or Andrew's cowsay-org fork. I hope to flesh it out more soon, based on our git history and some research.
