@@ -38,6 +38,10 @@ We're not accepting any new offensive cows. If you're not sure whether your cow 
 
 We ask that all new contributions be dual licensed under "GPL 1.0 or later or Artistic License 1.0" terms, for maximum compatibility with the licensing of the rest of the Cowsay code.
 
+### Licensing
+
+All contributions to Cowsay must be licensed under the current terms for new Cowsay work: dual licensed under "GNU GPL 1 or later, or Artistic License 1.0" terms. This is a broader license grant than the "GPL v3" license noted in the README and other main documentation. The licensing situation for Cowsay is a little complicated. I'm trying to sort it out, and probably switch to those "GNU GPL 1 or later or Artistic License" terms for the entire project, which is what Cowsay was initially licensed under. Requiring this broader license grant for new work supports that, and hopefully lets us get to a consistent licensing situation.
+
 ## Contact a maintainer
 
 If you have any questions about Cowsay contribution that aren't answered here or in the other doco in this repo, you can contact the maintainer Andrew via GitHub or by emailing <floss@apjanke.net>.

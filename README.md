@@ -34,7 +34,15 @@ brew install cowsay
 
 ## License
 
-Cowsay is licensed under the GPLv3. See [LICENSE.txt](LICENSE.txt) for details.
+Cowsay is licensed under the [GNU GPL 3](https://www.gnu.org/licenses/gpl-3.0.en.html).
+
+New code contributions to Cowsay (as of December 2024) are licensed under a dual license grant of GNU General Public License 1 or later and Artistic License 1.0.
+
+Many of the files in Cowsay are licensed under a broader dual-licensing grant of GNU GPL 1 or later and the Artisitic License 1.0. But not _all_ of the files in Cowsay. The exact licensing situation is a little unclear here, and clarifying it is an ongoing project. See doc-project/Licensing.md for details. I am confident that the entirety of the Cowsay distribution may be used under GNU GPL 3 terms.
+
+Sorry for the complexity here. I'm working on getting this simplified.
+
+See the [LICENSE.txt](LICENSE.txt) and doc-project/Licensing.md files for details.
 
 ## History
 

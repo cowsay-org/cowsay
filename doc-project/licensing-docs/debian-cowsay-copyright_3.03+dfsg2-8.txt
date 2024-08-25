@@ -1,0 +1,172 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: cowsay
+Upstream-Contact: Tony Monroe <tony@nog.net>
+Source: https://web.archive.org/web/20120527202447/http://www.nog.net/~tony/warez/cowsay.shtml
+
+Files: *
+Copyright: 1999-2000 Tony Monroe
+License: COWSAY
+
+Files: cows/apt.cow
+Copyright: 2002 Steven Barker <scbarker@uiuc.edu>
+License: GPL
+
+Files: cows/bong.cow
+Copyright: 1999 Lars Smith <lars@csua.berkeley.edu>
+License: COWSAY
+
+Files: cows/calvin.cow cows/cock.cow
+Copyright: 2006 Krishna Kumar <krish.kumar@gmail.com>
+License: COWSAY
+
+Files: cows/dragon-and-cow.cow
+Copyright: 1999 kube@csua.berkeley.edu
+License: COWSAY
+
+Files: cows/duck.cow
+Copyright: 1999 Gürkan Sengün <gurkan@phys.ethz.ch>
+License: COWSAY
+
+Files: cows/flaming-sheep.cow
+Copyright: 1999 Geordan Rosario <geordan@csua.berkeley.edu>
+License: COWSAY
+
+Files: cows/fox.cow
+Copyright: 2019 Hansen Wu <hansen.wu.85@gmail.com>
+License: COWSAY
+
+Files: cows/gnu.cow cows/suse.cow
+Copyright: 2006 Gerfried Fuchs <rhonda@deb.at>
+License: WTFPL-2
+ Everyone is permitted to copy and distribute verbatim or modified
+ copies of this license document, and changing it is allowed as long
+ as the name is changed.
+ .
+             DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+    TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+ .
+   0. You just DO WHAT THE FUCK YOU WANT TO.
+
+Files: cows/kangaroo.cow
+Comment: Adapted from http://sumaleth.com/files/row_ascii_collection_1.2.html.
+Copyright: Copyright (C) 1994 Rowan Crawford.
+License: GPL-2+
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this package; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files: cows/mutilated.cow
+Copyright: 1999 aspolito@csua.berkeley.edu
+License: COWSAY
+
+Files: cows/pony.cow cows/pony-smaller.cow cows/unipony.cow cows/unipony-smaller.cow
+Copyright: 2010 Nick Daly <nick.m.daly@gmail.com>
+License: COWSAY
+
+Files: cows/skeleton.cow
+Copyright: 1999 {appel,kube,rowe}@csua.berkeley.edu
+License: COWSAY
+
+Files: cows/snowman.cow
+Copyright: 2009 chrysn <chrysn@fsfe.org>
+License: COWSAY
+
+Files: cows/three-eyes.cow
+Copyright: 1999 dpetrou@csua.berkeley.edu
+License: COWSAY
+
+Files: cows/tux.cow
+Copyright: 1999 pborys@p-soft.silesia.linux.org.pl
+License: COWSAY
+
+Files: cows/vader.cow
+Copyright: 1999 geordan@csua.berkeley.edu
+License: COWSAY
+
+Files: cows/www.cow
+Copyright: 1999 lim@csua.berkeley.edu
+License: COWSAY
+
+Files: debian/*
+Copyright: 2010-2018 Francois Marier <francois@debian.org>
+           2015-2017 Tony Maillefaud <maltouzes@gmail.com>
+           2008 Gurkan Sengun <gurkan@phys.ethz.ch>
+           2007 Franz Pletz <fpletz@franz-pletz.org>
+           2005-2006 Florian Ernst <florian@debian.org>
+           2001-2003 Michael D. Ivey <ivey@debian.org>
+License: COWSAY
+
+Files: debian/cowsay_random
+Copyright: 2010 Nick Daly
+License: GPL
+
+License: COWSAY
+ ==============
+ cowsay License
+ ==============
+ .
+ cowsay is distributed under the same licensing terms as Perl: the
+ Artistic License or the GNU General Public License.  If you don't
+ want to track down these licenses and read them for yourself, use
+ the parts that I'd prefer:
+ .
+ (0) I wrote it and you didn't.
+ .
+ (1) Give credit where credit is due if you borrow the code for some
+ other purpose.
+ .
+ (2) If you have any bugfixes or suggestions, please notify me so
+ that I may incorporate them.
+ .
+ (3) If you try to make money off of cowsay, you suck.
+ .
+ ===============
+ cowsay Legalese
+ ===============
+ .
+ (0) Copyright (c) 1999 Tony Monroe.  All rights reserved.  All
+ lefts may or may not be reversed at my discretion.
+ .
+ (1) This software package can be freely redistributed or modified
+ under the terms described above in the "cowsay License" section
+ of this file.
+ .
+ (2) cowsay is provided "as is," with no warranties whatsoever,
+ expressed or implied.  If you want some implied warranty about
+ merchantability and/or fitness for a particular purpose, you will
+ not find it here, because there is no such thing here.
+ .
+ (3) I hate legalese.
+ .
+ On Debian GNU/Linux systems, the complete text of the Artistic License
+ can be found in /usr/share/common-licenses/Artistic and that of the GNU
+ Generel Public License in /usr/share/common-licenses/GPL.
+
+License: GPL
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License can be found in "/usr/share/common-licenses/GPL".
