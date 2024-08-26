@@ -62,20 +62,40 @@ clean:
 # install time to avoid introducing a dependency on Asciidoctor for users.
 
 .PHONY: man
-man: man-src/man1/cowsay.1.adoc man/man1/cowsay.1
+man: man/man1/cowsay.1
 
 # asciidoctor generates both cowsay.1 and cowthink.1, but the cowthink.1 uses an '.so'
-# include macro that doesn't work on some systems, but symlinks do.
-# cowthink.1 is generated as a side effect of cowsay.1, but I'm not sure how
-# to declare that without a redundant target definition.
-# Must delete any existing cowthink.1 symlink *first*, or it may clobber the cowsay.1 file
-# with the wrong contents.
-man/man1/cowsay.1: man-src/man1/cowsay.1.adoc
-	mkdir -p man/man1
-	rm -f man/man1/cowthink.1
-	$(ASCIIDOCTOR) -b manpage -D man/man1 man-src/man1/cowsay.1.adoc
-	rm -f man/man1/cowthink.1
-	$(LN_S) cowsay.1 man/man1/cowthink.1
+# include macro that doesn't work on some systems, while symlinks do.
+#
+# We therefore have asciidoctor write all its output to a temporary
+# directory and only move the cowsay.1 file over, not touching
+# cowthink.1 at all.
+#
+# We also only move the cowsay.1 file over if the differences are more
+# than just irrelevant metadata.
+man/man1/cowsay.1: man-src/man1/cowsay.1.adoc man-src/normalize-manpage.sed
+	@set -e; \
+	tmpdir="tmp$$$$"; \
+	if $(ASCIIDOCTOR) -b manpage -D "$$tmpdir/man/man1" man-src/man1/cowsay.1.adoc; then \
+	  sed -f man-src/normalize-manpage.sed man/man1/cowsay.1 > "$$tmpdir/man/man1/normalized-old-cowsay.1"; \
+	  sed -f man-src/normalize-manpage.sed "$$tmpdir/man/man1/cowsay.1" > "$$tmpdir/man/man1/normalized-new-cowsay.1"; \
+	  if ! test -e "man/man1/cowsay.1" || ! cmp "$$tmpdir/man/man1/normalized-old-cowsay.1" "$$tmpdir/man/man1/normalized-new-cowsay.1" > /dev/null; then \
+	    echo "Updating man/man1/cowsay.1"; \
+	    mv -f "$$tmpdir/man/man1/cowsay.1" man/man1/cowsay.1; \
+	    rm -f "$$tmpdir/man/man1/normalized-old-cowsay.1"; \
+	    rm -f "$$tmpdir/man/man1/normalized-new-cowsay.1"; \
+	    rm -f "$$tmpdir/man/man1/cowthink.1"; \
+	    rmdir "$$tmpdir/man/man1"; \
+	    rmdir "$$tmpdir/man"; \
+	    rmdir "$$tmpdir"; \
+	  else \
+	    echo "man/man1/cowsay.1 is up to date"; \
+	    rm -rf "$$tmpdir"; \
+	  fi; \
+	else \
+	  echo "Error updating man/man1/cowsay.1"; \
+	  exit 1; \
+	fi
 
 .PHONY: install
 install:
