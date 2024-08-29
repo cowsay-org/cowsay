@@ -1,0 +1,66 @@
+name: "Basic Install"
+
+on:
+  push:
+    branches-ignore: [ ]
+  pull_request:
+    branches-ignore: [ ]
+
+jobs:
+
+  installtest-ix:
+    runs-on: ${{ matrix.os }}
+
+    name: 'installtest ${{ matrix.os }}'
+
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 'Update software database (Linux)'
+        if: runner.os == 'Linux'
+        run: sudo apt-get update
+
+      - name: 'Update software database (macOS)'
+        if: runner.os == 'macOS'
+        run: brew update
+
+      - name: 'Install build requirements (Linux)'
+        if: runner.os == 'Linux'
+        run: sudo apt-get install -y asciidoctor
+
+      - name: 'Install build requirements (macOS)'
+        if: runner.os == 'macOS'
+        run: brew install asciidoctor
+
+      - name: "Install"
+        run: |
+          make install DESTDIR=$PWD/_d
+
+          echo "Files installed to DESTDIR:"
+          find $PWD/_d -print0 | sort -z | xargs -0 ls -ld | sed "\| $PWD/_d\$|d; s| $PWD/_d/| /|"
+
+      - name: "Uninstall"
+        run: |
+          make uninstall DESTDIR=$PWD/_d
+
+          echo "Files remaining in DESTDIR after uninstalling:"
+          find $PWD/_d -print0 | sort -z | xargs -0 ls -ld | sed "\| $PWD/_d\$|d; s| $PWD/_d/| /|"
+
+          find $PWD/_d -not -type d > nondir-files.txt
+          if test -s nondir-files.txt; then
+            echo "Error: Leftover item(s) in filesystem after uninstall"
+            cat nondir-files.txt | tr '\n' '\0' | sort -z | xargs -0 ls -ld | sed "\| $PWD/_d\$|d; s| $PWD/_d/| /|"
+            exit 1
+          fi
+
+      - name: "Update man pages"
+        run: |
+          test -s man-src/man1/cowsay.1.adoc
+          touch   man-src/man1/cowsay.1.adoc
+          make man
+          git diff
