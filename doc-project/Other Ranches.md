@@ -31,6 +31,10 @@ Of course, Tony Monroe's original cowsay home page, archived on the Internet Arc
 * [schacon/cowsay](https://github.com/schacon/cowsay), an old GitHub mirror of classic Cowsay.
   * Doesn't look like it really got distributed, and was kinda superseded by rank-amateur-cowsay as an archive. But it has PRs for several new cows which could be used for new development.
 * [nmyk.io/cowsay](https://pkg.go.dev/nmyk.io/cowsay), a Go port
+* CowSharp, a port to C#
+  * Was hosted on CodePlex, which is now dead. Here's some ghosts of it...
+  * [CowSharp on PowerShell Gallery](https://www.powershellgallery.com/packages/CowsaySharp/1.0.1)
+  * [Codeplex page in Wayback Machine](https://web.archive.org/web/20171226182654/https://cowsaysharp.codeplex.com/)
 * [cowsay-psh](https://github.com/lukesampson/cowsay-psh), a PowerShell port
   * [cowsay-psh announcement blog post](https://smalltech.com.au/blog/cowsay-in-powershell)
 * [VaasuDevanS/cowsay-python](https://github.com/VaasuDevanS/cowsay-python), a Python port
