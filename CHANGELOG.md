@@ -1,6 +1,10 @@
 Cowsay Changelog
 ================
 
+## 3.9.0 (unreleased)
+
+(nothing here yet)
+
 ## 3.8.5 (unreleased)
 
 ### Changes
