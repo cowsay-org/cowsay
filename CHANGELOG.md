@@ -1,16 +1,18 @@
 Cowsay Changelog
 ================
 
-## 3.8.4 (unreleased)
+## 3.8.4 (2024-11-30)
 
 ### Changes
 
-(nothing here yet)
+- Add sus (Among Us crewmate) cow.
+- Add "actually..." cow.
 
 ### Internal changes
 
 - Add `CONTRIBUTORS.md` file with contributor credits.
 - Add notes on contributing a cow, and licensing it, to `CONTRIBUTING.md`.
+  - Require "GPLv1+ and Artistic" licensing for new contributions.
 
 ## 3.8.3 (2024-08-21)
 
