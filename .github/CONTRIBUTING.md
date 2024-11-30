@@ -24,6 +24,22 @@ If you would like to see a new feature in cowsay, whether you wish to work on it
 
 Pull requests for minor fixes (to code or documentation) are welcome.
 
-## Upstream contributions
+Pull requests for new cows are fine.
 
-Please do *not* send any bug reports or pull requests to [the upstream project](https://github.com/tnalpgge/rank-amateur-cowsay). The original author has moved on and is not interested in maintaining cowsay any further.
+### Contributing a new cow
+
+New cows can be contributed by [submitting a pull request](https://github.com/cowsay-org/cowsay/pulls) on the cowsay repo on GitHub.
+
+Feel free to add yourself to the `CONTRIBUTORS.md` file as part of the code changes in that pull request. And if you want to save me some admin work, add a "`- Add "<cowname>" cow`" entry to the `CHANGELOG.md`, file in the "Changes" section for the relevant "(unreleased)" cowsay version near the top of the file.
+
+We're not accepting any new offensive cows. If you're not sure whether your cow would be considered offensive, ask in a PR or bug report, or by emailing the maintainer.
+
+We ask that all new contributions be dual licensed under both GPL 3.0 "or later" and the Artistic License 1.0, for maximum compatibility with the licensing of the rest of the Cowsay code.
+
+## Contact a maintainer
+
+If you have any questions about Cowsay contribution that aren't answered here or in the other doco in this repo, you can contact the maintainer Andrew via GitHub or by emailing <floss@apjanke.net>.
+
+## "Upstream" contributions and the original cowsay project
+
+Please do not send any bug reports or pull requests to [the original cowsay project](https://github.com/tnalpgge/rank-amateur-cowsay). The original author has moved on and is not interested in maintaining cowsay any further. That project is no longer maintained. This cowsay-org project does not upstream its changes to the original project.

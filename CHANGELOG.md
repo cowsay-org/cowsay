@@ -5,6 +5,17 @@ Cowsay Changelog
 
 (nothing here yet)
 
+## 3.8.4 (unreleased)
+
+### Changes
+
+(nothing here yet)
+
+### Internal changes
+
+- Add `CONTRIBUTORS.md` file with contributor credits.
+- Add notes on contributing a cow, and licensing it, to `CONTRIBUTING.md`.
+
 ## 3.8.3 (2024-08-21)
 
 ### Changes
