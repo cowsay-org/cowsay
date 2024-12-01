@@ -3,7 +3,9 @@ Cowsay Changelog
 
 ## 3.8.5 (unreleased)
 
-(nothing here yet)
+### Changes
+
+- Fix tabs in moofasa.cow to spaces.
 
 ## 3.8.4 (2024-11-30)
 
