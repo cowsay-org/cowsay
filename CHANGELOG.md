@@ -7,6 +7,7 @@ Cowsay Changelog
 
 - Require Perl 5.8.7 or later.
 - Fix character counts for multibyte UTF-8 inputs. ([#69](https://github.com/cowsay-org/cowsay/issues/69))
+- Apply `use utf8;` to UTF8-encoded cows (actually, alpaca, sus). ([#69](https://github.com/cowsay-org/cowsay/issues/69))
 - Move man pages to section 6 ("games"). ([#60](https://github.com/cowsay-org/cowsay/issues/60))
 - Add `animalsay` invocation mode for selecting a random animal, like Fedora's package customization provides.
 - Add `-H` option to activte thinking mode while still calling `cowsay` instead of `cowthink`.
