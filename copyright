@@ -21,7 +21,7 @@ License: COWSAY
 
 Files: share/cowsay/alpaca.cow
 Copyright: 2022 Joel Maximilian Mai <joel@maispace.de>
-License: GPL-3.0-only
+License: COWSAY
 
 Files: share/cowsay/cows/bong.cow
 Copyright: 1999 Lars Smith <lars@csua.berkeley.edu>
