@@ -56,7 +56,7 @@ sub enable_utf8_input() {
     'W'         =>      40,
 );
 
-getopts('bCde:f:ghlLnNprstT:wW:y', \%opts);
+getopts('bCde:f:ghlLnNprstHT:wW:y', \%opts);
 
 if ($opts{'h'}) {
     &HELP_MESSAGE;
@@ -74,11 +74,19 @@ $stoned = $opts{'s'};
 $tired = $opts{'t'};
 $wired = $opts{'w'};
 $young = $opts{'y'};
+$thinking = $opts{'H'};
 $eyes = substr($opts{'e'}, 0, 2);
 $tongue = substr($opts{'T'}, 0, 2);
 $specified_cow = $opts{'f'};
 $cow_file_path = "";
 $the_cow = "";
+
+if ($0 =~ /think/i) {
+    $thinking = 1;
+}
+if ($0 =~ /animalsay/i) {
+    $random = 1;
+}
 
 &slurp_input;
 $Text::Wrap::columns = $opts{'W'};
@@ -271,7 +279,7 @@ sub construct_balloon {
     my $max2 = $max + 2;        # border space fudge.
     my $format = "%s %-${max}s %s\n";
     my @border; # up-left, up-right, down-left, down-right, left, right
-    if ($0 =~ /think/i) {
+    if ($thinking) {
         $thoughts = 'o';
         @border = qw[ ( ) ( ) ( ) ];
     } elsif (@message < 2) {
