@@ -5,15 +5,19 @@ Cowsay Changelog
 
 ### Changes
 
+- Expand and update documentation about licensing.
 - Use core Homebrew `cowsay` formula in macOS install instructions, since they picked up cowsay-org recently!
 - Fix tabs in moofasa.cow to spaces.
 - Fix "Sywalker" typo in luke-koala.cow.
+- Fix flipped orientation for elephant-in-snake cow image.
 - Enable reproducible man page builds.
 - Include cowsay version in man page footer.
 
 ### Internal changes
 
 - Add Debian style `copyright` file, updated for the cowsay-org fork's contributions.
+- Enable GitHub CI testing.
+- Reliable symlink deletion in `make install` target.
 
 ## 3.8.4 (2024-11-30)
 
