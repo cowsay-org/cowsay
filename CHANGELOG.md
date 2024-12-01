@@ -9,6 +9,7 @@ Cowsay Changelog
 - Fix tabs in moofasa.cow to spaces.
 - Fix "Sywalker" typo in luke-koala.cow.
 - Enable reproducible man page builds.
+- Include cowsay version in man page footer.
 
 ## 3.8.4 (2024-11-30)
 

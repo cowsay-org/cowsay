@@ -1,7 +1,8 @@
 COWSAY(1)
 =========
 :doctype: manpage
-:man source: Cowsay
+:release-version: 3.8.5-SNAPSHOT
+:man source: Cowsay {release-version}
 :man version: 3.8.5-SNAPSHOT
 :man manual: Cowsay Manual
 
