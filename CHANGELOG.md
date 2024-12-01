@@ -6,6 +6,7 @@ Cowsay Changelog
 ### Changes
 
 - Fix tabs in moofasa.cow to spaces.
+- Fix "Sywalker" typo in luke-koala.cow
 
 ## 3.8.4 (2024-11-30)
 
