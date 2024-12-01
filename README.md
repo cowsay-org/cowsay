@@ -54,7 +54,7 @@ As of 2016, Monroe was no longer interested in maintaining Cowsay, and posted a 
 
 ## Requirements
 
-Cowsay requires Perl 5.005_03 or later. Because all our development and testing is done with the Perl from recent OS distributions, it may well require a version newer than 5.005_03, but I'm not sure exactly which.
+Cowsay requires Perl 5.8.7 or later.
 
 ## Other cow collections
 

@@ -3,7 +3,10 @@ Cowsay Changelog
 
 ## 3.9.0 (unreleased)
 
-(nothing here yet)
+### Changes
+
+- Require Perl 5.8.7 or later.
+- Fix character counts for multibyte UTF-8 inputs. ([#69](https://github.com/cowsay-org/cowsay/issues/69))
 
 ## 3.8.5 (unreleased)
 
