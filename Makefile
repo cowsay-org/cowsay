@@ -38,6 +38,11 @@ PRINTF = printf
 SORT = sort
 WC = wc
 
+doc_DATA =
+doc_DATA += CHANGELOG.md
+doc_DATA += LICENSE.txt
+doc_DATA += README.md
+
 # If you implement support for *.pm cows, add share/cows/*.pm here.
 #
 # Note that this is a list of shell globs to be evaluated by the shell, not a list of
@@ -62,24 +67,47 @@ clean:
 # install time to avoid introducing a dependency on Asciidoctor for users.
 
 .PHONY: man
-man: man-src/man1/cowsay.1.adoc man/man1/cowsay.1
+man: man/man1/cowsay.1
 
 # asciidoctor generates both cowsay.1 and cowthink.1, but the cowthink.1 uses an '.so'
-# include macro that doesn't work on some systems, but symlinks do.
-# cowthink.1 is generated as a side effect of cowsay.1, but I'm not sure how
-# to declare that without a redundant target definition.
-# Must delete any existing cowthink.1 symlink *first*, or it may clobber the cowsay.1 file
-# with the wrong contents.
-man/man1/cowsay.1: man-src/man1/cowsay.1.adoc
-	mkdir -p man/man1
-	rm -f man/man1/cowthink.1
-	$(ASCIIDOCTOR) -b manpage -D man/man1 man-src/man1/cowsay.1.adoc
-	rm -f man/man1/cowthink.1
-	$(LN_S) cowsay.1 man/man1/cowthink.1
+# include macro that doesn't work on some systems, while symlinks do.
+#
+# We therefore have asciidoctor write all its output to a temporary
+# directory and only move the cowsay.1 file over, not touching
+# cowthink.1 at all.
+#
+# We also only move the cowsay.1 file over if the differences are more
+# than just irrelevant metadata.
+man/man1/cowsay.1: man-src/man1/cowsay.1.adoc man-src/normalize-manpage.sed
+	@set -e; \
+	tmpdir="tmp$$$$"; \
+	if $(ASCIIDOCTOR) -b manpage -D "$$tmpdir/man/man1" man-src/man1/cowsay.1.adoc; then \
+	  sed -f man-src/normalize-manpage.sed man/man1/cowsay.1 > "$$tmpdir/man/man1/normalized-old-cowsay.1"; \
+	  sed -f man-src/normalize-manpage.sed "$$tmpdir/man/man1/cowsay.1" > "$$tmpdir/man/man1/normalized-new-cowsay.1"; \
+	  if ! test -e "man/man1/cowsay.1" || ! cmp "$$tmpdir/man/man1/normalized-old-cowsay.1" "$$tmpdir/man/man1/normalized-new-cowsay.1" > /dev/null; then \
+	    echo "Updating man/man1/cowsay.1"; \
+	    mv -f "$$tmpdir/man/man1/cowsay.1" man/man1/cowsay.1; \
+	    rm -f "$$tmpdir/man/man1/normalized-old-cowsay.1"; \
+	    rm -f "$$tmpdir/man/man1/normalized-new-cowsay.1"; \
+	    rm -f "$$tmpdir/man/man1/cowthink.1"; \
+	    rmdir "$$tmpdir/man/man1"; \
+	    rmdir "$$tmpdir/man"; \
+	    rmdir "$$tmpdir"; \
+	  else \
+	    echo "man/man1/cowsay.1 is up to date"; \
+	    rm -rf "$$tmpdir"; \
+	  fi; \
+	else \
+	  echo "Error updating man/man1/cowsay.1"; \
+	  exit 1; \
+	fi
 
 .PHONY: install
 install:
+	$(INSTALL_DIR) $(DESTDIR)$(docdir)
+	$(INSTALL_DATA) $(doc_DATA) $(DESTDIR)$(docdir)
 	$(INSTALL_DIR) $(DESTDIR)$(cowpathdir)
+	$(INSTALL_DATA) etc/cowsay/cowpath.d/README.md $(DESTDIR)$(cowpathdir)
 	$(INSTALL_DIR) $(DESTDIR)$(bindir)
 	$(INSTALL_PROGRAM) bin/cowsay $(DESTDIR)$(bindir)/cowsay
 	rm -f $(DESTDIR)$(bindir)/cowthink
@@ -89,8 +117,10 @@ install:
 	rm -f $(DESTDIR)$(mandir)/man1/cowthink.1
 	$(LN_S) cowsay.1 $(DESTDIR)$(mandir)/man1/cowthink.1
 	$(INSTALL_DIR) $(DESTDIR)$(cowsdir)
+	$(INSTALL_DATA) share/cowsay/cows/README.md $(DESTDIR)$(cowsdir)
 	$(INSTALL_DATA) $(COW_FILES) $(DESTDIR)$(cowsdir)
 	$(INSTALL_DIR) $(DESTDIR)$(sitecowsdir)
+	$(INSTALL_DATA) share/cowsay/site-cows/README.md $(DESTDIR)$(sitecowsdir)
 
 .PHONY: uninstall
 uninstall:
@@ -100,10 +130,21 @@ uninstall:
 	  $(DESTDIR)$(bindir)/cowthink \
 	  $(DESTDIR)$(mandir)/man1/cowsay.1 \
 	  $(DESTDIR)$(mandir)/man1/cowthink.1 \
+	  $(DESTDIR)$(cowpathdir)/README.md \
+	  $(DESTDIR)$(cowsdir)/README.md \
+	  $(DESTDIR)$(sitecowsdir)/README.md \
         ; do \
 	  if test -f "$$f" || test -L "$$f"; then \
 	    echo "rm -f $$f"; \
 	    rm -f "$$f"; \
+	  fi; \
+	done
+	@set -e; \
+	for f in $(doc_DATA); do \
+	  df="$(DESTDIR)$(docdir)/$$(basename "$$f")"; \
+	  if test -f "$$df"; then \
+	    echo "rm -f $$df"; \
+	    rm -f "$$df"; \
 	  fi; \
 	done
 	@set -e; \
@@ -115,7 +156,7 @@ uninstall:
 	  fi; \
 	done
 	@set -e; \
-	for dir in $(cowsdir) $(sitecowsdir) $(pkgdatadir) $(cowpathdir) $(pkgsysconfdir); do \
+	for dir in $(docdir) $(cowsdir) $(sitecowsdir) $(pkgdatadir) $(cowpathdir) $(pkgsysconfdir); do \
 	  $(PRINTF) "%s\n" "$$dir"; \
 	done \
 	| $(AWK) '{ print length, $$0 }' | $(SORT) -n -r | $(CUT) -d" " -f2- \
