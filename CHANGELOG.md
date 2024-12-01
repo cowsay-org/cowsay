@@ -8,6 +8,7 @@ Cowsay Changelog
 - Use core Homebrew `cowsay` formula in macOS install instructions, since they picked up cowsay-org recently!
 - Fix tabs in moofasa.cow to spaces.
 - Fix "Sywalker" typo in luke-koala.cow.
+- Enable reproducible man page builds.
 
 ## 3.8.4 (2024-11-30)
 

@@ -50,16 +50,16 @@ all:
 
 .PHONY: clean
 clean:
-	@echo "Nothing to do - 'make clean' is a no-op."
+	rm -rf build
 
 # The 'man' target creates cowsay.1, cowthink.1, and other man pages.
 #
 # The 'man' target is intended for use at authoring time, not at build time, so it is not
 # part of the normal build sequence, and its outputs are checked into the source repo.
 #
-# This is partially to simplify the build process, and partially to preserve the internal
-# "update" timestamp inside the man pages. We also do this at authoring time instead of
-# install time to avoid introducing a dependency on Asciidoctor for users.
+# This is to simplify the build process. We also do this at authoring time instead of
+# install time to avoid introducing a dependency on Asciidoctor for end users, who may
+# want to run directly from the repo without a build step.
 
 .PHONY: man
 man: man/man1/cowsay.1
@@ -75,23 +75,23 @@ man: man/man1/cowsay.1
 # than just irrelevant metadata.
 man/man1/cowsay.1: man-src/man1/cowsay.1.adoc man-src/normalize-manpage.sed
 	@set -e; \
-	tmpdir="tmp$$$$"; \
-	if $(ASCIIDOCTOR) -b manpage -D "$$tmpdir/man/man1" man-src/man1/cowsay.1.adoc; then \
-	  sed -f man-src/normalize-manpage.sed man/man1/cowsay.1 > "$$tmpdir/man/man1/normalized-old-cowsay.1"; \
-	  sed -f man-src/normalize-manpage.sed "$$tmpdir/man/man1/cowsay.1" > "$$tmpdir/man/man1/normalized-new-cowsay.1"; \
-	  if ! test -e "man/man1/cowsay.1" || ! cmp "$$tmpdir/man/man1/normalized-old-cowsay.1" "$$tmpdir/man/man1/normalized-new-cowsay.1" > /dev/null; then \
-	    echo "Updating man/man1/cowsay.1"; \
-	    mv -f "$$tmpdir/man/man1/cowsay.1" man/man1/cowsay.1; \
-	    rm -f "$$tmpdir/man/man1/normalized-old-cowsay.1"; \
-	    rm -f "$$tmpdir/man/man1/normalized-new-cowsay.1"; \
-	    rm -f "$$tmpdir/man/man1/cowthink.1"; \
-	    rmdir "$$tmpdir/man/man1"; \
-	    rmdir "$$tmpdir/man"; \
-	    rmdir "$$tmpdir"; \
+	if ! test -d build; then mkdir build; fi; \
+	tmpdir="build/tmp$$$$"; \
+	if $(ASCIIDOCTOR) -a reproducible -b manpage -D "$$tmpdir/man/man1" man-src/man1/cowsay.1.adoc; then \
+	  if test -f man/man1/cowsay.1; then \
+	    sed -f man-src/normalize-manpage.sed man/man1/cowsay.1 > "$$tmpdir/man/man1/normalized-old-cowsay.1"; \
+	    sed -f man-src/normalize-manpage.sed "$$tmpdir/man/man1/cowsay.1" > "$$tmpdir/man/man1/normalized-new-cowsay.1"; \
+	    if ! test -e "man/man1/cowsay.1" || ! cmp "$$tmpdir/man/man1/normalized-old-cowsay.1" "$$tmpdir/man/man1/normalized-new-cowsay.1" > /dev/null; then \
+	      echo "Updating man/man1/cowsay.1"; \
+	      mv -f "$$tmpdir/man/man1/cowsay.1" man/man1/cowsay.1; \
+	    else \
+	      echo "man/man1/cowsay.1 is up to date"; \
+	    fi; \
 	  else \
-	    echo "man/man1/cowsay.1 is up to date"; \
-	    rm -rf "$$tmpdir"; \
+	    echo "Regenerating man/man1/cowsay.1"; \
+		mv -f "$$tmpdir/man/man1/cowsay.1" man/man1/cowsay.1; \
 	  fi; \
+	  rm -rf "$$tmpdir"; \
 	else \
 	  echo "Error updating man/man1/cowsay.1"; \
 	  exit 1; \

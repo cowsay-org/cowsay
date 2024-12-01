@@ -2,7 +2,7 @@
 
 # cowsay-specific stuff to exclude
 
-# (nothing here currently)
+build/
 
 # Local artifacts and output files and the like 
 
