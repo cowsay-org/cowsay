@@ -1,0 +1,25 @@
+## vim:ft=perl:
+## GNU/say - (c) 2006 Gerfried Fuchs <rhonda@deb.at>
+##               distributed under the WTFPLv2 license
+##
+$the_cow = <<"EOC";
+    $thoughts               ,-----._
+  .  $thoughts         .  ,'        `-.__,------._
+ //   $thoughts      __\\\\'                        `-.
+((    _____-'___))                           |
+ `:='/     (alf_/                            |
+ `.=|      |='                               |
+    |)   O |                                  \\
+    |      |                               /\\  \\
+    |     /                          .    /  \\  \\
+    |    .-..__            ___   .--' \\  |\\   \\  |
+   |o o  |     ``--.___.  /   `-'      \\  \\\\   \\ |
+    `--''        '  .' / /             |  | |   | \\
+     $tongue          |  | / /              |  | |   mmm
+                 |  ||  |              | /| |
+                 ( .' \\ \\              || | |
+                 | |   \\ \\            // / /
+                 | |    \\ \\          || |_|
+                /  |    |_/         /_|
+               /__/
+EOC
