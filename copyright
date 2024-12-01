@@ -27,7 +27,7 @@ Files: share/cowsay/cows/bong.cow
 Copyright: 1999 Lars Smith <lars@csua.berkeley.edu>
 License: COWSAY
 
-Files: share/cowsay/cupcake.cow
+Files: share/cowsay/cows/cupcake.cow
 Copyright: 2022 Nuthan B
 License: GPL-3.0-only
 
