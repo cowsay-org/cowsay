@@ -34,7 +34,9 @@ Feel free to add yourself to the `CONTRIBUTORS.md` file as part of the code chan
 
 We're not accepting any new offensive cows. If you're not sure whether your cow would be considered offensive, ask in a PR or bug report, or by emailing the maintainer.
 
-We ask that all new contributions be dual licensed under both GPL 3.0 "or later" and the Artistic License 1.0, for maximum compatibility with the licensing of the rest of the Cowsay code.
+### Contribution licensing
+
+We ask that all new contributions be dual licensed under "GPL 1.0 or later or Artistic License 1.0" terms, for maximum compatibility with the licensing of the rest of the Cowsay code.
 
 ## Contact a maintainer
 
