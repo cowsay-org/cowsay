@@ -1,6 +1,9 @@
 ##
 ## Very sus cow
 ##
+
+use utf8;
+
 $eyes = '  ' unless ($eyes ne 'oo');
 
 $the_cow = <<"EOC";
