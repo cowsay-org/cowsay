@@ -14,6 +14,7 @@ Cowsay Changelog
 
 - Add sus (Among Us crewmate) cow.
 - Add "actually..." cow.
+- Fix elephant-in-snake cow image orientation.
 
 ### Internal changes
 
