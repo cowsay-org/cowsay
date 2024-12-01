@@ -23,8 +23,16 @@ Files: share/cowsay/alpaca.cow
 Copyright: 2022 Joel Maximilian Mai <joel@maispace.de>
 License: COWSAY
 
+Files: share/cowsay/cows/apt.cow
+Copyright: 2002 Steven Barker <scbarker@uiuc.edu>
+License: GPL
+
 Files: share/cowsay/cows/bong.cow
 Copyright: 1999 Lars Smith <lars@csua.berkeley.edu>
+License: COWSAY
+
+Files: share/cowsay/cows/calvin.cow share/cowsay/cows/cock.cow
+Copyright: 2006 Krishna Kumar <krish.kumar@gmail.com>
 License: COWSAY
 
 Files: share/cowsay/cows/cupcake.cow
@@ -35,6 +43,10 @@ Files: share/cowsay/cows/dragon-and-cow.cow
 Copyright: 1999 kube@csua.berkeley.edu
 License: COWSAY
 
+Files: share/cowsay/cows/duck.cow
+Copyright: 1999 Gürkan Sengün <gurkan@phys.ethz.ch>
+License: COWSAY
+
 Files: share/cowsay/cows/flaming-sheep.cow
 Copyright: 1999 Geordan Rosario <geordan@csua.berkeley.edu>
 License: COWSAY
@@ -42,6 +54,39 @@ License: COWSAY
 Files: share/cowsay/cows/fox.cow
 Copyright: 2019 Hansen Wu <hansen.wu.85@gmail.com>
 License: COWSAY
+
+Files: share/cowsay/cows/gnu.cow share/cowsay/cows/suse.cow
+Copyright: 2006 Gerfried Fuchs <rhonda@deb.at>
+License: WTFPL-2
+ Everyone is permitted to copy and distribute verbatim or modified
+ copies of this license document, and changing it is allowed as long
+ as the name is changed.
+ .
+             DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+    TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+ .
+   0. You just DO WHAT THE FUCK YOU WANT TO.
+
+Files: share/cowsay/cows/kangaroo.cow
+Comment: Adapted from http://sumaleth.com/files/row_ascii_collection_1.2.html.
+Copyright: Copyright (C) 1994 Rowan Crawford.
+License: GPL-2+
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this package; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ version 2 can be found in `/usr/share/common-licenses/GPL-2'.
 
 Files: share/cowsay/cows/llama.cow
 Copyright: 2020 con-f-use <con-f-use@users.noreply.github.com>
@@ -51,8 +96,16 @@ Files: share/cowsay/cows/mutilated.cow
 Copyright: 1999 aspolito@csua.berkeley.edu
 License: COWSAY
 
+Files: share/cowsay/cows/pony.cow share/cowsay/cows/pony-smaller.cow share/cowsay/cows/unipony.cow share/cowsay/cows/unipony-smaller.cow
+Copyright: 2010 Nick Daly <nick.m.daly@gmail.com>
+License: COWSAY
+
 Files: share/cowsay/cows/skeleton.cow
 Copyright: 1999 {appel,kube,rowe}@csua.berkeley.edu
+License: COWSAY
+
+Files: share/cowsay/cows/snowman.cow
+Copyright: 2009 chrysn <chrysn@fsfe.org>
 License: COWSAY
 
 Files: share/cowsay/cows/three-eyes.cow

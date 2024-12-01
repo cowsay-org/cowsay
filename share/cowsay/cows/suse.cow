@@ -1,0 +1,12 @@
+## vim:ft=perl:
+## SuSE thingy - (c) 2006 Gerfried Fuchs <rhonda@deb.at>
+##                   distributed under the WTFPLv2 license
+##
+$the_cow = <<"EOC";
+  $thoughts
+   ${thoughts}____
+  /@    ~-.
+  \\/ __ .- |
+   // //  @
+EOC
+

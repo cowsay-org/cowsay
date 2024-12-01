@@ -1,0 +1,36 @@
+#
+# A (big) pony!
+# Copyright 2010 Nick Daly <nick.m.daly@gmail.com>
+# Released under the same terms as cowsay
+#
+$the_cow = <<"EOC";
+   $thoughts             \\
+    $thoughts             \\_
+     $thoughts             \\\\
+      $thoughts             \\\\/\\
+       $thoughts            _\\\\/
+        $thoughts         /   -\\
+         $thoughts      /  $eyes   -\\
+          $thoughts   /           \\
+             |    ---\\    -\\
+             \\--/     \\     \\
+              $tongue       |      -\\
+                        \\       -\\         -------------\\    /-\\
+                         \\        \\-------/              ---/    \\
+                          \\                                  |\\   \\
+                           |                                 / |  |
+                           \\                                |  \\  |
+                            |                              /    \\ |
+                            |                             /     \\ |
+                             \\                             \\     \\|
+                              -              /--------\\    |      o
+                               \\+   +---------          \\   |
+                                |   |                   |   \\
+                                |   |                    \\   |
+                                |   |                    |   \\
+                                |   |                     \\   |
+                                 \\  |                     |   |
+                                 |  |                      \\  \\
+                                 |  |                      |   |
+                                 +--+                       ---+
+EOC

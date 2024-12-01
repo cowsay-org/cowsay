@@ -1,0 +1,16 @@
+# a snowman
+# (c) 2009 chrysn <chrysn@fsfe.org>
+# published under the same terms as cowsay or cc-by-3.0, at your discretion
+$the_cow = <<EOF
+   $thoughts
+ ___###
+   /$eyes\\ |||
+   \\$tongue/ \\|/
+   /""\\  I
+()|    |(I)
+   \\  /  I
+  /""""\\ I
+ |      |I
+ |      |I
+  \\____/ I
+EOF
