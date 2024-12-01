@@ -20,6 +20,7 @@ SYNOPSIS
   [*-e* 'eye_string']
   [*-T* 'tongue_string']
   [*-bdgpstwy*]
+  [*-H*]
   [*-n*]
   [*-W* 'column']
   [<message>]
@@ -40,6 +41,8 @@ The *-W* specifies roughly where the message should be wrapped.  The default is 
 If any command-line arguments are left over after all switches have been processed, they become the cow's message, instead of using standard input.  Standard input is ignored in this case.
 
 If the program is invoked as *cowthink*, then the cow will think its message instead of saying it.  (This is indicated by a "thought bubble" appearance in the displayed cow image.  Cowsay does not take a philosophical position on whether actual cognition is occurring.)
+
+If the program is invoked as *animalsay*, then a randomly-selected cowfile will be used, which may not even be a cow at all.  This is equivalent to *cowsay -r*.
 
 (The resulting picture is technically not necessarily ASCII.  It may be in other encodings, and contain non-ASCII characters, or even terminal-control character sequences, depending on your environment and the particular cow definition files used.)
 
@@ -80,6 +83,9 @@ Cow modification
 
 *-T*::
     Selects the appearance of the cow's tongue.  The 'tongue_string' argument must be two characters.  By default, no tongue appears, except in the 'dead' and 'stoned' modes.
+
+*-H*::
+    Selects "thinking" mode, with the message displayed in a thought bubble instead of a speech bubble. This is equivalent to invoking the program as *cowthink*.
 
 Cow selection
 ~~~~~~~~~~~~~

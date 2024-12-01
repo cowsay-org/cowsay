@@ -36,6 +36,7 @@ cowsay, cowthink \- configurable speaking/thinking cow (and a bit more)
 [\fB\-e\fP \fIeye_string\fP]
 [\fB\-T\fP \fItongue_string\fP]
 [\fB\-bdgpstwy\fP]
+[\fB\-H\fP]
 [\fB\-n\fP]
 [\fB\-W\fP \fIcolumn\fP]
 [<message>]
@@ -54,6 +55,8 @@ The \fB\-W\fP specifies roughly where the message should be wrapped.  The defaul
 If any command\-line arguments are left over after all switches have been processed, they become the cow\(cqs message, instead of using standard input.  Standard input is ignored in this case.
 .sp
 If the program is invoked as \fBcowthink\fP, then the cow will think its message instead of saying it.  (This is indicated by a "thought bubble" appearance in the displayed cow image.  Cowsay does not take a philosophical position on whether actual cognition is occurring.)
+.sp
+If the program is invoked as \fBanimalsay\fP, then a randomly\-selected cowfile will be used, which may not even be a cow at all.  This is equivalent to \fBcowsay \-r\fP.
 .sp
 (The resulting picture is technically not necessarily ASCII.  It may be in other encodings, and contain non\-ASCII characters, or even terminal\-control character sequences, depending on your environment and the particular cow definition files used.)
 .SH "OPTIONS"
@@ -109,6 +112,11 @@ Selects the appearance of the cow\(cqs eyes, in which case the first two charact
 \fB\-T\fP
 .RS 4
 Selects the appearance of the cow\(cqs tongue.  The \fItongue_string\fP argument must be two characters.  By default, no tongue appears, except in the \fIdead\fP and \fIstoned\fP modes.
+.RE
+.sp
+\fB\-H\fP
+.RS 4
+Selects "thinking" mode, with the message displayed in a thought bubble instead of a speech bubble. This is equivalent to invoking the program as \fBcowthink\fP.
 .RE
 .SS "Cow selection"
 .sp
