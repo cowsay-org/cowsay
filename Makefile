@@ -52,7 +52,7 @@ all:
 clean:
 	rm -rf build
 
-# The 'man' target creates cowsay.1, cowthink.1, and other man pages.
+# The 'man' target creates cowsay.6, cowthink.6, and other man pages.
 #
 # The 'man' target is intended for use at authoring time, not at build time, so it is not
 # part of the normal build sequence, and its outputs are checked into the source repo.
@@ -62,38 +62,38 @@ clean:
 # want to run directly from the repo without a build step.
 
 .PHONY: man
-man: man/man1/cowsay.1
+man: man/man6/cowsay.6
 
-# asciidoctor generates both cowsay.1 and cowthink.1, but the cowthink.1 uses an '.so'
+# asciidoctor generates both cowsay.6 and cowthink.6, but the cowthink.6 uses an '.so'
 # include macro that doesn't work on some systems, while symlinks do.
 #
 # We therefore have asciidoctor write all its output to a temporary
-# directory and only move the cowsay.1 file over, not touching
-# cowthink.1 at all.
+# directory and only move the cowsay.6 file over, not touching
+# cowthink.6 at all.
 #
-# We also only move the cowsay.1 file over if the differences are more
+# We also only move the cowsay.6 file over if the differences are more
 # than just irrelevant metadata.
-man/man1/cowsay.1: man-src/man1/cowsay.1.adoc man-src/normalize-manpage.sed
+man/man6/cowsay.6: man-src/man6/cowsay.6.adoc man-src/normalize-manpage.sed
 	@set -e; \
 	if ! test -d build; then mkdir build; fi; \
 	tmpdir="build/tmp$$$$"; \
-	if $(ASCIIDOCTOR) -a reproducible -b manpage -D "$$tmpdir/man/man1" man-src/man1/cowsay.1.adoc; then \
-	  if test -f man/man1/cowsay.1; then \
-	    sed -f man-src/normalize-manpage.sed man/man1/cowsay.1 > "$$tmpdir/man/man1/normalized-old-cowsay.1"; \
-	    sed -f man-src/normalize-manpage.sed "$$tmpdir/man/man1/cowsay.1" > "$$tmpdir/man/man1/normalized-new-cowsay.1"; \
-	    if ! test -e "man/man1/cowsay.1" || ! cmp "$$tmpdir/man/man1/normalized-old-cowsay.1" "$$tmpdir/man/man1/normalized-new-cowsay.1" > /dev/null; then \
-	      echo "Updating man/man1/cowsay.1"; \
-	      mv -f "$$tmpdir/man/man1/cowsay.1" man/man1/cowsay.1; \
+	if $(ASCIIDOCTOR) -a reproducible -b manpage -D "$$tmpdir/man/man6" man-src/man6/cowsay.6.adoc; then \
+	  if test -f man/man6/cowsay.6; then \
+	    sed -f man-src/normalize-manpage.sed man/man6/cowsay.6 > "$$tmpdir/man/man6/normalized-old-cowsay.6"; \
+	    sed -f man-src/normalize-manpage.sed "$$tmpdir/man/man6/cowsay.6" > "$$tmpdir/man/man6/normalized-new-cowsay.6"; \
+	    if ! test -e "man/man6/cowsay.6" || ! cmp "$$tmpdir/man/man6/normalized-old-cowsay.6" "$$tmpdir/man/man6/normalized-new-cowsay.6" > /dev/null; then \
+	      echo "Updating man/man6/cowsay.6"; \
+	      mv -f "$$tmpdir/man/man6/cowsay.6" man/man6/cowsay.6; \
 	    else \
-	      echo "man/man1/cowsay.1 is up to date"; \
+	      echo "man/man6/cowsay.6 is up to date"; \
 	    fi; \
 	  else \
-	    echo "Regenerating man/man1/cowsay.1"; \
-		mv -f "$$tmpdir/man/man1/cowsay.1" man/man1/cowsay.1; \
+	    echo "Regenerating man/man6/cowsay.6"; \
+		mv -f "$$tmpdir/man/man6/cowsay.6" man/man6/cowsay.6; \
 	  fi; \
 	  rm -rf "$$tmpdir"; \
 	else \
-	  echo "Error updating man/man1/cowsay.1"; \
+	  echo "Error updating man/man6/cowsay.6"; \
 	  exit 1; \
 	fi
 
@@ -104,10 +104,10 @@ install:
 	$(INSTALL_PROGRAM) bin/cowsay $(DESTDIR)$(bindir)/cowsay
 	rm -f $(DESTDIR)$(bindir)/cowthink
 	$(LN_S) cowsay $(DESTDIR)$(bindir)/cowthink
-	$(INSTALL_DIR) $(DESTDIR)$(mandir)/man1
-	$(INSTALL_DATA) man/man1/cowsay.1 $(DESTDIR)$(mandir)/man1/cowsay.1
-	rm -f $(DESTDIR)$(mandir)/man1/cowthink.1
-	$(LN_S) cowsay.1 $(DESTDIR)$(mandir)/man1/cowthink.1
+	$(INSTALL_DIR) $(DESTDIR)$(mandir)/man6
+	$(INSTALL_DATA) man/man6/cowsay.6 $(DESTDIR)$(mandir)/man6/cowsay.6
+	rm -f $(DESTDIR)$(mandir)/man6/cowthink.6
+	$(LN_S) cowsay.6 $(DESTDIR)$(mandir)/man6/cowthink.6
 	$(INSTALL_DIR) $(DESTDIR)$(cowsdir)
 	$(INSTALL_DATA) $(COW_FILES) $(DESTDIR)$(cowsdir)
 	$(INSTALL_DIR) $(DESTDIR)$(sitecowsdir)
@@ -118,8 +118,8 @@ uninstall:
 	for f in \
 	  $(DESTDIR)$(bindir)/cowsay \
 	  $(DESTDIR)$(bindir)/cowthink \
-	  $(DESTDIR)$(mandir)/man1/cowsay.1 \
-	  $(DESTDIR)$(mandir)/man1/cowthink.1 \
+	  $(DESTDIR)$(mandir)/man6/cowsay.6 \
+	  $(DESTDIR)$(mandir)/man6/cowthink.6 \
         ; do \
 	  if test -f "$$f" || test -L "$$f"; then \
 	    echo "rm -f $$f"; \

@@ -60,7 +60,7 @@ jobs:
 
       - name: "Update man pages"
         run: |
-          test -s man-src/man1/cowsay.1.adoc
-          touch   man-src/man1/cowsay.1.adoc
+          test -s man-src/man6/cowsay.6.adoc
+          touch   man-src/man6/cowsay.6.adoc
           make man
           git diff
