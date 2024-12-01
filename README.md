@@ -26,13 +26,11 @@ make install prefix=/path/to/installation/prefix
 
 ### Installation using Homebrew
 
-On Mac, you can also install Cowsay using Homebrew and our custom formula:
+On macOS/Linux, you can also install Cowsay using [Homebrew](https://brew.sh/):
 
 ```bash
-brew install cowsay-org/cowsay/cowsay-org
+brew install cowsay
 ```
-
-Note that this `cowsay-org` formula conflicts with the [`cowsay` formula from core Homebrew](https://formulae.brew.sh/formula/cowsay), because they supply the same programs. You need to uninstall the regular `cowsay` package before installing `cowsay-org`.
 
 ## License
 
