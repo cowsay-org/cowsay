@@ -2,7 +2,9 @@ Copyright 1999-2002 Tony Monroe
 Copyright 2016-2024 Andrew Janke
 Copyright 2022-2024 Cowsay contributors on GitHub
 
-Cowsay is free software. It is licensed under the GNU General Public License version 3. You may use, redistribute, and/or modify Cowsay under the terms of the GNU General Public License version 3 or (at your option) any later version.
+Cowsay is free software. It is licensed under the GNU General Public License version 3 and other compatible licenses. You may use, redistribute, and/or modify Cowsay under the terms of the GNU General Public License version 3 or (at your option) any later version.
+
+The files in Cowsay are all licensed under GNU GPL v3, except for certain individual cow files licensed under compatible Open Source licenses. See the copyright file for an enumeration of those exceptions.
 
 Additionally, many of the files in Cowsay are licensed under a broader dual-licensing grant of GNU GPL 1 or later and the Artisitic License 1.0. But not _all_ of the files in Cowsay. The exact licensing situation is a little unclear here, and clarifying it is an ongoing project. You may use the entirety of the Cowsay distribution under "GNU GPL 3 or later" terms. If you want to use the other GNU GPL 1, GNU GPL 2, or Artistic License terms, you may need to do research to determine which files are actually licensed under those terms.
 

@@ -1,0 +1,15 @@
+#
+# A (smaller) unipony!
+# Copyright 2010 Nick Daly <nick.m.daly@gmail.com>
+# Released under the same terms as cowsay
+#
+$the_cow = <<"EOC";
+   $thoughts        \\
+    $thoughts        \\
+     $thoughts       _\\^
+      $thoughts    _- $eyes\\
+           \\---- \\______
+            $tongue   \\       )\\
+                ||-----||  \\
+                ||     ||
+EOC
