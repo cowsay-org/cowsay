@@ -53,7 +53,7 @@ See the "Developer Notes.md" doc for more details. (Well, as soon as I get to wr
 Dependencies and tools needed:
 
 1. Perl
-    1. Use version 5.005_03 or later, but hopefully not too new (for compatibility). As of 2024-11, I'm testing against Perl 5.40. Really probably should be using whatever version is in the oldest in-support releases of Debian/Ubuntu and Fedora.
+    1. Use version 5.8.7 or later, but preferably not too new (for compatibility). As of 2024-11, I'm testing against Perl 5.40. Really probably should be using whatever version is in the oldest in-support releases of Debian/Ubuntu and Fedora.
     2. Ideally, also test against the current Perl from Mac Homebrew.
 2. Asciidoctor
     1. Version 2.0.x or later.

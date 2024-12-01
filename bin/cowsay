@@ -29,6 +29,25 @@ $Text::Wrap::initial_tab = 8;
 $Text::Wrap::subsequent_tab = 8;
 $Text::Wrap::tabstop = 8;
 
+sub enable_utf8_input() {
+    # Enable UTF-8 inputs on stdin/out/err if running in a UTF-8 locale.
+    # This fixes character-count problems with multibyte UTF-8 characters. (But
+    # it doesn't handle "wide" characters that should be *displayed* taking up
+    # multiple character spaces; that's a different issue.)
+    # This is done in the code here instead of relying on `perl -C` options 
+    # (e.g. in the shebang line) so that it still works when this program is
+    # called with plain `perl cowsay`.
+    if (${^UTF8LOCALE}) {
+        require Encode;
+        binmode STDIN, ':utf8';
+        binmode STDOUT, ':utf8';
+        binmode STDERR, ':utf8';
+        eval { $_ = Encode::decode_utf8($_,1) } for @ARGV;
+    }
+}
+
+&enable_utf8_input;
+
 %opts = (
     'e'         =>      'oo',
     'f'         =>      'default.cow',
