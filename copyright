@@ -1,117 +1,79 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: cowsay
-Upstream-Contact: Tony Monroe <tony@nog.net>
-Source: https://web.archive.org/web/20120527202447/http://www.nog.net/~tony/warez/cowsay.shtml
+Upstream-Contact: Andrew Janke <floss@apjanke.net>
+Source: https://github.com/cowsay-org/cowsay
 
 Files: *
 Copyright: 1999-2000 Tony Monroe
+           2016-2024 Andrew Janke <floss@apjanke.net>
 License: COWSAY
 
-Files: cows/apt.cow
-Copyright: 2002 Steven Barker <scbarker@uiuc.edu>
-License: GPL
+Files: bin/cowsay Makefile man-src/normalize-manpage.sed
+Copyright: 1999-2000 Tony Monroe
+           2016-2024 Andrew Janke <floss@apjanke.net>
+           2020 Filipe Brandenburger <filbranden@gmail.com>
+           2022-2024 Hans Ulrich Niedermann <hun@n-dimensional.de>
+License: GPL-3.0-only
 
-Files: cows/bong.cow
+Files: share/cowsay/actually.cow
+Copyright: 2024 Ulices Avila Hernandez <hasecilu@tuta.io>
+License: COWSAY
+
+Files: share/cowsay/alpaca.cow
+Copyright: 2022 Joel Maximilian Mai <joel@maispace.de>
+License: GPL-3.0-only
+
+Files: share/cowsay/cows/bong.cow
 Copyright: 1999 Lars Smith <lars@csua.berkeley.edu>
 License: COWSAY
 
-Files: cows/calvin.cow cows/cock.cow
-Copyright: 2006 Krishna Kumar <krish.kumar@gmail.com>
-License: COWSAY
+Files: share/cowsay/cupcake.cow
+Copyright: 2022 Nuthan B
+License: GPL-3.0-only
 
-Files: cows/dragon-and-cow.cow
+Files: share/cowsay/cows/dragon-and-cow.cow
 Copyright: 1999 kube@csua.berkeley.edu
 License: COWSAY
 
-Files: cows/duck.cow
-Copyright: 1999 Gürkan Sengün <gurkan@phys.ethz.ch>
-License: COWSAY
-
-Files: cows/flaming-sheep.cow
+Files: share/cowsay/cows/flaming-sheep.cow
 Copyright: 1999 Geordan Rosario <geordan@csua.berkeley.edu>
 License: COWSAY
 
-Files: cows/fox.cow
+Files: share/cowsay/cows/fox.cow
 Copyright: 2019 Hansen Wu <hansen.wu.85@gmail.com>
 License: COWSAY
 
-Files: cows/gnu.cow cows/suse.cow
-Copyright: 2006 Gerfried Fuchs <rhonda@deb.at>
-License: WTFPL-2
- Everyone is permitted to copy and distribute verbatim or modified
- copies of this license document, and changing it is allowed as long
- as the name is changed.
- .
-             DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-    TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
- .
-   0. You just DO WHAT THE FUCK YOU WANT TO.
+Files: share/cowsay/cows/llama.cow
+Copyright: 2020 con-f-use <con-f-use@users.noreply.github.com>
+License: GPL-3.0-only
 
-Files: cows/kangaroo.cow
-Comment: Adapted from http://sumaleth.com/files/row_ascii_collection_1.2.html.
-Copyright: Copyright (C) 1994 Rowan Crawford.
-License: GPL-2+
- This package is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- (at your option) any later version.
- .
- This package is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
- .
- You should have received a copy of the GNU General Public License
- along with this package; if not, write to the Free Software Foundation,
- Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA.
- .
- On Debian systems, the complete text of the GNU General Public License
- version 2 can be found in `/usr/share/common-licenses/GPL-2'.
-
-Files: cows/mutilated.cow
+Files: share/cowsay/cows/mutilated.cow
 Copyright: 1999 aspolito@csua.berkeley.edu
 License: COWSAY
 
-Files: cows/pony.cow cows/pony-smaller.cow cows/unipony.cow cows/unipony-smaller.cow
-Copyright: 2010 Nick Daly <nick.m.daly@gmail.com>
-License: COWSAY
-
-Files: cows/skeleton.cow
+Files: share/cowsay/cows/skeleton.cow
 Copyright: 1999 {appel,kube,rowe}@csua.berkeley.edu
 License: COWSAY
 
-Files: cows/snowman.cow
-Copyright: 2009 chrysn <chrysn@fsfe.org>
-License: COWSAY
-
-Files: cows/three-eyes.cow
+Files: share/cowsay/cows/three-eyes.cow
 Copyright: 1999 dpetrou@csua.berkeley.edu
 License: COWSAY
 
-Files: cows/tux.cow
+Files: share/cowsay/cows/tux.cow
 Copyright: 1999 pborys@p-soft.silesia.linux.org.pl
 License: COWSAY
 
-Files: cows/vader.cow
+Files: share/cowsay/cows/sus.cow
+Copyright: 2024 Marek Maškarinec <marek@mrms.cz>
+License: GPL-3.0-only
+
+Files: share/cowsay/cows/vader.cow
 Copyright: 1999 geordan@csua.berkeley.edu
 License: COWSAY
 
-Files: cows/www.cow
+Files: share/cowsay/cows/www.cow
 Copyright: 1999 lim@csua.berkeley.edu
 License: COWSAY
-
-Files: debian/*
-Copyright: 2010-2018 Francois Marier <francois@debian.org>
-           2015-2017 Tony Maillefaud <maltouzes@gmail.com>
-           2008 Gurkan Sengun <gurkan@phys.ethz.ch>
-           2007 Franz Pletz <fpletz@franz-pletz.org>
-           2005-2006 Florian Ernst <florian@debian.org>
-           2001-2003 Michael D. Ivey <ivey@debian.org>
-License: COWSAY
-
-Files: debian/cowsay_random
-Copyright: 2010 Nick Daly
-License: GPL
 
 License: COWSAY
  ==============

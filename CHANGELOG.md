@@ -11,6 +11,10 @@ Cowsay Changelog
 - Enable reproducible man page builds.
 - Include cowsay version in man page footer.
 
+### Internal changes
+
+- Add Debian style `copyright` file, updated for the cowsay-org fork's contributions.
+
 ## 3.8.4 (2024-11-30)
 
 ### Changes
