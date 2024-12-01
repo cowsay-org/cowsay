@@ -45,7 +45,7 @@ License: COWSAY
 
 Files: share/cowsay/cows/llama.cow
 Copyright: 2020 con-f-use <con-f-use@users.noreply.github.com>
-License: GPL-3.0-only
+License: COWSAY
 
 Files: share/cowsay/cows/mutilated.cow
 Copyright: 1999 aspolito@csua.berkeley.edu
