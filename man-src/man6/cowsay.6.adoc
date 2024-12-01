@@ -1,4 +1,4 @@
-COWSAY(1)
+COWSAY(6)
 =========
 :doctype: manpage
 :release-version: 3.9.0-SNAPSHOT
