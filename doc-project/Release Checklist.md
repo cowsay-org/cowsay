@@ -13,7 +13,7 @@ Steps to be done for a release:
 2. Do code changes for the release.
     1. Change version number in:
         1. `bin/cowsay`
-        2. `man-src/man1/cowsay.1.adoc`
+        2. `man-src/man1/cowsay.6.adoc`
     2. Rebuild the man pages with `make man`.
     3. Update `CHANGELOG.md` with the release date, and make sure it's up to date with changes.
     4. Commit those changes, with a commit message like "v. X.Y.Z".
@@ -39,7 +39,7 @@ Steps to be done for a release:
     3. Close the [milestone](https://github.com/cowsay-org/cowsay/milestones) in GH Issues for this release.
 8. Open development on next release, if this is a major or minor release.
     1. Don't bother doing this "open development on next" step if it is a patch release; just remember to do that if and when you start a patch release for that minor series.
-    2. Bump the version in files listed above (`cowsay`, `cowsay.1.adoc`), and give it a "-SNAPSHOT" suffix.
+    2. Bump the version in files listed above (`cowsay`, `cowsay.6.adoc`), and give it a "-SNAPSHOT" suffix.
     3. Update the CHANGELOG with a section for the new release.
     4. Rebuild the man pages with `make man`.
     5. Commit with a message like "Open development for X.Y", and push.

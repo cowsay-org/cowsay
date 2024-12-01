@@ -7,6 +7,7 @@ Cowsay Changelog
 
 - Require Perl 5.8.7 or later.
 - Fix character counts for multibyte UTF-8 inputs. ([#69](https://github.com/cowsay-org/cowsay/issues/69))
+- Move man pages to section 6 ("games"). ([#60](https://github.com/cowsay-org/cowsay/issues/60))
 
 ## 3.8.5 (unreleased)
 
