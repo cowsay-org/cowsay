@@ -129,3 +129,19 @@ I started looking in to this licensing situation in early 2024.
 On November 30, 2024, I re-licensed all my own contributions to Cowsay to expand the license grant to be "GNU GPL 1 or later or Artistic License 1.0". That's consistent with what I think the original licensing situation was, and gives good compatibility with future changes to the licensing or our understanding of it. At the same time, I updated the LICENSE.txt and README.md to say "GPL 3 or later" instead of just "GPL 3", and note how the license situation is somewhat unclear.
 
 Starting November 30, 2024, I started asking all contributors to license their work under (what I think is) the original Cowsay "GPL 1+ or Artistic" terms. That corresponds to commit 773c087 ("Add among us crewmate cow"). I hadn't yet updated the license files on the main branch yet, so GitHub's UI and the README still said GPL-3.0.
+
+## Provenance
+
+Info about where the licensing information and documentation for particular cows and code comes from.
+
+### alpaca.cow
+
+From Joel Maximilian Mai <joel@maispace.de>. Originally contributed 2022-11-07 via [PR #33](https://github.com/cowsay-org/cowsay/pull/33)  on the cowsay-org repo, while its "GPLv3 only" licensing statement was in effect. License grant expanded to "GPLv1+ & Artistic 1.0" on 2024-12-01 via [this comment on the PR](https://github.com/cowsay-org/cowsay/pull/33#issuecomment-2510206345) and [this approving comment](https://github.com/cowsay-org/cowsay/pull/75#issuecomment-2510220481) on [PR #75](https://github.com/cowsay-org/cowsay/pull/75) which updated the copyright documentation for alpaca in this repo.
+
+### cupcake.cow
+
+From Nuthan B <64555950+NuthanB@users.noreply.github.com>. Originally contributed 2023-03-18 via [PR #37](https://github.com/cowsay-org/cowsay/pull/37) on the cowsay-org repo, while its "GPLv3 only" licensing statement was in effect. License grant expanded to "GPLv1+ & Artistic 1.0" on 2024-12-03, via [this comment on the PR](https://github.com/cowsay-org/cowsay/pull/37#issuecomment-2514458219).
+
+### llama.cow
+
+From con-f-use <con-f-use@users.noreply.github.com>. Originally contributed 2020-05-08 via [PR #4](https://github.com/cowsay-org/cowsay/pull/4) on the cowsay-org repo, while its "GPLv3 only" licensing statement was in effect. License grant expanded to "GPLv1+ & Artistic 1.0" on 2024-12-01, via [this comment on the PR](https://github.com/cowsay-org/cowsay/pull/4).
