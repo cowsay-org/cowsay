@@ -5,13 +5,18 @@ Cowsay Changelog
 
 ### Changes
 
+- New cows.
+  - Add "chami" SUSE chameleon cow.
+  - Add "sans" Undertale cow.
+  - Add "bill" Bill the Cipher cow.
 - Expand and update documentation about licensing.
-- Use core Homebrew `cowsay` formula in macOS install instructions, since they picked up cowsay-org recently!
-- Fix tabs in moofasa.cow to spaces.
-- Fix "Sywalker" typo in luke-koala.cow.
-- Fix flipped orientation for elephant-in-snake cow image.
 - Enable reproducible man page builds.
-- Include cowsay version in man page footer.
+- Minor things.
+  - Fix tabs in moofasa.cow to spaces.
+  - Fix "Sywalker" typo in luke-koala.cow.
+  - Fix flipped orientation for elephant-in-snake cow image.
+  - Include cowsay version in man page footer.
+  - Use core Homebrew `cowsay` formula in macOS install instructions, since they picked up cowsay-org recently!
 
 ### Internal changes
 
