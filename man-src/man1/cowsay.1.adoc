@@ -91,7 +91,7 @@ Cow selection
     Chooses a random cow from the cows on the *COWPATH*.
 
 *-C*::
-    Enables true-color (24-bit) cows.  Currently only has an effect when used in conjunction with *-r*. If not given, then *-r* only selects from ammong non-true-color cows.
+    Enables true-color (24-bit) cows.  Currently only has an effect when used in conjunction with *-r*. If not given, then *-r* only selects from among non-true-color cows.
 
 Non-cow operations
 ~~~~~~~~~~~~~~~~~~
