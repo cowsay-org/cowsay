@@ -1,0 +1,14 @@
+##
+## Pusheen the Cat
+##
+$the_cow = <<EOC;
+   $thoughts
+    $thoughts
+     /\\___/\\____
+    /  '''   UU  \\   ,,
+  =|  o w o  =    |,/_/
+   |               |_/
+   |               /
+    \\_ _ _____ _ _/
+      " "     " "
+EOC
